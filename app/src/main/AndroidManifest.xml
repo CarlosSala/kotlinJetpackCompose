@@ -15,10 +15,21 @@
         android:theme="@style/Theme.JetpackCompose"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity9"
+            android:exported="true"
+            android:label="@string/title_activity_main9"
+            android:theme="@style/Theme.JetpackCompose">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".MainActivity8"
             android:exported="true"
             android:label="@string/title_activity_main8"
-            android:theme="@style/Theme.JetpackCompose" >
+            android:theme="@style/Theme.JetpackCompose">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +40,7 @@
             android:name=".MainActivity7"
             android:exported="true"
             android:label="@string/title_activity_main7"
-            android:theme="@style/Theme.JetpackCompose"/>
-
+            android:theme="@style/Theme.JetpackCompose" />
         <activity
             android:name=".MainActivity6"
             android:exported="true"
