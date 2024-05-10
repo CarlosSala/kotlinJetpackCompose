@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.screens.ma9
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -12,6 +13,9 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import com.example.jetpackcompose.ui.screens.common.*
 import androidx.compose.material3.Text
@@ -20,6 +24,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.model.MediaItem
@@ -39,7 +44,11 @@ fun MediaList4(navController: NavHostController, modifier: Modifier = Modifier) 
     ) {
         items(getMedia()) { item ->
 
-            MediaListItem4(navController, item)
+            MediaListItem4(
+                navController,
+                item,
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_xsmall))
+            )
         }
     }
 }
@@ -49,16 +58,24 @@ fun MediaList4(navController: NavHostController, modifier: Modifier = Modifier) 
 @Composable
 fun MediaListItem4(
     navController: NavHostController,
-    mediaItem: MediaItem
+    mediaItem: MediaItem,
+    modifier: Modifier = Modifier
 ) {
-
-    Column(
-        modifier = Modifier
-            .width(dimensionResource(R.dimen.column_width))
-            .clickable { navController.navigate("detail/${mediaItem.id}") }
+    Card(
+        modifier = modifier
+            .clickable { navController.navigate("detail/${mediaItem.id}") },
+        // .width(dimensionResource(R.dimen.column_width)),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 0.dp
+        ),
+        // shape = RoundedCornerShape(4.dp)
+        border = BorderStroke(1.dp, Color.LightGray),
+        // colors = CardDefaults.cardColors(Color.DarkGray)
     ) {
-        Thumb(mediaItem)
-        Title(mediaItem)
+        Column {
+            Thumb(mediaItem)
+            Title(mediaItem)
+        }
     }
 }
 
@@ -68,7 +85,7 @@ private fun Title(mediaItem: MediaItem) {
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .background(Color.White)
+            //.background(Color.White)
             .padding(dimensionResource(R.dimen.padding_medium))
     ) {
 
