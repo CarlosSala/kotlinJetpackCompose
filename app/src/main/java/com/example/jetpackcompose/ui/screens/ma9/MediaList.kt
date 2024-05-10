@@ -1,8 +1,5 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.ui.screens.ma9
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -28,40 +25,29 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.jetpackcompose.ui.theme.CustomComposeTheme
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.model.getMedia
 
-class MainActivity7 : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            CustomComposeTheme {
 
-                MediaList3()
-            }
-        }
-    }
-}
-
-
-@Preview
+// @Preview
 @Composable
-fun MediaList3() {
+fun MediaList4(modifier: Modifier = Modifier) {
     LazyVerticalGrid(
-        contentPadding = PaddingValues(4.dp),
+        contentPadding = PaddingValues(dimensionResource(R.dimen.padding_xsmall)),
         // columns = GridCells.Fixed(2)
-        columns = GridCells.Adaptive(150.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        columns = GridCells.Adaptive(dimensionResource(R.dimen.cell_min_width)),
+        horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_xsmall)),
+        modifier = modifier
 
     ) {
         items(getMedia()) { item ->
 
-            MediaListItem3(item)
+            MediaListItem4(item)
         }
     }
 }
@@ -69,15 +55,15 @@ fun MediaList3() {
 
 // @Preview(showBackground = true)
 @Composable
-fun MediaListItem3(item: MediaItem) {
+fun MediaListItem4(item: MediaItem) {
 
     Column(
-        modifier = Modifier.width(200.dp)
+        modifier = Modifier.width(dimensionResource(R.dimen.column_width))
     ) {
         Box(
             modifier = Modifier
                 //.fillMaxWidth()
-                .height(200.dp)
+                .height(dimensionResource(R.dimen.box_height))
         ) {
 
             AsyncImage(
@@ -96,9 +82,9 @@ fun MediaListItem3(item: MediaItem) {
                 Icon(
                     imageVector = Icons.Default.PlayCircleOutline,
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = Color.White,
                     modifier = Modifier
-                        .size(92.dp)
+                        .size(dimensionResource(R.dimen.play_icon_size))
                         .align(Alignment.Center)
                 )
             }
@@ -108,7 +94,7 @@ fun MediaListItem3(item: MediaItem) {
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .padding(16.dp)
+                .padding(dimensionResource(R.dimen.padding_medium))
         ) {
 
             Text(

@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
@@ -33,6 +32,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
+import com.example.jetpackcompose.model.MediaItem
+import com.example.jetpackcompose.model.getMedia
 
 class MainActivity6 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

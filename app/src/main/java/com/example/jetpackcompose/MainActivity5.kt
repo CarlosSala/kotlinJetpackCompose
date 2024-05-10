@@ -42,8 +42,10 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.jetpackcompose.MediaItem.*
+import com.example.jetpackcompose.model.MediaItem.*
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
+import com.example.jetpackcompose.model.MediaItem
+import com.example.jetpackcompose.model.getMedia
 
 class MainActivity5 : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

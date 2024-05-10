@@ -70,6 +70,9 @@ dependencies {
     // material icons
     implementation("androidx.compose.material:material-icons-extended:1.6.7")
 
+    // compose navigation
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

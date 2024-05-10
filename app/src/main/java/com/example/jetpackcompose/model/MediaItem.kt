@@ -1,6 +1,6 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.model
 
-import com.example.jetpackcompose.MediaItem.*
+import com.example.jetpackcompose.model.MediaItem.*
 
 data class MediaItem(
     val id: Int,
