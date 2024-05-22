@@ -1,4 +1,4 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.examples
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -13,10 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayCircleOutline
 import androidx.compose.material3.Icon
@@ -32,52 +30,49 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 import com.example.jetpackcompose.model.MediaItem
+import com.example.jetpackcompose.model.MediaItem.Type
 import com.example.jetpackcompose.model.getMedia
+import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-class MainActivity7 : ComponentActivity() {
+class LazyColumnActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             CustomComposeTheme {
 
-                MediaList3()
             }
         }
     }
 }
 
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun MediaList3() {
-    LazyVerticalGrid(
-        contentPadding = PaddingValues(4.dp),
-        // columns = GridCells.Fixed(2)
-        columns = GridCells.Adaptive(150.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+fun MediaList() {
 
+    LazyColumn(
+        contentPadding = PaddingValues(4.dp),
+        verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
         items(getMedia()) { item ->
 
-            MediaListItem3(item)
+            MediaListItem(item)
         }
     }
-}
 
+}
 
 // @Preview(showBackground = true)
 @Composable
-fun MediaListItem3(item: MediaItem) {
+fun MediaListItem(item: MediaItem) {
 
-    Column(
-        modifier = Modifier.width(200.dp)
-    ) {
+    Column {
         Box(
             modifier = Modifier
-                //.fillMaxWidth()
+                .fillMaxWidth()
                 .height(200.dp)
+            // .background(color = Color.Red)
         ) {
 
             AsyncImage(
@@ -92,7 +87,7 @@ fun MediaListItem3(item: MediaItem) {
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
-            if (item.type == MediaItem.Type.VIDEO) {
+            if (item.type == Type.VIDEO) {
                 Icon(
                     imageVector = Icons.Default.PlayCircleOutline,
                     contentDescription = null,
@@ -102,6 +97,13 @@ fun MediaListItem3(item: MediaItem) {
                         .align(Alignment.Center)
                 )
             }
+            // charge icons from resources
+            /*    Icon(
+                    painter = painterResource(id = R.drawable.ic_launcher_background),
+                    contentDescription = null,
+                    tint = Color.Green
+                )*/
+
         }
         Box(
             contentAlignment = Alignment.Center,
@@ -118,3 +120,6 @@ fun MediaListItem3(item: MediaItem) {
         }
     }
 }
+
+// if there are more of one parameter with a default value,
+// modifier must be the first parameter

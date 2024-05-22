@@ -1,4 +1,4 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.ui.screens.cat
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,10 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.jetpackcompose.ui.screens.ma9.MainScreen
-import com.example.jetpackcompose.ui.screens.detail.DetailScreen
+import com.example.jetpackcompose.ui.screens.cat.detail.CatDetail
 
-class MainActivity9 : ComponentActivity() {
+class CatActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -36,7 +35,7 @@ class MainActivity9 : ComponentActivity() {
                 ) { backStackEntry ->
                     val id = backStackEntry.arguments?.getInt("mediaId")
                     requireNotNull(id)
-                    DetailScreen(id)
+                    CatDetail(id)
                 }
             }
         }

@@ -1,9 +1,8 @@
-package com.example.jetpackcompose.ui.screens.m10
+package com.example.jetpackcompose.ui.screens.counterScreen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.viewModels
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -25,12 +24,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-class MainActivity10 : ComponentActivity() {
-
-    private val viewModel: M10ViewModel by viewModels()
+class CounterActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,53 +36,55 @@ class MainActivity10 : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     IncrementNumber(
-                        modifier = Modifier.padding(innerPadding)
+                        Modifier.padding(innerPadding)
                     )
                 }
             }
         }
     }
+}
 
-
-    @Preview(showBackground = true, widthDp = 350, heightDp = 350)
-    @Composable
-    fun MyPreview() {
-        CustomComposeTheme {
-            IncrementNumber()
-        }
+@Preview(showBackground = true, widthDp = 350, heightDp = 350)
+@Composable
+fun MyPreview() {
+    CustomComposeTheme {
+        IncrementNumber()
     }
+}
 
-    @Composable
-    fun IncrementNumber(modifier: Modifier = Modifier) {
+@Composable
+fun IncrementNumber(modifier: Modifier = Modifier) {
 
-        var count by remember { mutableIntStateOf(0) }
-        count = viewModel.number
+    var count by remember { mutableIntStateOf(0) }
 
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Yellow),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+    val viewModel: CounterViewModel = viewModel()
+
+    count = viewModel.number
+
+    Column(
+        modifier
+            .fillMaxSize()
+            .background(Color.Yellow),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "My Count $count!",
+            fontSize = 30.sp,
+        )
+        Spacer(
+            modifier.height(16.dp)
+        )
+        Button(
+            onClick = {
+                viewModel.increment()
+                count = viewModel.number
+            }
         ) {
             Text(
-                text = "My Count $count!",
-                fontSize = 30.sp,
+                text = "Add one",
+                fontSize = 20.sp,
             )
-            Spacer(
-                modifier = Modifier.height(16.dp)
-            )
-            Button(
-                onClick = {
-                    viewModel.increment()
-                    count = viewModel.number
-                }
-            ) {
-                Text(
-                    text = "Add one",
-                    fontSize = 20.sp,
-                )
-            }
         }
     }
 }

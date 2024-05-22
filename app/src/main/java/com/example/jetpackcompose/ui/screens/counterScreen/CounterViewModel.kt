@@ -1,8 +1,8 @@
-package com.example.jetpackcompose.ui.screens.m10
+package com.example.jetpackcompose.ui.screens.counterScreen
 
 import androidx.lifecycle.ViewModel
 
-class M10ViewModel : ViewModel() {
+class CounterViewModel : ViewModel() {
 
      var number = 0
 

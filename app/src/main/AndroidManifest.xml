@@ -15,18 +15,13 @@
         android:theme="@style/Theme.JetpackCompose"
         tools:targetApi="31">
         <activity
-            android:name=".ui.screens.m10.MainActivity10"
+            android:name=".ui.screens.counterScreen.CounterActivity"
             android:exported="true"
             android:label="@string/title_activity_main10"
-            android:theme="@style/Theme.JetpackCompose">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.JetpackCompose" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".MainActivity9"
+            android:name=".ui.screens.cat.CatActivity"
             android:exported="true"
             android:label="@string/title_activity_main9"
             android:theme="@style/Theme.JetpackCompose">
@@ -35,48 +30,41 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
-            android:name=".MainActivity8"
+            android:name=".ui.screens.mutablestate.MutableStateActivity"
             android:exported="true"
             android:label="@string/title_activity_main8"
-            android:theme="@style/Theme.JetpackCompose">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.JetpackCompose" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
-            android:name=".MainActivity7"
+            android:name=".examples.LazyVerticalGridActivity"
             android:exported="true"
             android:label="@string/title_activity_main7"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".MainActivity6"
+            android:name=".examples.LazyRowActivity"
             android:exported="true"
             android:label="@string/title_activity_main6"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".MainActivity5"
+            android:name=".examples.LazyColumnActivity"
             android:exported="true"
             android:label="@string/title_activity_main5"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".MainActivity4"
+            android:name=".examples.RowActivity"
             android:exported="false"
             android:label="@string/title_activity_main4"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".MainActivity3"
+            android:name=".examples.ColumnActivity"
             android:exported="false"
             android:label="@string/title_activity_main3"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".examples.BoxActivity"
             android:exported="true"
             android:theme="@style/Theme.JetpackCompose" />
     </application>

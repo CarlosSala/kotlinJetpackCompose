@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.ma9
+package com.example.jetpackcompose.ui.screens.cat
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu

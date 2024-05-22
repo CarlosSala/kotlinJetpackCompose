@@ -1,4 +1,4 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.examples
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -31,11 +31,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.model.getMedia
+import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-class MainActivity6 : ComponentActivity() {
+class LazyRowActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -47,13 +47,6 @@ class MainActivity6 : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting4(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
 @Preview
 @Composable
@@ -65,15 +58,11 @@ fun MediaList2() {
         items(getMedia()) { item ->
 
             MediaListItem2(item)
-
-            // MediaListItem()
         }
     }
 
 }
 
-
-// @Preview(showBackground = true)
 @Composable
 fun MediaListItem2(item: MediaItem) {
 

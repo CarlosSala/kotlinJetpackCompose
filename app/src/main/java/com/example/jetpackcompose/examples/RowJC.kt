@@ -1,11 +1,11 @@
-package com.example.jetpackcompose
+package com.example.jetpackcompose.examples
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,9 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-class MainActivity3 : ComponentActivity() {
+class RowActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             CustomComposeTheme {
                 // A surface container using the 'background' color from the theme
@@ -27,57 +28,59 @@ class MainActivity3 : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting2("Android")
+                    Greeting3("Android")
                 }
             }
         }
     }
 }
 
-// Column
-
-@Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+// Row
 
 @Preview(
     showBackground = true,
     name = "Testing My first app with JC",
     widthDp = 200,
-    heightDp = 200
+    heightDp = 200,
+    // backgroundColor = 1111115
 )
 @Composable
-fun GreetingPreview2() {
+fun GreetingPreview3() {
+
     CustomComposeTheme {
         // for to use all space in the screen
-        Column(
+        Row(
             modifier = Modifier.fillMaxSize(),
-            // verticalArrangement = Arrangement.SpaceAround,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Greeting2(
-                "Android",
+            Greeting3(
+                "one",
                 modifier = Modifier
                     .background(Color.Yellow)
-                    .weight(2f)
+                //.weight(2f)
             )
-            Greeting2(
-                "Android",
+            Greeting3(
+                "two",
                 modifier = Modifier
                     .background(Color.Cyan)
-                    .weight(1f)
+                //.weight(1f)
             )
-            Greeting2(
-                "Android",
+            Greeting3(
+                "three",
                 modifier = Modifier
                     .background(Color.Blue)
-                    .weight(1f)
+                //.weight(1f)
             )
 
         }
     }
+}
+
+@Composable
+fun Greeting3(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = name,
+        modifier = modifier
+    )
 }

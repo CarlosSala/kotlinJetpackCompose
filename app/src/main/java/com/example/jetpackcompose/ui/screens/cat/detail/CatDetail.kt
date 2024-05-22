@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.detail
+package com.example.jetpackcompose.ui.screens.cat.detail
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
@@ -10,14 +10,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.example.jetpackcompose.model.getMedia
-import com.example.jetpackcompose.ui.screens.common.Thumb
+import com.example.jetpackcompose.ui.common.Thumb
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 // @Preview(showBackground = true, widthDp = 400, heightDp = 400)
-fun DetailScreen(mediaId: Int) {
+fun CatDetail(mediaId: Int) {
 
     val mediaItem = remember {
         getMedia().first { it.id == mediaId }
