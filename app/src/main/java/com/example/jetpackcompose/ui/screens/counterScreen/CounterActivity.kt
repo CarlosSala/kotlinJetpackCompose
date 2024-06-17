@@ -33,7 +33,7 @@ class CounterActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CustomComposeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold() { innerPadding ->
 
                     IncrementNumber(
                         Modifier.padding(innerPadding)

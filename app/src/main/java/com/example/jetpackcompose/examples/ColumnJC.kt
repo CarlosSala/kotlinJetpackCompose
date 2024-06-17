@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -12,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
 class ColumnActivity : ComponentActivity() {
@@ -26,10 +29,11 @@ class ColumnActivity : ComponentActivity() {
 // Column
 
 @Composable
-fun Greeting2(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, textColor: Color = Color.Red, modifier: Modifier) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
+        color = textColor
     )
 }
 
@@ -37,23 +41,25 @@ fun Greeting2(name: String, modifier: Modifier = Modifier) {
     showBackground = true,
     name = "Testing My first app with JC",
     widthDp = 200,
-    heightDp = 200
+    heightDp = 300
 )
 @Composable
 fun GreetingPreview2() {
 
     CustomComposeTheme {
-        // for to use all space in the screen
         Column(
-            modifier = Modifier.fillMaxSize(),
-            // verticalArrangement = Arrangement.SpaceAround,
+            // for to use all space in the screen
+            modifier = Modifier
+                .fillMaxSize()
+                .border(2.dp, Color.Green),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Greeting2(
                 "Android",
                 modifier = Modifier
                     .background(Color.Yellow)
-                    .weight(2f)
+                    .weight(2f),
+                textColor = Color.Blue
             )
             Greeting2(
                 "Android",
@@ -67,7 +73,6 @@ fun GreetingPreview2() {
                     .background(Color.Blue)
                     .weight(1f)
             )
-
         }
     }
 }

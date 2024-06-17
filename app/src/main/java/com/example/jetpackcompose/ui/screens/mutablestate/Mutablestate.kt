@@ -65,7 +65,6 @@ fun StateSample(value: String, onValueChange: (String) -> Unit) {
         verticalArrangement = Arrangement.Center
 
     ) {
-
         TextField(
             value = value,
             onValueChange = { onValueChange(it) },

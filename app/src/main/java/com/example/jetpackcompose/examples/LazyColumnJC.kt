@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayCircleOutline
 import androidx.compose.material3.Icon
@@ -23,6 +24,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -30,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import coil.transform.CircleCropTransformation
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.model.MediaItem.Type
 import com.example.jetpackcompose.model.getMedia
@@ -52,8 +55,8 @@ class LazyColumnActivity : ComponentActivity() {
 fun MediaList() {
 
     LazyColumn(
-        contentPadding = PaddingValues(4.dp),
-        verticalArrangement = Arrangement.spacedBy(4.dp)
+        contentPadding = PaddingValues(2.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         items(getMedia()) { item ->
 
@@ -72,47 +75,40 @@ fun MediaListItem(item: MediaItem) {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
-            // .background(color = Color.Red)
+                .background(color = Color.DarkGray)
         ) {
-
             AsyncImage(
-                // "https://loremflickr.com/400/400/cat?lock=1"
+
+                // model = "https://loremflickr.com/400/400/cat?lock=1",
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(item.thumb)
                     //.transformations(CircleCropTransformation())
                     .crossfade(2000)
                     .build(),
                 contentDescription = null,
-                // modifier = Modifier.clip(RoundedCornerShape(4.dp))
-                modifier = Modifier.fillMaxSize(),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(4.dp)),
                 contentScale = ContentScale.Crop
             )
             if (item.type == Type.VIDEO) {
                 Icon(
                     imageVector = Icons.Default.PlayCircleOutline,
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = Color.White,
                     modifier = Modifier
-                        .size(92.dp)
+                        .size(90.dp)
                         .align(Alignment.Center)
                 )
             }
-            // charge icons from resources
-            /*    Icon(
-                    painter = painterResource(id = R.drawable.ic_launcher_background),
-                    contentDescription = null,
-                    tint = Color.Green
-                )*/
-
         }
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxWidth()
                 .background(Color.White)
-                .padding(16.dp)
+                .padding(10.dp)
         ) {
-
             Text(
                 text = item.title,
                 style = MaterialTheme.typography.titleSmall

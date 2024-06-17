@@ -36,7 +36,6 @@ fun MainAppBar() {
         actions = {
 
             AppBarAction(Icons.Default.Search, onClick = {/*TODO*/ })
-
             AppBarAction(Icons.Default.Share, onClick = {/*TODO*/ })
         }
     )

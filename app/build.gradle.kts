@@ -63,15 +63,9 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-
-    // for charge images
-    implementation("io.coil-kt:coil-compose:2.0.0")
-
-    // material icons
-    implementation("androidx.compose.material:material-icons-extended:1.6.7")
-
-    // compose navigation
-    implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.coil.compose)
+    implementation(libs.material.icons.extended)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -80,4 +74,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.accompanist.pager)
+    //implementation(libs.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
+    // Otras dependencias necesarias
+
+
 }

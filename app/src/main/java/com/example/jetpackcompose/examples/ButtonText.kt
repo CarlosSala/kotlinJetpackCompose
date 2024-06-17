@@ -32,13 +32,12 @@ fun ButtonText() {
 
     Box(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .border(2.dp, Color.Yellow),
         contentAlignment = Alignment.Center
     ) {
         Text(
-            // text = stringResource(R.string.my_button),
             text = stringResource(id = R.string.lorem),
-            //"My Button",
             color = Color.DarkGray,
             fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
@@ -50,7 +49,7 @@ fun ButtonText() {
             maxLines = 4,
             softWrap = false,
             overflow = TextOverflow.Ellipsis,
-            // onTextLayout, to check
+            onTextLayout = {},
             // style, to abstract the style
             style = MaterialTheme.typography.bodyLarge.copy(
                 shadow = Shadow(
@@ -59,7 +58,6 @@ fun ButtonText() {
                     color = Color.Black.copy(alpha = 0.6f)
                 )
             ),
-
             // the order of modifier matters
             modifier = Modifier
                 .clickable { }

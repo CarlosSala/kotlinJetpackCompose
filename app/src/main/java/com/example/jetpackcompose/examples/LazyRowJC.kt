@@ -51,40 +51,36 @@ class LazyRowActivity : ComponentActivity() {
 @Preview
 @Composable
 fun MediaList2() {
+
     LazyRow(
         contentPadding = PaddingValues(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
+        horizontalArrangement = Arrangement.spacedBy(1.dp)
     ) {
         items(getMedia()) { item ->
 
             MediaListItem2(item)
         }
     }
-
 }
 
 @Composable
 fun MediaListItem2(item: MediaItem) {
 
     Column(
-        modifier = Modifier.width(200.dp)
+        modifier = Modifier.width(100.dp)
     ) {
         Box(
             modifier = Modifier
-                //.fillMaxWidth()
+                .fillMaxWidth()
                 .height(200.dp)
-            // .background(color = Color.Red)
+                .background(color = Color.Gray)
         ) {
-
             AsyncImage(
-                // "https://loremflickr.com/400/400/cat?lock=1"
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(item.thumb)
-                    //.transformations(CircleCropTransformation())
                     .crossfade(2000)
                     .build(),
                 contentDescription = null,
-                // modifier = Modifier.clip(RoundedCornerShape(4.dp))
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -98,13 +94,6 @@ fun MediaListItem2(item: MediaItem) {
                         .align(Alignment.Center)
                 )
             }
-            // charge icons from resources
-            /*    Icon(
-                    painter = painterResource(id = R.drawable.ic_launcher_background),
-                    contentDescription = null,
-                    tint = Color.Green
-                )*/
-
         }
         Box(
             contentAlignment = Alignment.Center,
@@ -113,7 +102,6 @@ fun MediaListItem2(item: MediaItem) {
                 .background(Color.White)
                 .padding(16.dp)
         ) {
-
             Text(
                 text = item.title,
                 style = MaterialTheme.typography.titleSmall

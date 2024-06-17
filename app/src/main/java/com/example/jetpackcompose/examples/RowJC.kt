@@ -42,7 +42,7 @@ class RowActivity : ComponentActivity() {
     name = "Testing My first app with JC",
     widthDp = 200,
     heightDp = 200,
-    // backgroundColor = 1111115
+    backgroundColor = 1111115
 )
 @Composable
 fun GreetingPreview3() {
@@ -72,7 +72,6 @@ fun GreetingPreview3() {
                     .background(Color.Blue)
                 //.weight(1f)
             )
-
         }
     }
 }

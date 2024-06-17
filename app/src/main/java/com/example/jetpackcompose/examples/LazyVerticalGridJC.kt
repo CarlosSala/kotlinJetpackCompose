@@ -51,12 +51,13 @@ class LazyVerticalGridActivity : ComponentActivity() {
 @Preview
 @Composable
 fun MediaList3() {
+
     LazyVerticalGrid(
         contentPadding = PaddingValues(4.dp),
         // columns = GridCells.Fixed(2)
         columns = GridCells.Adaptive(150.dp),
-        horizontalArrangement = Arrangement.spacedBy(4.dp)
-
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+        verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         items(getMedia()) { item ->
 
@@ -75,19 +76,16 @@ fun MediaListItem3(item: MediaItem) {
     ) {
         Box(
             modifier = Modifier
-                //.fillMaxWidth()
+                .fillMaxWidth()
                 .height(200.dp)
+                .background(Color.LightGray)
         ) {
-
             AsyncImage(
-                // "https://loremflickr.com/400/400/cat?lock=1"
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(item.thumb)
-                    //.transformations(CircleCropTransformation())
                     .crossfade(2000)
                     .build(),
                 contentDescription = null,
-                // modifier = Modifier.clip(RoundedCornerShape(4.dp))
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop
             )
@@ -109,7 +107,6 @@ fun MediaListItem3(item: MediaItem) {
                 .background(Color.White)
                 .padding(16.dp)
         ) {
-
             Text(
                 text = item.title,
                 style = MaterialTheme.typography.titleSmall
