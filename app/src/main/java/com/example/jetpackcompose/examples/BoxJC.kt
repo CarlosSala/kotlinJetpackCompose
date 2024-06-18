@@ -29,8 +29,6 @@ class BoxActivity : ComponentActivity() {
     }
 }
 
-// Box
-
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
@@ -46,7 +44,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     heightDp = 250
 )
 @Composable
-fun GreetingPreview() {
+fun BoxJC() {
 
     CustomComposeTheme {
         Box(

@@ -5,7 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -44,7 +43,7 @@ fun Greeting2(name: String, textColor: Color = Color.Red, modifier: Modifier) {
     heightDp = 300
 )
 @Composable
-fun GreetingPreview2() {
+fun ColumnJC() {
 
     CustomComposeTheme {
         Column(

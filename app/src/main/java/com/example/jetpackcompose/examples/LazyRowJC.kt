@@ -41,7 +41,7 @@ class LazyRowActivity : ComponentActivity() {
         setContent {
             CustomComposeTheme {
 
-                MediaList2()
+                LazyRowJC()
             }
         }
     }
@@ -50,7 +50,7 @@ class LazyRowActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun MediaList2() {
+fun LazyRowJC() {
 
     LazyRow(
         contentPadding = PaddingValues(4.dp),

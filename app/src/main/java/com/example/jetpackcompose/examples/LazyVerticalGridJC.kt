@@ -50,7 +50,7 @@ class LazyVerticalGridActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun MediaList3() {
+fun LazyVerticalGridJC() {
 
     LazyVerticalGrid(
         contentPadding = PaddingValues(4.dp),

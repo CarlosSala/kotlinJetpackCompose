@@ -52,7 +52,7 @@ class LazyColumnActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun MediaList() {
+fun LazyColumnJC() {
 
     LazyColumn(
         contentPadding = PaddingValues(2.dp),

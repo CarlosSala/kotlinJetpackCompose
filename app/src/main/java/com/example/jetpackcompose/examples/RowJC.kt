@@ -35,7 +35,6 @@ class RowActivity : ComponentActivity() {
     }
 }
 
-// Row
 
 @Preview(
     showBackground = true,
@@ -45,7 +44,7 @@ class RowActivity : ComponentActivity() {
     backgroundColor = 1111115
 )
 @Composable
-fun GreetingPreview3() {
+fun RowJC() {
 
     CustomComposeTheme {
         // for to use all space in the screen

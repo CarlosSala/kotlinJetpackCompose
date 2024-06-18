@@ -28,7 +28,7 @@ import com.example.jetpackcompose.R
 
 @Preview(showBackground = true, widthDp = 400, heightDp = 200)
 @Composable
-fun ButtonText() {
+fun ButtonTextJC() {
 
     Box(
         modifier = Modifier
