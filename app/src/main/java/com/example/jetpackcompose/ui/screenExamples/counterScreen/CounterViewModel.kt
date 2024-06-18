@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.examples.counterScreen
+package com.example.jetpackcompose.ui.screenExamples.counterScreen
 
 import androidx.lifecycle.ViewModel
 

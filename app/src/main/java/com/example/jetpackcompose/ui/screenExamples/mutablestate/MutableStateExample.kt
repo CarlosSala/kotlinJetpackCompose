@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.examples.mutablestate
+package com.example.jetpackcompose.ui.screenExamples.mutablestate
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

@@ -1,11 +1,11 @@
-package com.example.jetpackcompose.examples
+package com.example.jetpackcompose.ui.screenExamples
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,54 +16,61 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-class BoxActivity : ComponentActivity() {
+class ColumnActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContent {
-            CustomComposeTheme {
-                // A surface container using the 'background' color from the theme
 
-            }
         }
     }
 }
 
+// Column
+
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, textColor: Color = Color.Red, modifier: Modifier) {
     Text(
         text = "Hello $name!",
-        modifier = modifier
+        modifier = modifier,
+        color = textColor
     )
 }
 
 @Preview(
     showBackground = true,
     name = "Testing My first app with JC",
-    widthDp = 250,
-    heightDp = 250
+    widthDp = 200,
+    heightDp = 300
 )
 @Composable
-fun BoxJC() {
+fun ColumnJC() {
 
     CustomComposeTheme {
-        Box(
+        Column(
+            // for to use all space in the screen
             modifier = Modifier
                 .fillMaxSize()
-                .border(2.dp, Color.Red)
-                .background(Color.Green),
-            // all children will be centered in the Box
-            contentAlignment = Alignment.Center
-
+                .border(2.dp, Color.Green),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Greeting("Carlos")
-
-            Greeting(
-                name = "Android",
-                // custom alignment
+            Greeting2(
+                "Android",
                 modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .border(2.dp, Color.Black)
+                    .background(Color.Yellow)
+                    .weight(2f),
+                textColor = Color.Blue
+            )
+            Greeting2(
+                "Android",
+                modifier = Modifier
+                    .background(Color.Cyan)
+                    .weight(1f)
+            )
+            Greeting2(
+                "Android",
+                modifier = Modifier
+                    .background(Color.Blue)
+                    .weight(1f)
             )
         }
     }

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.cat
+package com.example.jetpackcompose.ui.screenExamples.cat
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.jetpackcompose.ui.screens.cat.detail.CatDetail
+import com.example.jetpackcompose.ui.screenExamples.cat.detail.CatDetail
 
 
 @Composable

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.cat.detail
+package com.example.jetpackcompose.ui.screenExamples.cat.detail
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding

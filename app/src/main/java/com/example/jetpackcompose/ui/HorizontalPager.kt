@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.horizontalPager
+package com.example.jetpackcompose.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -18,26 +18,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcompose.examples.BoxJC
-import com.example.jetpackcompose.examples.ButtonTextJC
-import com.example.jetpackcompose.examples.ColumnJC
-import com.example.jetpackcompose.examples.LazyColumnJC
-import com.example.jetpackcompose.examples.LazyRowJC
-import com.example.jetpackcompose.examples.LazyVerticalGridJC
-import com.example.jetpackcompose.examples.RowJC
-import com.example.jetpackcompose.examples.counterScreen.IncrementNumber
-import com.example.jetpackcompose.examples.mutablestate.ViewMutableStateExample
-import com.example.jetpackcompose.ui.screens.cat.MainAppBar
-import com.example.jetpackcompose.ui.screens.cat.NavigationCat
+import com.example.jetpackcompose.ui.screenExamples.BoxJC
+import com.example.jetpackcompose.ui.screenExamples.ButtonTextJC
+import com.example.jetpackcompose.ui.screenExamples.ColumnJC
+import com.example.jetpackcompose.ui.screenExamples.LazyColumnJC
+import com.example.jetpackcompose.ui.screenExamples.LazyRowJC
+import com.example.jetpackcompose.ui.screenExamples.LazyVerticalGridJC
+import com.example.jetpackcompose.ui.screenExamples.RowJC
+import com.example.jetpackcompose.ui.screenExamples.counterScreen.IncrementNumber
+import com.example.jetpackcompose.ui.screenExamples.mutablestate.ViewMutableStateExample
+import com.example.jetpackcompose.ui.screenExamples.cat.MainAppBar
+import com.example.jetpackcompose.ui.screenExamples.cat.NavigationCat
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun MyApp() {
+fun HorizontalPager() {
 
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
@@ -51,10 +50,6 @@ fun MyApp() {
             FloatingActionButton(onClick = {
 
                 showDialog = true
-                /*  coroutineScope.launch {
-
-                      pagerState.scrollToPage(6)
-                  }*/
             }) {
                 Text("Go to any page")
             }
@@ -115,7 +110,6 @@ fun MyApp() {
                 }
             )
         }
-
     }
 }
 
@@ -123,5 +117,5 @@ fun MyApp() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    MyApp()
+    HorizontalPager()
 }

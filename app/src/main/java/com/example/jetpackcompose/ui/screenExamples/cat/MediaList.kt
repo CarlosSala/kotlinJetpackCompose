@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.cat
+package com.example.jetpackcompose.ui.screenExamples.cat
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
