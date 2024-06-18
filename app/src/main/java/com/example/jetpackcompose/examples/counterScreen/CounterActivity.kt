@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screens.counterScreen
+package com.example.jetpackcompose.examples.counterScreen
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

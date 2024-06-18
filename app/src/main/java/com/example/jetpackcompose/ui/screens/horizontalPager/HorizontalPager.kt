@@ -9,8 +9,8 @@ import com.example.jetpackcompose.examples.LazyColumnJC
 import com.example.jetpackcompose.examples.LazyRowJC
 import com.example.jetpackcompose.examples.LazyVerticalGridJC
 import com.example.jetpackcompose.examples.RowJC
-import com.example.jetpackcompose.ui.screens.counterScreen.CounterActivity
-import com.example.jetpackcompose.ui.screens.counterScreen.IncrementNumber
+import com.example.jetpackcompose.examples.counterScreen.IncrementNumber
+import com.example.jetpackcompose.examples.mutablestate.ViewMutableStateExample
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -21,7 +21,7 @@ fun MyApp() {
     val pagerState = rememberPagerState()
 
     HorizontalPager(
-        count = 7, // number of screens
+        count = 9, // number of screens
         state = pagerState
     ) { page ->
         when (page) {
@@ -33,6 +33,7 @@ fun MyApp() {
             5 -> LazyRowJC()
             6 -> LazyVerticalGridJC()
             7 -> IncrementNumber()
+            8 -> ViewMutableStateExample()
         }
     }
 }
