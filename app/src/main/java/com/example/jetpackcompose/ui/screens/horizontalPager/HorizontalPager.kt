@@ -1,12 +1,22 @@
 package com.example.jetpackcompose.ui.screens.horizontalPager
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.examples.BoxJC
 import com.example.jetpackcompose.examples.ButtonTextJC
@@ -32,17 +42,21 @@ fun MyApp() {
     val pagerState = rememberPagerState()
     val coroutineScope = rememberCoroutineScope()
 
+    var showDialog by remember { mutableStateOf(false) }
+    var pageNumber by remember { mutableStateOf("") }
+
     Scaffold(
         topBar = { MainAppBar() },
         floatingActionButton = {
             FloatingActionButton(onClick = {
-                coroutineScope.launch {
 
-                    pagerState.scrollToPage(6)
+                showDialog = true
+                /*  coroutineScope.launch {
 
-                }
+                      pagerState.scrollToPage(6)
+                  }*/
             }) {
-                Text("Go to page 6")
+                Text("Go to any page")
             }
         }
     ) { paddingValues ->
@@ -66,6 +80,42 @@ fun MyApp() {
                 9 -> NavigationCat()
             }
         }
+
+        if (showDialog) {
+            AlertDialog(
+                onDismissRequest = { showDialog = false },
+                title = { Text("Go to Page") },
+                text = {
+                    Column {
+                        Text("Enter the page number:")
+                        OutlinedTextField(
+                            value = pageNumber,
+                            onValueChange = { pageNumber = it },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+                        )
+                    }
+                },
+                confirmButton = {
+                    Button(onClick = {
+                        val page = pageNumber.toIntOrNull()
+                        if (page != null && page in 0 until pagerState.pageCount) {
+                            coroutineScope.launch {
+                                pagerState.scrollToPage(page)
+                            }
+                            showDialog = false
+                        }
+                    }) {
+                        Text("Go")
+                    }
+                },
+                dismissButton = {
+                    Button(onClick = { showDialog = false }) {
+                        Text("Cancel")
+                    }
+                }
+            )
+        }
+
     }
 }
 
