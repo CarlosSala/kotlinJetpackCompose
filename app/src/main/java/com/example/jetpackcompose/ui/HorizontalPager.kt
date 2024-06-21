@@ -24,6 +24,7 @@ import com.example.jetpackcompose.ui.screenExamples.ColumnJC
 import com.example.jetpackcompose.ui.screenExamples.LazyColumnJC
 import com.example.jetpackcompose.ui.screenExamples.LazyRowJC
 import com.example.jetpackcompose.ui.screenExamples.LazyVerticalGridJC
+import com.example.jetpackcompose.ui.screenExamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenExamples.RowJC
 import com.example.jetpackcompose.ui.screenExamples.counterScreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenExamples.mutablestate.ViewMutableStateExample
@@ -58,7 +59,7 @@ fun HorizontalPager() {
 
 
         HorizontalPager(
-            count = 10, // number of screens
+            count = 11, // number of screens
             state = pagerState,
             modifier = Modifier.padding(paddingValues)
         ) { page ->
@@ -73,6 +74,7 @@ fun HorizontalPager() {
                 7 -> IncrementNumber()
                 8 -> ViewMutableStateExample()
                 9 -> NavigationCat()
+                10 -> NavDrawerJC()
             }
         }
 
