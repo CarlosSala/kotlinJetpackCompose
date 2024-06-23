@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+// alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -66,6 +68,20 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.material.icons.extended)
+    // implementation(libs.androidx.room.compiler)
+    // implementation(libs.androidx.room.ktx)
+    // annotationProcessor("androidx.room:room-compiler:2.6.1")
+    // kapt(libs.room.runtime)
+
+    // Room
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-ktx:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+
+
+// LiveData
+    implementation( "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -79,6 +95,8 @@ dependencies {
     //implementation(libs.navigation.compose)
     implementation(libs.hilt.navigation.compose)
     // Otras dependencias necesarias
+
+
 
     implementation(libs.compose.foundation)
     implementation(libs.compose.material)
