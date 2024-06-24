@@ -14,13 +14,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Surface
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,7 +34,6 @@ import com.example.jetpackcompose.ui.screenExamples.room.NoteEntity
 import com.example.jetpackcompose.ui.screenExamples.room.NoteRepository
 import com.example.jetpackcompose.ui.screenExamples.room.NoteViewModel
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
-
 
 class MainActivity : ComponentActivity() {
 

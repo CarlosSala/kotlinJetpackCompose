@@ -75,7 +75,6 @@ fun HorizontalPager() {
                 8 -> ViewMutableStateExample()
                 9 -> NavigationCat()
                 10 -> NavDrawerJC()
-                // 11 -> MainActivity().TextApp()
             }
         }
 
