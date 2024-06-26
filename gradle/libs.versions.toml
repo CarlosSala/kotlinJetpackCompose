@@ -19,7 +19,9 @@ accompanist = "0.26.5-rc"
 hiltNavigationCompose = "1.0.0"
 compose = "1.4.0"
 coroutines = "1.7.3"
-
+retrofit = "2.11.0"
+okhttp = "4.9.3"
+retrofit-gson = "2.8.8"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -53,6 +55,10 @@ compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime
 
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

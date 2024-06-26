@@ -80,7 +80,7 @@ dependencies {
 
 
 // LiveData
-    implementation( "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0")
+    implementation( "androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
 
 
     testImplementation(libs.junit)
@@ -106,5 +106,9 @@ dependencies {
 
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
 
 }
