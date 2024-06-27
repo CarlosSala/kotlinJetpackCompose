@@ -79,8 +79,12 @@ dependencies {
     kapt("androidx.room:room-compiler:$roomVersion")
 
 
+    // Datastore
+    implementation(libs.datastore.preferences)
+    implementation(libs.datastore.core)
+
 // LiveData
-    implementation( "androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
 
 
     testImplementation(libs.junit)
@@ -95,7 +99,6 @@ dependencies {
     //implementation(libs.navigation.compose)
     implementation(libs.hilt.navigation.compose)
     // Otras dependencias necesarias
-
 
 
     implementation(libs.compose.foundation)
