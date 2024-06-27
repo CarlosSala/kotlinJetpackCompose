@@ -32,6 +32,7 @@ import com.example.jetpackcompose.ui.screenExamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenExamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenExamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenExamples.settings.SettingsScreen
+import com.example.jetpackcompose.ui.screenExamples.viewpager.MenuScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -61,7 +62,7 @@ fun HorizontalPager() {
 
 
         HorizontalPager(
-            count = 13, // number of screens
+            count = 14, // number of screens
             state = pagerState,
             modifier = Modifier.padding(paddingValues)
         ) { page ->
@@ -79,6 +80,7 @@ fun HorizontalPager() {
                 10 -> NavDrawerJC()
                 11 -> NoteScreen()
                 12 -> SettingsScreen()
+                13 -> MenuScreen()
             }
         }
 
