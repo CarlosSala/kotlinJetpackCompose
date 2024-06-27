@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.coroutines.delay
 
 @Composable
 fun SettingsScreen(
@@ -17,14 +18,25 @@ fun SettingsScreen(
     )
 ) {
     val welcomeShown by viewModel.welcomeShown.collectAsState()
+    var showDialog by remember { mutableStateOf(false) }
 
-    if (!welcomeShown) {
-        WelcomeDialog(onDismiss = {
-            viewModel.setWelcomeShown()
-        })
+    LaunchedEffect(Unit) {
+        if (!welcomeShown) {
+            delay(1500) //
+            showDialog = true
+        }
     }
 
-    // El resto de tu UI
+
+    if (showDialog) {
+        WelcomeDialog(
+            showDialog = showDialog,
+            onDismiss = {
+                showDialog = false
+                viewModel.setWelcomeShown()
+            }
+        )
+    }
 }
 
 

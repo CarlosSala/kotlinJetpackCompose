@@ -10,16 +10,20 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
 
+// name groups of preferences
 private val Context.dataStore by preferencesDataStore(name = "welcome_prefs")
+
 private val WELCOME_SHOWN_KEY = booleanPreferencesKey("welcome_shown")
 
+// save values on DataStore
 suspend fun setWelcomeShown(context: Context) {
     context.dataStore.edit { preferences ->
         preferences[WELCOME_SHOWN_KEY] = true
     }
 }
 
-fun isWelcomeShown(context: Context): Flow<Boolean> {
+fun getWelcomeShown(context: Context): Flow<Boolean> {
+
     return context.dataStore.data
         .catch { exception ->
             if (exception is IOException) {
