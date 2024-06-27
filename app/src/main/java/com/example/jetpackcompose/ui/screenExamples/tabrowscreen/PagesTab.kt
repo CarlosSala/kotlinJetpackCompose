@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenExamples.viewpager
+package com.example.jetpackcompose.ui.screenExamples.tabrowscreen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun PagesTab(viewModel: MenuViewModel) {
+fun PagesTab(viewModel: TabRowViewModel) {
 
     val pagerState = rememberPagerState(pageCount = { 3 })
 

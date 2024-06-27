@@ -32,7 +32,7 @@ import com.example.jetpackcompose.ui.screenExamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenExamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenExamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenExamples.settings.SettingsScreen
-import com.example.jetpackcompose.ui.screenExamples.viewpager.MenuScreen
+import com.example.jetpackcompose.ui.screenExamples.tabrowscreen.TabRowScreen
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
@@ -80,7 +80,7 @@ fun HorizontalPager() {
                 10 -> NavDrawerJC()
                 11 -> NoteScreen()
                 12 -> SettingsScreen()
-                13 -> MenuScreen()
+                13 -> TabRowScreen()
             }
         }
 

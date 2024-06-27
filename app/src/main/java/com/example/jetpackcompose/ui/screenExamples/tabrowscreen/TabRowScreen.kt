@@ -1,11 +1,10 @@
-package com.example.jetpackcompose.ui.screenExamples.viewpager
+package com.example.jetpackcompose.ui.screenExamples.tabrowscreen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.*
@@ -13,14 +12,16 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun MenuScreen() {
-    val viewModel: MenuViewModel = viewModel()
-    val screenTitles = listOf("Pantalla 1", "Pantalla 2", "Pantalla 3")
+fun TabRowScreen() {
+
+    val viewModel: TabRowViewModel = viewModel()
+    val screenTitles = listOf("News", "Quotes", "About System")
     val pagerState = rememberPagerState(initialPage = viewModel.currentPage)
     val coroutineScope = rememberCoroutineScope()
 
-    Column(Modifier.fillMaxSize()) {
-
+    Column(
+        Modifier.fillMaxSize()
+    ) {
         TabRow(
             selectedTabIndex = pagerState.currentPage,
             // backgroundColor = MaterialTheme.colorScheme.surface,
@@ -31,7 +32,7 @@ fun MenuScreen() {
                     selected = pagerState.currentPage == index,
                     onClick = {
                         viewModel.mySetCurrentPage(index)
-                        // Animar el desplazamiento del pager
+                        // Animate swipe screen
                         coroutineScope.launch {
                             pagerState.animateScrollToPage(index)
                         }
@@ -41,7 +42,7 @@ fun MenuScreen() {
             }
         }
 
-        // HorizontalPager para el contenido de cada pantalla
+        // pages content
         HorizontalPager(
             count = screenTitles.size,
             state = pagerState,
@@ -54,7 +55,7 @@ fun MenuScreen() {
             }
         }
 
-        // Actualiza el ViewModel cada vez que se desliza a una nueva página
+        // Update ViewModel when swipe
         LaunchedEffect(pagerState.currentPage) {
             viewModel.mySetCurrentPage(pagerState.currentPage)
         }

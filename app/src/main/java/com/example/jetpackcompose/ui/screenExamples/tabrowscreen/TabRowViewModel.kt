@@ -1,12 +1,11 @@
-package com.example.jetpackcompose.ui.screenExamples.viewpager
+package com.example.jetpackcompose.ui.screenExamples.tabrowscreen
 
 import androidx.lifecycle.ViewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 
-class MenuViewModel : ViewModel() {
+class TabRowViewModel : ViewModel() {
 
     var currentPage by mutableIntStateOf(0)
         private set

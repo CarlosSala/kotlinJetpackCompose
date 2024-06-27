@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenExamples.viewpager
+package com.example.jetpackcompose.ui.screenExamples.tabrowscreen
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
