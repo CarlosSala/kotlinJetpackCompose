@@ -36,13 +36,14 @@ import com.example.jetpackcompose.ui.screenExamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenExamples.tabrowscreen.TabRowScreen
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
+import com.example.jetpackcompose.ui.screenExamples.retrofit.main.QuoteScreen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HorizontalPager() {
 
-    val pagerState = rememberPagerState(pageCount = { 14 })
+    val pagerState = rememberPagerState(pageCount = { 15 })
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -81,6 +82,7 @@ fun HorizontalPager() {
                 11 -> NoteScreen()
                 12 -> SettingsScreen()
                 13 -> TabRowScreen()
+                14 -> QuoteScreen()
             }
         }
 
