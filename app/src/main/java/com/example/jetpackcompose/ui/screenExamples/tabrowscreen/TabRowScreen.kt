@@ -7,16 +7,19 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.accompanist.pager.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.ExperimentalFoundationApi
+
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TabRowScreen() {
 
     val viewModel: TabRowViewModel = viewModel()
     val screenTitles = listOf("News", "Quotes", "About System")
-    val pagerState = rememberPagerState(initialPage = viewModel.currentPage)
+    val pagerState = rememberPagerState(initialPage = viewModel.currentPage, pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope()
 
     Column(
@@ -44,7 +47,6 @@ fun TabRowScreen() {
 
         // pages content
         HorizontalPager(
-            count = screenTitles.size,
             state = pagerState,
             modifier = Modifier.weight(1f)
         ) { page ->

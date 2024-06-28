@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
-    kotlin("kapt")
-// alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.compose.compiler)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -42,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
     packaging {
         resources {
@@ -68,15 +68,10 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.coil.compose)
     implementation(libs.material.icons.extended)
-    // implementation(libs.androidx.room.compiler)
-    // implementation(libs.androidx.room.ktx)
-    // annotationProcessor("androidx.room:room-compiler:2.6.1")
-    // kapt(libs.room.runtime)
 
     // Room
-    val roomVersion = "2.6.1"
-    implementation("androidx.room:room-ktx:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 
 
     // Datastore
@@ -84,7 +79,7 @@ dependencies {
     implementation(libs.datastore.core)
 
 // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.2")
+    implementation(libs.androidx.lifecycle.livedata.ktx)
 
 
     testImplementation(libs.junit)

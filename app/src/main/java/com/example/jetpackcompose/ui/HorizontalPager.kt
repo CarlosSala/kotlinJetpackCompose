@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
@@ -33,16 +34,15 @@ import com.example.jetpackcompose.ui.screenExamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenExamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenExamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenExamples.tabrowscreen.TabRowScreen
-import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.HorizontalPager
-import com.google.accompanist.pager.rememberPagerState
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HorizontalPager() {
 
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { 14 })
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -62,7 +62,7 @@ fun HorizontalPager() {
 
 
         HorizontalPager(
-            count = 14, // number of screens
+            // count = 14, // number of screens
             state = pagerState,
             modifier = Modifier.padding(paddingValues)
         ) { page ->

@@ -27,6 +27,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalDrawerSheet
@@ -110,9 +111,9 @@ fun NavDrawerJC() {
                             textAlign = TextAlign.Center
                         )
                     }
-                    Divider(
+                    HorizontalDivider(
                         Modifier.align(Alignment.BottomCenter), thickness = 1.dp,
-                        Color.DarkGray
+                        color = Color.DarkGray
                     )
 
                 }
@@ -144,7 +145,8 @@ fun NavDrawerJC() {
                         }
                     )
                 }
-                Divider( thickness = 1.dp,
+                HorizontalDivider(
+                    thickness = 1.dp,
                     color = Color.DarkGray
                 )
                 drawerItem2.forEach{
