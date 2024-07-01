@@ -17,7 +17,7 @@ import com.example.jetpackcompose.ui.common.Thumb
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 // @Preview(showBackground = true, widthDp = 400, heightDp = 400)
-fun CatDetail(mediaId: Int) {
+fun CatDetail(mediaId: Int, onBack: () -> Boolean) {
 
     val mediaItem = remember {
         getMedia().first { it.id == mediaId }

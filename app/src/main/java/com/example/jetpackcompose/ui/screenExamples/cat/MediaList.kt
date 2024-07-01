@@ -21,7 +21,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.model.getMedia
@@ -30,7 +29,10 @@ import com.example.jetpackcompose.ui.common.Thumb
 
 // @Preview
 @Composable
-fun MediaList4(navController: NavHostController, modifier: Modifier = Modifier) {
+fun MediaList4(
+    modifier: Modifier = Modifier,
+    param: (MediaItem) -> Unit
+) {
 
     LazyVerticalGrid(
         contentPadding = PaddingValues(dimensionResource(R.dimen.padding_xsmall)),
@@ -43,10 +45,11 @@ fun MediaList4(navController: NavHostController, modifier: Modifier = Modifier) 
         items(getMedia()) { item ->
 
             MediaListItem4(
-                navController,
                 item,
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_xsmall))
-            )
+            ) { myItem ->
+                param(myItem)
+            }
         }
     }
 }
@@ -55,13 +58,15 @@ fun MediaList4(navController: NavHostController, modifier: Modifier = Modifier) 
 // @Preview(showBackground = true)
 @Composable
 fun MediaListItem4(
-    navController: NavHostController,
     mediaItem: MediaItem,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onCatClick: (MediaItem) -> Unit
 ) {
     Card(
         modifier = modifier
-            .clickable { navController.navigate("detail/${mediaItem.id}") },
+            .clickable {
+                onCatClick(mediaItem)
+            },
         // .width(dimensionResource(R.dimen.column_width)),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 0.dp

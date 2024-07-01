@@ -1,8 +1,9 @@
 package com.example.jetpackcompose.ui
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -27,19 +28,16 @@ import com.example.jetpackcompose.ui.screenExamples.LazyRowJC
 import com.example.jetpackcompose.ui.screenExamples.LazyVerticalGridJC
 import com.example.jetpackcompose.ui.screenExamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenExamples.RowJC
-import com.example.jetpackcompose.ui.screenExamples.counterScreen.IncrementNumber
-import com.example.jetpackcompose.ui.screenExamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenExamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenExamples.cat.NavigationCat
+import com.example.jetpackcompose.ui.screenExamples.counterScreen.IncrementNumber
+import com.example.jetpackcompose.ui.screenExamples.mutablestate.ViewMutableStateExample
+import com.example.jetpackcompose.ui.screenExamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenExamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenExamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenExamples.tabrowscreen.TabRowScreen
-import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.rememberPagerState
-import com.example.jetpackcompose.ui.screenExamples.retrofit.main.QuoteScreen
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HorizontalPager() {
 

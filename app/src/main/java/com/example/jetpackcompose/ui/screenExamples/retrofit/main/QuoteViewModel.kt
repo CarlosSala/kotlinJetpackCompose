@@ -1,15 +1,11 @@
 package com.example.jetpackcompose.ui.screenExamples.retrofit.main
 
-import com.example.jetpackcompose.ui.screenExamples.retrofit.common.ServerMovieDataSource
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.jetpackcompose.ui.screenExamples.retrofit.common.ServerMovieDataSource
 import com.example.jetpackcompose.ui.screenExamples.retrofit.data.repository.MovieRepository
+import com.example.jetpackcompose.ui.screenExamples.retrofit.domain.model.Movie
 import com.example.jetpackcompose.ui.screenExamples.retrofit.usecases.LoadPopularMoviesUseCase
-import com.example.jetpackcompose.ui.screenExamples.retrofit.domain.model.*
-
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +13,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class QuoteViewModel() : ViewModel() {
+class QuoteViewModel : ViewModel() {
 
     private val loadPopularMoviesUseCase = LoadPopularMoviesUseCase(
         MovieRepository(ServerMovieDataSource())

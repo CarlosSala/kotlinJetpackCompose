@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    alias(libs.plugins.kotlinxSerialization)
 }
 
 android {
@@ -109,5 +110,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
+    implementation(kotlin("script-runtime"))
+
+    implementation(libs.kotlinx.serialization.json)
 
 }
