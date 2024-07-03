@@ -5,6 +5,7 @@ plugins {
     id("kotlin-parcelize")
     id("com.google.devtools.ksp")
     alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -73,6 +74,7 @@ dependencies {
 
     // Room
     implementation(libs.androidx.room.ktx)
+    implementation(libs.firebase.firestore)
     ksp(libs.androidx.room.compiler)
 
 
