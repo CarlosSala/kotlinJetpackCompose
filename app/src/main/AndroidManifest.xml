@@ -15,7 +15,7 @@
         android:theme="@style/Theme.JetpackCompose"
         tools:targetApi="31">
         <activity
-            android:name=".ui.screenExamples.counterScreen.CounterActivity"
+            android:name=".ui.screenexamples.counterscreen.CounterActivity"
             android:exported="true"
             android:label="@string/title_activity_main10"
             android:theme="@style/Theme.JetpackCompose" />
@@ -33,38 +33,38 @@
 
         </activity>
         <activity
-            android:name=".ui.screenExamples.mutablestate.MutableStateActivity"
+            android:name=".ui.screenexamples.mutablestate.MutableStateActivity"
             android:exported="true"
             android:label="@string/title_activity_main8"
             android:theme="@style/Theme.JetpackCompose" />
 
         <activity
-            android:name=".ui.screenExamples.LazyVerticalGridActivity"
+            android:name=".ui.screenexamples.LazyVerticalGridActivity"
             android:exported="true"
             android:label="@string/title_activity_main7"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".ui.screenExamples.LazyRowActivity"
+            android:name=".ui.screenexamples.LazyRowActivity"
             android:exported="true"
             android:label="@string/title_activity_main6"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".ui.screenExamples.LazyColumnActivity"
+            android:name=".ui.screenexamples.LazyColumnActivity"
             android:exported="true"
             android:label="@string/title_activity_main5"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".ui.screenExamples.RowActivity"
+            android:name=".ui.screenexamples.RowActivity"
             android:exported="false"
             android:label="@string/title_activity_main4"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".ui.screenExamples.ColumnActivity"
+            android:name=".ui.screenexamples.ColumnActivity"
             android:exported="false"
             android:label="@string/title_activity_main3"
             android:theme="@style/Theme.JetpackCompose" />
         <activity
-            android:name=".ui.screenExamples.BoxActivity"
+            android:name=".ui.screenexamples.BoxActivity"
             android:exported="true"
             android:theme="@style/Theme.JetpackCompose" />
     </application>
