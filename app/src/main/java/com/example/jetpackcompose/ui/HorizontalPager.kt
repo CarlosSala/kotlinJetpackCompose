@@ -31,6 +31,7 @@ import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenexamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
+import com.example.jetpackcompose.ui.screenexamples.firestorescreen.UserScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
@@ -41,7 +42,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun HorizontalPager() {
 
-    val pagerState = rememberPagerState(pageCount = { 15 })
+    val pagerState = rememberPagerState(pageCount = { 16 })
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -81,6 +82,7 @@ fun HorizontalPager() {
                 12 -> SettingsScreen()
                 13 -> TabRowScreen()
                 14 -> QuoteScreen()
+                15 -> UserScreen()
             }
         }
 
