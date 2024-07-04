@@ -67,7 +67,8 @@ fun HorizontalPager() {
             modifier = Modifier.padding(paddingValues)
         ) { page ->
             when (page) {
-                0 -> BoxJC()
+                // 0 -> BoxJC()
+                0 -> UserScreen()
                 1 -> ButtonTextJC()
                 2 -> ColumnJC()
                 3 -> RowJC()

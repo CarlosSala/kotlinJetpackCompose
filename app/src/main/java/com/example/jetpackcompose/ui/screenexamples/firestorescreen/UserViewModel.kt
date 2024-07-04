@@ -1,7 +1,6 @@
 package com.example.jetpackcompose.ui.screenexamples.firestorescreen
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,8 +15,14 @@ class UserViewModel : ViewModel() {
         userRepository = UserRepository(firestoreService)
     }
 
-    private val _users = MutableStateFlow<List<User>>(emptyList())
-    val users: StateFlow<List<User>> = _users
+    private val _getUsersList = MutableStateFlow<List<User>>(emptyList())
+    val getUserList: StateFlow<List<User>> = _getUsersList
+
+    private val _getUserById = MutableStateFlow<Result<User?>>(Result.success(null))
+    val getUserById: StateFlow<Result<User?>> = _getUserById
+
+    private val _operationState = MutableStateFlow(Result.success(Unit))
+    val operationState: StateFlow<Result<Unit>> = _operationState
 
     private val _errorMessage = MutableStateFlow<String?>(null)
     val errorMessage: StateFlow<String?> = _errorMessage
@@ -33,10 +38,22 @@ class UserViewModel : ViewModel() {
     fun getUsers() {
         viewModelScope.launch {
             userRepository.getUsers().onSuccess {
-                _users.value = it
+                _getUsersList.value = it
             }.onFailure {
                 _errorMessage.value = it.message
             }
+        }
+    }
+
+    fun getUserById(userId: String) {
+        viewModelScope.launch {
+            _getUserById.value = userRepository.getUserById(userId)
+        }
+    }
+
+    fun deleteUser(userId: String) {
+        viewModelScope.launch {
+            _operationState.value = userRepository.deleteUser(userId)
         }
     }
 }
