@@ -98,11 +98,9 @@ fun UserScreen() {
             Button(
                 onClick = {
 
-                    userViewModel.updateUser(
-                        id, User(
-                            id = id, name = name, age = age
-                        )
-                    )
+                    userViewModel.updateUser(id, User(id = id, name = name, age = age))
+                    name = ""
+                    age = ""
                     userViewModel.getUsers()
                 },
             ) {

@@ -31,6 +31,7 @@ import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenexamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
+import com.example.jetpackcompose.ui.screenexamples.firebasestorage.ImageUploadScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.UserScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
@@ -68,7 +69,7 @@ fun HorizontalPager() {
         ) { page ->
             when (page) {
                 // 0 -> BoxJC()
-                0 -> UserScreen()
+                0 -> ImageUploadScreen()
                 1 -> ButtonTextJC()
                 2 -> ColumnJC()
                 3 -> RowJC()
