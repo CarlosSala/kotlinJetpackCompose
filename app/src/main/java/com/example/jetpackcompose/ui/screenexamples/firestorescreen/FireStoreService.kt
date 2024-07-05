@@ -46,6 +46,16 @@ class FireStoreService {
         }
     }
 
+    suspend fun updateUser(userId: String, user: User): Result<Unit> {
+
+        return try {
+            usersCollection.document(userId).set(user).await()
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
     suspend fun deleteUser(userId: String): Result<Unit> {
         return try {
             usersCollection.document(userId).delete().await()

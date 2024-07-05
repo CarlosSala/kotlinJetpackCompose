@@ -10,4 +10,6 @@ class UserRepository(private val firestoreService: FireStoreService) {
 
     suspend fun deleteUser(userId: String) = firestoreService.deleteUser(userId)
 
+    suspend fun updateUser(userId: String, user: User) = firestoreService.updateUser(userId, user)
+
 }

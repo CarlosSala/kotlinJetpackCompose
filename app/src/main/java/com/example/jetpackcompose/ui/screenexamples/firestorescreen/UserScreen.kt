@@ -1,6 +1,8 @@
 package com.example.jetpackcompose.ui.screenexamples.firestorescreen
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,6 +37,9 @@ fun UserScreen() {
 
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
+    var id by remember { mutableStateOf("") }
+
+    var updateUser by remember { mutableStateOf(false) }
 
     val users by userViewModel.getUserList.collectAsState()
     val errorMessage by userViewModel.errorMessage.collectAsState()
@@ -74,16 +79,34 @@ fun UserScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Button(
-            onClick = {
-                userViewModel.addUser(User(name = name, age = age))
-                name = ""
-                age = ""
-                userViewModel.getUsers()
-            },
-            modifier = Modifier.align(Alignment.End)
-        ) {
-            Text(text = "Add User")
+        if (!updateUser) {
+            Button(
+                onClick = {
+                    userViewModel.addUser(User(name = name, age = age))
+                    name = ""
+                    age = ""
+                    userViewModel.getUsers()
+                },
+                modifier = Modifier.align(Alignment.End)
+            ) {
+                Text(text = "Add User")
+            }
+        } else {
+
+            Button(
+                onClick = {
+
+                    userViewModel.updateUser(
+                        id, User(
+                            id = id, name = name, age = age
+                        )
+                    )
+                    userViewModel.getUsers()
+                },
+                modifier = Modifier.align(Alignment.End)
+            ) {
+                Text(text = "Update User")
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -101,32 +124,48 @@ fun UserScreen() {
                 style = MaterialTheme.typography.bodyMedium
             )
         } else {
-            UserList(users, userViewModel)
+            UserList(users, userViewModel) { userUpdate ->
+
+                id = userUpdate.id.toString()
+                name = userUpdate.name
+                age = userUpdate.age
+
+                updateUser = true
+            }
         }
     }
 }
 
 @Composable
-fun UserList(users: List<User>, viewModel: UserViewModel) {
+fun UserList(users: List<User>, viewModel: UserViewModel, onUpdate: (User) -> Unit) {
 
     LazyColumn {
         items(users) { user ->
-            UserItem(user, viewModel)
+            UserItem(user, viewModel) {
+                onUpdate(it)
+            }
             HorizontalDivider()
         }
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun UserItem(user: User, viewModel: UserViewModel) {
+fun UserItem(user: User, viewModel: UserViewModel, onUpdate: (User) -> Unit) {
     Column(
         modifier = Modifier
             .padding(vertical = 8.dp)
             .fillMaxWidth()
-            .clickable {
-                viewModel.deleteUser(user.id.toString())
-                viewModel.getUsers()
-            }
+            .combinedClickable(
+                onClick = {
+
+                    onUpdate(user)
+
+                }, onLongClick = {
+                    viewModel.deleteUser(user.id.toString())
+                    viewModel.getUsers()
+                }
+            )
     ) {
         Text(text = "Name: ${user.name}", style = MaterialTheme.typography.bodyMedium)
         Text(text = "Age: ${user.age}", style = MaterialTheme.typography.bodyMedium)

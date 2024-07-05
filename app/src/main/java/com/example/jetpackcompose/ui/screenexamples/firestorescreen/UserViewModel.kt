@@ -51,6 +51,12 @@ class UserViewModel : ViewModel() {
         }
     }
 
+    fun updateUser(userId: String, user: User) {
+        viewModelScope.launch {
+            _operationState.value = userRepository.updateUser(userId, user)
+        }
+    }
+
     fun deleteUser(userId: String) {
         viewModelScope.launch {
             _operationState.value = userRepository.deleteUser(userId)
