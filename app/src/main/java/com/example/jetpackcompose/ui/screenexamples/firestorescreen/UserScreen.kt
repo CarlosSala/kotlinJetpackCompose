@@ -3,7 +3,9 @@ package com.example.jetpackcompose.ui.screenexamples.firestorescreen
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -38,8 +40,6 @@ fun UserScreen() {
     var name by remember { mutableStateOf("") }
     var age by remember { mutableStateOf("") }
     var id by remember { mutableStateOf("") }
-
-    var updateUser by remember { mutableStateOf(false) }
 
     val users by userViewModel.getUserList.collectAsState()
     val errorMessage by userViewModel.errorMessage.collectAsState()
@@ -79,19 +79,21 @@ fun UserScreen() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        if (!updateUser) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.Top
+        ) {
             Button(
                 onClick = {
                     userViewModel.addUser(User(name = name, age = age))
                     name = ""
                     age = ""
                     userViewModel.getUsers()
-                },
-                modifier = Modifier.align(Alignment.End)
+                }
             ) {
                 Text(text = "Add User")
             }
-        } else {
 
             Button(
                 onClick = {
@@ -103,11 +105,11 @@ fun UserScreen() {
                     )
                     userViewModel.getUsers()
                 },
-                modifier = Modifier.align(Alignment.End)
             ) {
                 Text(text = "Update User")
             }
         }
+
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -129,8 +131,6 @@ fun UserScreen() {
                 id = userUpdate.id.toString()
                 name = userUpdate.name
                 age = userUpdate.age
-
-                updateUser = true
             }
         }
     }
