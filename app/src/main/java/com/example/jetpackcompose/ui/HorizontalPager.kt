@@ -20,7 +20,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.jetpackcompose.ui.screenexamples.BoxJC
 import com.example.jetpackcompose.ui.screenexamples.ButtonTextJC
 import com.example.jetpackcompose.ui.screenexamples.ColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
@@ -38,12 +37,13 @@ import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
+import com.example.jetpackcompose.ui.screenexamples.worker.ImageUploadWorker
 import kotlinx.coroutines.launch
 
 @Composable
 fun HorizontalPager() {
 
-    val pagerState = rememberPagerState(pageCount = { 16 })
+    val pagerState = rememberPagerState(pageCount = { 17 })
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -69,7 +69,9 @@ fun HorizontalPager() {
         ) { page ->
             when (page) {
                 // 0 -> BoxJC()
-                0 -> ImageUploadScreen()
+                // 0 -> StartStopServiceButton()
+               // 0 -> WorkManagerUI()
+                0 -> ImageUploadWorker()
                 1 -> ButtonTextJC()
                 2 -> ColumnJC()
                 3 -> RowJC()
@@ -85,6 +87,7 @@ fun HorizontalPager() {
                 13 -> TabRowScreen()
                 14 -> QuoteScreen()
                 15 -> UserScreen()
+                16 -> ImageUploadScreen()
             }
         }
 

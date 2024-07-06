@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
 
     <application
         android:allowBackup="true"
@@ -14,6 +17,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JetpackCompose"
         tools:targetApi="31">
+        <!--        <provider
+                    android:name="androidx.startup.InitializationProvider"
+                    android:authorities="${applicationId}.workmanager-init"
+                    android:exported="false"
+                    tools:node="merge" />-->
+        <service
+            android:name=".ui.screenexamples.service.MyBackgroundService"
+            android:exported="false" />
+        <service
+            android:name=".ui.screenexamples.worker2.MyPeriodicWorker"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- Declarar WorkManager -->
+
         <activity
             android:name=".ui.screenexamples.counterscreen.CounterActivity"
             android:exported="true"
