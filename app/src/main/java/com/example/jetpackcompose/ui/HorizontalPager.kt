@@ -1,15 +1,21 @@
 package com.example.jetpackcompose.ui
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -18,8 +24,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.Dialog
+import com.example.jetpackcompose.ui.common.Screens
+import com.example.jetpackcompose.ui.screenexamples.BoxJC
 import com.example.jetpackcompose.ui.screenexamples.ButtonTextJC
 import com.example.jetpackcompose.ui.screenexamples.ColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
@@ -35,15 +44,18 @@ import com.example.jetpackcompose.ui.screenexamples.firestorescreen.UserScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
+import com.example.jetpackcompose.ui.screenexamples.service.StartStopServiceButton
 import com.example.jetpackcompose.ui.screenexamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.worker.ImageUploadWorker
+import com.example.jetpackcompose.ui.screenexamples.worker2.WorkManagerUI
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 fun HorizontalPager() {
 
-    val pagerState = rememberPagerState(pageCount = { 17 })
+    val pagerState = rememberPagerState(pageCount = { Screens.entries.size })
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
@@ -56,7 +68,7 @@ fun HorizontalPager() {
 
                 showDialog = true
             }) {
-                Text("Go to any page")
+                Text("to page")
             }
         }
     ) { paddingValues ->
@@ -67,32 +79,65 @@ fun HorizontalPager() {
             state = pagerState,
             modifier = Modifier.padding(paddingValues)
         ) { page ->
-            when (page) {
-                // 0 -> BoxJC()
-                // 0 -> StartStopServiceButton()
-               // 0 -> WorkManagerUI()
-                0 -> ImageUploadWorker()
-                1 -> ButtonTextJC()
-                2 -> ColumnJC()
-                3 -> RowJC()
-                4 -> LazyColumnJC()
-                5 -> LazyRowJC()
-                6 -> LazyVerticalGridJC()
-                7 -> IncrementNumber()
-                8 -> ViewMutableStateExample()
-                9 -> NavigationCat()
-                10 -> NavDrawerJC()
-                11 -> NoteScreen()
-                12 -> SettingsScreen()
-                13 -> TabRowScreen()
-                14 -> QuoteScreen()
-                15 -> UserScreen()
-                16 -> ImageUploadScreen()
+            when (Screens.entries[page]) {
+
+                Screens.BoxJC -> BoxJC()
+                Screens.ButtonTextJC -> ButtonTextJC()
+                Screens.ColumnJC -> ColumnJC()
+                Screens.RowJC -> RowJC()
+                Screens.LazyColumnJC -> LazyColumnJC()
+                Screens.LazyRowJC -> LazyRowJC()
+                Screens.LazyVerticalGridJC -> LazyVerticalGridJC()
+                Screens.IncrementNumber -> IncrementNumber()
+                Screens.ViewMutableStateExample -> ViewMutableStateExample()
+                Screens.NavigationCat -> NavigationCat()
+                Screens.NavDrawerJC -> NavDrawerJC()
+                Screens.NoteScreen -> NoteScreen()
+                Screens.SettingsScreen -> SettingsScreen()
+                Screens.TabRowScreen -> TabRowScreen()
+                Screens.QuoteScreen -> QuoteScreen()
+                Screens.UserScreen -> UserScreen()
+                Screens.ImageUploadScreen -> ImageUploadScreen()
+                Screens.StartStopServiceButton -> StartStopServiceButton()
+                Screens.WorkManagerUI -> WorkManagerUI()
+                Screens.ImageUploadWorker -> ImageUploadWorker()
             }
         }
 
         if (showDialog) {
-            AlertDialog(
+
+            Dialog(
+                onDismissRequest = { showDialog = false }
+            ) {
+                Surface(
+                    modifier = Modifier.fillMaxHeight(0.75f),
+                    shape = MaterialTheme.shapes.medium,
+                    color = MaterialTheme.colorScheme.background,
+                ) {
+                    Column {
+                        Text(
+                            text = "Select an option:",
+                            style = MaterialTheme.typography.bodyMedium,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                        Box(modifier = Modifier.fillMaxHeight()) {
+                            LazyColumn(
+                                modifier = Modifier.padding(16.dp)
+                            )
+                            {
+                                items(Screens.entries) { screen ->
+                                    ItemScreens(screen, pagerState, coroutineScope) {
+                                        showDialog = it
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+
+            /*AlertDialog(
                 onDismissRequest = { showDialog = false },
                 title = { Text("Go to Page") },
                 text = {
@@ -123,7 +168,7 @@ fun HorizontalPager() {
                         Text("Cancel")
                     }
                 }
-            )
+            )*/
         }
     }
 }
@@ -133,4 +178,31 @@ fun HorizontalPager() {
 @Composable
 fun DefaultPreview() {
     HorizontalPager()
+}
+
+
+@Composable
+fun ItemScreens(
+    screen: Screens,
+    pagerState: PagerState,
+    coroutineScope: CoroutineScope,
+    onDismissDialog: (Boolean) -> Unit
+) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp),
+        onClick = {
+            coroutineScope.launch {
+                pagerState.scrollToPage(screen.ordinal)
+                onDismissDialog(false)
+            }
+        },
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(4.dp)
+    ) {
+        Box(modifier = Modifier.padding(16.dp)) {
+            Text(text = "${screen.ordinal}. ${screen.displayName}")
+        }
+    }
 }
