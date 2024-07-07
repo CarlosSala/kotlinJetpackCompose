@@ -7,10 +7,9 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
 
-class ImageUploadViewModel : ViewModel() {
+class FirebaseStorageViewModel : ViewModel() {
     private val storageReference: StorageReference = FirebaseStorage.getInstance().reference
     private val _uploadProgress = MutableStateFlow(0f)
     val uploadProgress: StateFlow<Float> = _uploadProgress

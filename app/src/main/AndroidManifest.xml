@@ -23,7 +23,7 @@
                     android:exported="false"
                     tools:node="merge" />-->
         <service
-            android:name=".ui.screenexamples.service.MyBackgroundService"
+            android:name=".ui.screenexamples.service.MyService"
             android:exported="false" />
         <service
             android:name=".ui.screenexamples.worker2.MyPeriodicWorker"

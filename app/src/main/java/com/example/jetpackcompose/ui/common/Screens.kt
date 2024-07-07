@@ -19,8 +19,8 @@ enum class Screens(val displayName: String) {
     TabRowScreen("Tab Row Screen"),
     QuoteScreen("Quote Screen"),
     UserScreen("User Screen"),
-    ImageUploadScreen("Image Upload Screen"),
-    StartStopServiceButton("Start Stop Service Button"),
+    FirebaseStorageScreen("Firebase Storage Screen"),
+    MyServiceScreen("My Service Screen"),
     WorkManagerUI("Work Manager UI"),
     ImageUploadWorker("Image Upload Worker")
 }

@@ -24,15 +24,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberAsyncImagePainter
-import coil.compose.rememberImagePainter
 
+@Preview(
+    showBackground = true,
+    name = "FirebaseStorageScreen",
+    widthDp = 250,
+    heightDp = 250
+)
 @Composable
-fun ImageUploadScreen() {
-    val imageUploadViewModel: ImageUploadViewModel = viewModel()
+fun FirebaseStorageScreen() {
+
+    val firebaseStorageViewModel: FirebaseStorageViewModel = viewModel()
 
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
     val launcher = rememberLauncherForActivityResult(
@@ -41,7 +47,7 @@ fun ImageUploadScreen() {
         selectedImageUri = uri
     }
 
-    val uploadProgress by imageUploadViewModel.uploadProgress.collectAsState()
+    val uploadProgress by firebaseStorageViewModel.uploadProgress.collectAsState()
 
     Column(
         modifier = Modifier
@@ -62,7 +68,7 @@ fun ImageUploadScreen() {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
-                imageUploadViewModel.uploadImage(
+                firebaseStorageViewModel.uploadImage(
                     uri,
                     onSuccess = { /* Handle success */ },
                     onError = { /* Handle error */ }

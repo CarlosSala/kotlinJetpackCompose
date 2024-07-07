@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class MyBackgroundService : Service() {
+class MyService : Service() {
 
     private val tag = "my service"
 

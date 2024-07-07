@@ -39,12 +39,12 @@ import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenexamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
-import com.example.jetpackcompose.ui.screenexamples.firebasestorage.ImageUploadScreen
+import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.UserScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
-import com.example.jetpackcompose.ui.screenexamples.service.StartStopServiceButton
+import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
 import com.example.jetpackcompose.ui.screenexamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.worker.ImageUploadWorker
@@ -97,8 +97,8 @@ fun HorizontalPager() {
                 Screens.TabRowScreen -> TabRowScreen()
                 Screens.QuoteScreen -> QuoteScreen()
                 Screens.UserScreen -> UserScreen()
-                Screens.ImageUploadScreen -> ImageUploadScreen()
-                Screens.StartStopServiceButton -> StartStopServiceButton()
+                Screens.FirebaseStorageScreen -> FirebaseStorageScreen()
+                Screens.MyServiceScreen -> MyServiceScreen()
                 Screens.WorkManagerUI -> WorkManagerUI()
                 Screens.ImageUploadWorker -> ImageUploadWorker()
             }
@@ -202,7 +202,7 @@ fun ItemScreens(
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Box(modifier = Modifier.padding(16.dp)) {
-            Text(text = "${screen.ordinal}. ${screen.displayName}")
+            Text(text = "${screen.ordinal + 1}. ${screen.displayName}")
         }
     }
 }

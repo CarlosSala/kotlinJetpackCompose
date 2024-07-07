@@ -4,15 +4,15 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.ViewModel
 
-class MyBackgroundServiceViewModel : ViewModel() {
+class MyServiceViewModel : ViewModel() {
 
     fun startMyBackgroundService(context: Context) {
-        val intent = Intent(context, MyBackgroundService::class.java)
+        val intent = Intent(context, MyService::class.java)
         context.startService(intent)
     }
 
     fun stopMyBackgroundService(context: Context) {
-        val intent = Intent(context, MyBackgroundService::class.java)
+        val intent = Intent(context, MyService::class.java)
         context.stopService(intent)
     }
 }
