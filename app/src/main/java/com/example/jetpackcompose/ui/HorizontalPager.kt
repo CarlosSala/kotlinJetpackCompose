@@ -40,15 +40,15 @@ import com.example.jetpackcompose.ui.screenexamples.cat.MainAppBar
 import com.example.jetpackcompose.ui.screenexamples.cat.NavigationCat
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
-import com.example.jetpackcompose.ui.screenexamples.firestorescreen.UserScreen
+import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFirestoreScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
 import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
 import com.example.jetpackcompose.ui.screenexamples.settings.SettingsScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
-import com.example.jetpackcompose.ui.screenexamples.worker.ImageUploadWorker
-import com.example.jetpackcompose.ui.screenexamples.worker2.WorkManagerUI
+import com.example.jetpackcompose.ui.screenexamples.worker2.ImageUploadWorkerUI
+import com.example.jetpackcompose.ui.screenexamples.worker.MyPeriodicWorkerUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -96,11 +96,11 @@ fun HorizontalPager() {
                 Screens.SettingsScreen -> SettingsScreen()
                 Screens.TabRowScreen -> TabRowScreen()
                 Screens.QuoteScreen -> QuoteScreen()
-                Screens.UserScreen -> UserScreen()
+                Screens.CrudFireStoreScreen -> CrudFirestoreScreen()
                 Screens.FirebaseStorageScreen -> FirebaseStorageScreen()
                 Screens.MyServiceScreen -> MyServiceScreen()
-                Screens.WorkManagerUI -> WorkManagerUI()
-                Screens.ImageUploadWorker -> ImageUploadWorker()
+                Screens.MyPeriodicWorkerUI -> MyPeriodicWorkerUI()
+                Screens.ImageUploadWorkerUI -> ImageUploadWorkerUI()
             }
         }
 

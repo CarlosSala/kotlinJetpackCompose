@@ -26,7 +26,7 @@
             android:name=".ui.screenexamples.service.MyService"
             android:exported="false" />
         <service
-            android:name=".ui.screenexamples.worker2.MyPeriodicWorker"
+            android:name=".ui.screenexamples.worker.MyPeriodicWorker"
             android:permission="android.permission.BIND_JOB_SERVICE" />
         <!-- Declarar WorkManager -->
 

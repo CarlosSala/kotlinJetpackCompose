@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.worker
+package com.example.jetpackcompose.ui.screenexamples.worker2
 
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -21,9 +21,9 @@ import coil.compose.rememberAsyncImagePainter
 import java.util.concurrent.TimeUnit
 
 @Composable
-fun ImageUploadWorker() {
+fun ImageUploadWorkerUI() {
 
-    val viewModel: ImageUploadViewModel = viewModel()
+    val viewModel: ImageUploadWorkerViewModel = viewModel()
 
     val context = LocalContext.current
     var imageUri by remember { mutableStateOf<Uri?>(null) }
@@ -34,7 +34,7 @@ fun ImageUploadWorker() {
         .setRequiresBatteryNotLow(true)
         .build()
 
-    val uploadWorkRequest = PeriodicWorkRequestBuilder<UploadWorker>(1, TimeUnit.DAYS)
+    val uploadWorkRequest = PeriodicWorkRequestBuilder<ImageUploadWorker>(1, TimeUnit.DAYS)
         .setConstraints(constraints)
         .build()
 

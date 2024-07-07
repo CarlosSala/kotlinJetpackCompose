@@ -1,7 +1,6 @@
 package com.example.jetpackcompose.ui.screenexamples.firestorescreen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -33,7 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun UserScreen() {
+fun CrudFirestoreScreen() {
     val userViewModel: UserViewModel = viewModel()
 
 

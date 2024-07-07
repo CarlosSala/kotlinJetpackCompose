@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.worker
+package com.example.jetpackcompose.ui.screenexamples.worker2
 
 import android.content.Context
 import android.net.Uri
@@ -9,7 +9,7 @@ import com.google.firebase.storage.StorageReference
 import java.io.InputStream
 
 
-class UploadWorker(
+class ImageUploadWorker(
     context: Context,
     workerParams: WorkerParameters
 ) : Worker(context, workerParams) {

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.worker
+package com.example.jetpackcompose.ui.screenexamples.worker2
 
 import android.app.Application
 import android.net.Uri
@@ -7,7 +7,7 @@ import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 
-class ImageUploadViewModel(application: Application) : AndroidViewModel(application) {
+class ImageUploadWorkerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val workManager = WorkManager.getInstance(application)
 
@@ -16,7 +16,7 @@ class ImageUploadViewModel(application: Application) : AndroidViewModel(applicat
             .putString("imageUri", imageUri.toString())
             .build()
 
-        val uploadWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>()
+        val uploadWorkRequest = OneTimeWorkRequestBuilder<ImageUploadWorker>()
             .setInputData(data)
             .build()
 
