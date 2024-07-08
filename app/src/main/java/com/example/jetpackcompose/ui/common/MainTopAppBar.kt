@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.common
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -16,7 +16,7 @@ import com.example.jetpackcompose.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainAppBar() {
+fun MainTopAppBar() {
 
     TopAppBar(
         title = {

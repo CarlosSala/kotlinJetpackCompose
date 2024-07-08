@@ -9,15 +9,16 @@ import com.example.jetpackcompose.ui.screenexamples.cat.detail.CatDetail
 
 
 @Composable
-fun NavigationCat() {
+fun CatNavigation() {
 
     val navController = rememberNavController()
+
     NavHost(
         navController = navController,
         startDestination = Main
     ) {
         composable<Main> {
-            MainScreen { onCatClick ->
+            CatScreen { onCatClick ->
                 navController.navigate(Detail(onCatClick.id))
             }
         }
@@ -25,7 +26,9 @@ fun NavigationCat() {
             val detail = backStackEntry.toRoute<Detail>()
             CatDetail(
                 detail.mediaId,
-                onBack = { navController.popBackStack() }
+                onBack = {
+                    navController.popBackStack()
+                }
             )
         }
     }

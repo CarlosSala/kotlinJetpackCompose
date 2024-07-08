@@ -37,8 +37,8 @@ import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
 import com.example.jetpackcompose.ui.screenexamples.LazyVerticalGridJC
 import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenexamples.RowJC
-import com.example.jetpackcompose.ui.screenexamples.cat.MainAppBar
-import com.example.jetpackcompose.ui.screenexamples.cat.NavigationCat
+import com.example.jetpackcompose.ui.common.MainTopAppBar
+import com.example.jetpackcompose.ui.screenexamples.cat.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFirestoreScreen
@@ -63,7 +63,7 @@ fun HorizontalPager() {
     var pageNumber by remember { mutableStateOf("") }
 
     Scaffold(
-        topBar = { MainAppBar() },
+        topBar = { MainTopAppBar() },
         floatingActionButton = {
             FloatingActionButton(onClick = {
 
@@ -92,7 +92,7 @@ fun HorizontalPager() {
                 Screens.LazyHorizontalGridJC -> LazyHorizontalGridJC()
                 Screens.IncrementNumber -> IncrementNumber()
                 Screens.ViewMutableStateExample -> ViewMutableStateExample()
-                Screens.NavigationCat -> NavigationCat()
+                Screens.CatNavigation -> CatNavigation()
                 Screens.NavDrawerJC -> NavDrawerJC()
                 Screens.NoteScreen -> NoteScreen()
                 Screens.SettingsScreen -> SettingsScreen()

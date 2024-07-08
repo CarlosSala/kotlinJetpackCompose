@@ -7,20 +7,19 @@ import androidx.compose.ui.Modifier
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.ui.common.MyApp
 
+
 @Composable
-fun MainScreen(
-    myClick: (MediaItem) -> Unit,
+fun CatScreen(
+    onCatClick: (MediaItem) -> Unit
 ) {
     MyApp {
-        Scaffold(
-            topBar = { MainAppBar() }
-        ) { paddingValues ->
+        Scaffold { paddingValues ->
 
-            MediaList4(
+            CatMediaList(
                 modifier = Modifier.padding(paddingValues)
             ) { myItem ->
 
-                myClick(myItem)
+                onCatClick(myItem)
             }
         }
     }

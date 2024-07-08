@@ -19,6 +19,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
@@ -28,8 +29,7 @@ class MutableStateActivity : ComponentActivity() {
         setContent {
             CustomComposeTheme {
 
-                /*           val (value, onValueChange) = rememberSaveable { mutableStateOf("") }
-
+                /*  val (value, onValueChange) = rememberSaveable { mutableStateOf("") }
                            StateSample(
                                value = value,
                                onValueChange = onValueChange
@@ -40,20 +40,25 @@ class MutableStateActivity : ComponentActivity() {
 }
 
 
-// @Preview(showBackground = true, widthDp = 400, heightDp = 400)
+@Preview(
+    showBackground = true,
+    widthDp = 400,
+    heightDp = 400
+)
 @Composable
 fun ViewMutableStateExample() {
 
     // mutable variable
     // var text by remember { mutableStateOf("") }
-    
+
     // mutable and persistent variable
     var text by rememberSaveable { mutableStateOf("") }
 
     MutableStateExample(
-        value = text,
-        onValueChange = { text = it }
-    )
+        value = text
+    ) {
+        text = it
+    }
 }
 
 @Composable
@@ -62,29 +67,34 @@ fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(64.dp),
+            .padding(horizontal = 64.dp),
         verticalArrangement = Arrangement.Center
-
     ) {
         TextField(
             value = value,
-            onValueChange = { onValueChange(it) },
-            modifier = Modifier
-                .fillMaxWidth()
+            onValueChange = { textChanging ->
+                onValueChange(textChanging)
+            },
         )
         Text(
-            text = value,
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color.Yellow)
-                .padding(8.dp)
+                .background(Color.Cyan)
+                .padding(8.dp),
+            text = value,
         )
         Button(
-            onClick = { onValueChange("") },
-            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                onValueChange("")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 20.dp),
             enabled = value.isNotEmpty()
         ) {
-            Text(text = "Clear")
+            Text(
+                text = "Clear"
+            )
         }
     }
 }

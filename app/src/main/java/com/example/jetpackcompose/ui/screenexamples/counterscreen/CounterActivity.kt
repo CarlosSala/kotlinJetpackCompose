@@ -44,7 +44,11 @@ class CounterActivity : ComponentActivity() {
     }
 }
 
-@Preview(showBackground = true, widthDp = 350, heightDp = 350)
+@Preview(
+    showBackground = true,
+    widthDp = 250,
+    heightDp = 400
+)
 @Composable
 fun MyPreview() {
     CustomComposeTheme {
@@ -55,17 +59,16 @@ fun MyPreview() {
 @Composable
 fun IncrementNumber(modifier: Modifier = Modifier) {
 
-    var count by remember { mutableIntStateOf(0) }
-
     val viewModel: CounterViewModel = viewModel()
+    var count by remember { mutableIntStateOf(0) }
 
     count = viewModel.number
 
     Column(
         modifier
             .fillMaxSize()
-            .background(Color.Yellow),
-        verticalArrangement = Arrangement.Center,
+            .background(Color.LightGray),
+        verticalArrangement = Arrangement.SpaceEvenly,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(

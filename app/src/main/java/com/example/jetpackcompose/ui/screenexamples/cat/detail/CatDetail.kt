@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import com.example.jetpackcompose.model.getMedia
-import com.example.jetpackcompose.ui.common.Thumb
+import com.example.jetpackcompose.ui.screenexamples.cat.CatThumb
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -27,7 +27,7 @@ fun CatDetail(mediaId: Int, onBack: () -> Boolean) {
         topBar = { TopAppBar(title = { Text(text = mediaItem.title) }) }
     ) { padding ->
 
-        Thumb(mediaItem = mediaItem, Modifier.padding(padding))
+        CatThumb(mediaItem = mediaItem, Modifier.padding(padding))
     }
     /*
     Box(

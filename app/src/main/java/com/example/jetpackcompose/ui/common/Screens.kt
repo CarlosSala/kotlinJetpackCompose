@@ -13,7 +13,7 @@ enum class Screens(val displayName: String) {
     LazyHorizontalGridJC("Lazy Horizontal Grid JC"),
     IncrementNumber("Increment Number"),
     ViewMutableStateExample("View Mutable State Example"),
-    NavigationCat("Navigation Cat"),
+    CatNavigation("Cat Navigation"),
     NavDrawerJC("Nav Drawer JC"),
     NoteScreen("Note Screen"),
     SettingsScreen("Settings Screen"),

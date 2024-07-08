@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.common
+package com.example.jetpackcompose.ui.screenexamples.cat
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,22 +21,19 @@ import com.example.jetpackcompose.model.MediaItem
 
 
 @Composable
-fun Thumb(mediaItem: MediaItem, modifier: Modifier = Modifier) {
+fun CatThumb(mediaItem: MediaItem, modifier: Modifier = Modifier) {
+
     Box(
         modifier = modifier
-            //.fillMaxWidth()
             .height(dimensionResource(R.dimen.box_height))
     ) {
 
         AsyncImage(
-            // "https://loremflickr.com/400/400/cat?lock=1"
             model = ImageRequest.Builder(LocalContext.current)
                 .data(mediaItem.thumb)
-                //.transformations(CircleCropTransformation())
-                .crossfade(2000)
+                .crossfade(500)
                 .build(),
             contentDescription = null,
-            // modifier = Modifier.clip(RoundedCornerShape(4.dp))
             modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.Crop
         )

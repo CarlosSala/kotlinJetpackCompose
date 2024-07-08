@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -24,23 +25,18 @@ import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.model.MediaItem
 import com.example.jetpackcompose.model.getMedia
-import com.example.jetpackcompose.ui.common.Thumb
 
 
-// @Preview
 @Composable
-fun MediaList4(
+fun CatMediaList(
     modifier: Modifier = Modifier,
-    param: (MediaItem) -> Unit
+    onCatClick: (MediaItem) -> Unit
 ) {
-
     LazyVerticalGrid(
         contentPadding = PaddingValues(dimensionResource(R.dimen.padding_xsmall)),
-        // columns = GridCells.Fixed(2)
         columns = GridCells.Adaptive(dimensionResource(R.dimen.cell_min_width)),
         horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_xsmall)),
         modifier = modifier
-
     ) {
         items(getMedia()) { item ->
 
@@ -48,18 +44,17 @@ fun MediaList4(
                 item,
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_xsmall))
             ) { myItem ->
-                param(myItem)
+                onCatClick(myItem)
             }
         }
     }
 }
 
 
-// @Preview(showBackground = true)
 @Composable
 fun MediaListItem4(
     mediaItem: MediaItem,
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
     onCatClick: (MediaItem) -> Unit
 ) {
     Card(
@@ -67,16 +62,15 @@ fun MediaListItem4(
             .clickable {
                 onCatClick(mediaItem)
             },
-        // .width(dimensionResource(R.dimen.column_width)),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 0.dp
+            defaultElevation = 10.dp
         ),
-        // shape = RoundedCornerShape(4.dp)
-        border = BorderStroke(1.dp, Color.LightGray),
-        // colors = CardDefaults.cardColors(Color.DarkGray)
+        shape = RoundedCornerShape(4.dp),
+        border = BorderStroke(2.dp, Color.LightGray),
+        colors = CardDefaults.cardColors(Color.White)
     ) {
         Column {
-            Thumb(mediaItem)
+            CatThumb(mediaItem)
             Title(mediaItem)
         }
     }
@@ -84,14 +78,13 @@ fun MediaListItem4(
 
 @Composable
 private fun Title(mediaItem: MediaItem) {
+
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .fillMaxWidth()
-            //.background(Color.White)
             .padding(dimensionResource(R.dimen.padding_medium))
     ) {
-
         Text(
             text = mediaItem.title,
             style = MaterialTheme.typography.titleSmall
