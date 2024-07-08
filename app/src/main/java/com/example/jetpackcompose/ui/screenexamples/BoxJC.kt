@@ -29,14 +29,6 @@ class BoxActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(
     showBackground = true,
     name = "Testing My first app with JC",
@@ -54,7 +46,6 @@ fun BoxJC() {
                 .background(Color.Green),
             // all children will be centered in the Box
             contentAlignment = Alignment.Center
-
         ) {
             Greeting("Carlos")
 
@@ -67,4 +58,12 @@ fun BoxJC() {
             )
         }
     }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
 }

@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -26,9 +30,15 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
 
-@Preview(showBackground = true, widthDp = 400, heightDp = 200)
+@Preview(
+    showBackground = true,
+    widthDp = 400,
+    heightDp = 400
+)
 @Composable
 fun ButtonTextJC() {
+
+    var myBackground by remember { mutableStateOf(Color.Cyan) }
 
     Box(
         modifier = Modifier
@@ -46,8 +56,8 @@ fun ButtonTextJC() {
             textDecoration = TextDecoration.Underline,
             textAlign = TextAlign.Justify,
             lineHeight = 2.em,
-            maxLines = 4,
-            softWrap = false,
+            maxLines = 3,
+            softWrap = true,
             overflow = TextOverflow.Ellipsis,
             onTextLayout = {},
             // style, to abstract the style
@@ -60,10 +70,22 @@ fun ButtonTextJC() {
             ),
             // the order of modifier matters
             modifier = Modifier
-                .clickable { }
-                .background(Color.Cyan)
+                .background(myBackground)
+                .clickable {
+                    changeBackground(myBackground) {
+                        myBackground = it
+                    }
+                }
                 .border(width = 2.dp, color = Color.Red)
                 .padding(horizontal = 16.dp, vertical = 8.dp)
         )
     }
+}
+
+
+fun changeBackground(myBackground: Color, changeBackground: (Color) -> Unit) {
+
+    if (myBackground == Color.Cyan)
+        changeBackground(Color.Green)
+    else changeBackground(Color.Cyan)
 }

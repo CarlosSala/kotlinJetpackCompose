@@ -25,16 +25,6 @@ class ColumnActivity : ComponentActivity() {
     }
 }
 
-// Column
-
-@Composable
-fun Greeting2(name: String, textColor: Color = Color.Red, modifier: Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        color = textColor
-    )
-}
 
 @Preview(
     showBackground = true,
@@ -54,24 +44,37 @@ fun ColumnJC() {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Greeting2(
-                "Android",
+                name = "Android",
                 modifier = Modifier
                     .background(Color.Yellow)
                     .weight(2f),
                 textColor = Color.Blue
             )
             Greeting2(
-                "Android",
+                name = "Android",
                 modifier = Modifier
                     .background(Color.Cyan)
                     .weight(1f)
             )
             Greeting2(
-                "Android",
+                name = "Android",
                 modifier = Modifier
                     .background(Color.Blue)
                     .weight(1f)
             )
         }
     }
+}
+
+@Composable
+fun Greeting2(
+    name: String,
+    textColor: Color = Color.Red,
+    modifier: Modifier
+) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier,
+        color = textColor
+    )
 }

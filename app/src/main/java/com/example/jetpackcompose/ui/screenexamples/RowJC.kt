@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
 class RowActivity : ComponentActivity() {
@@ -28,7 +30,9 @@ class RowActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting3("Android")
+                    // the activity is ignored, this pass because the activity
+                    // is not initialized with a startActivity
+                    Greeting3(name = "Android")
                 }
             }
         }
@@ -39,8 +43,8 @@ class RowActivity : ComponentActivity() {
 @Preview(
     showBackground = true,
     name = "Testing My first app with JC",
-    widthDp = 200,
-    heightDp = 200,
+    widthDp = 250,
+    heightDp = 400,
     backgroundColor = 1111115
 )
 @Composable
@@ -49,34 +53,46 @@ fun RowJC() {
     CustomComposeTheme {
         // for to use all space in the screen
         Row(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize()
+                .border(
+                    width = 1.dp,
+                    color = Color.Red
+                ),
             horizontalArrangement = Arrangement.SpaceAround,
             verticalAlignment = Alignment.CenterVertically
         ) {
             Greeting3(
-                "one",
+                name = "one",
                 modifier = Modifier
                     .background(Color.Yellow)
                 //.weight(2f)
             )
             Greeting3(
-                "two",
+                name = "two",
                 modifier = Modifier
                     .background(Color.Cyan)
                 //.weight(1f)
             )
             Greeting3(
-                "three",
+                name = "three",
                 modifier = Modifier
-                    .background(Color.Blue)
+                    .border(
+                        width = 1.dp,
+                        color = Color.Blue
+                    )
+                //.background(Color.Blue)
                 //.weight(1f)
             )
         }
     }
 }
 
+
+// if there are more of one parameter with a default value,
+// modifier must be the first parameter
 @Composable
-fun Greeting3(name: String, modifier: Modifier = Modifier) {
+fun Greeting3(modifier: Modifier = Modifier, name: String = "") {
     Text(
         text = name,
         modifier = modifier

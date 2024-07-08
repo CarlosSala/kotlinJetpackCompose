@@ -52,13 +52,17 @@ class LazyRowActivity : ComponentActivity() {
 @Composable
 fun LazyRowJC() {
 
-    LazyRow(
-        contentPadding = PaddingValues(4.dp),
-        horizontalArrangement = Arrangement.spacedBy(1.dp)
+    Column(
+        modifier = Modifier.fillMaxSize()
     ) {
-        items(getMedia()) { item ->
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(1.dp),
+            contentPadding = PaddingValues(4.dp)
+        ) {
+            items(getMedia()) { item ->
 
-            MediaListItem2(item)
+                MediaListItem2(item)
+            }
         }
     }
 }
@@ -67,7 +71,7 @@ fun LazyRowJC() {
 fun MediaListItem2(item: MediaItem) {
 
     Column(
-        modifier = Modifier.width(100.dp)
+        modifier = Modifier.width(125.dp)
     ) {
         Box(
             modifier = Modifier
@@ -76,7 +80,8 @@ fun MediaListItem2(item: MediaItem) {
                 .background(color = Color.Gray)
         ) {
             AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
+                model = ImageRequest
+                    .Builder(LocalContext.current)
                     .data(item.thumb)
                     .crossfade(2000)
                     .build(),
@@ -88,7 +93,7 @@ fun MediaListItem2(item: MediaItem) {
                 Icon(
                     imageVector = Icons.Default.PlayCircleOutline,
                     contentDescription = null,
-                    tint = Color.DarkGray,
+                    tint = Color.White,
                     modifier = Modifier
                         .size(92.dp)
                         .align(Alignment.Center)

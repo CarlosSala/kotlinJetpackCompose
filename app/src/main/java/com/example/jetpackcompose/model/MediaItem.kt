@@ -16,6 +16,7 @@ data class MediaItem(
 }
 
 fun getMedia() = (1..30).map {
+
     MediaItem(
         id = it,
         title = "Title $it",

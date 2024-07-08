@@ -32,6 +32,7 @@ import com.example.jetpackcompose.ui.screenexamples.BoxJC
 import com.example.jetpackcompose.ui.screenexamples.ButtonTextJC
 import com.example.jetpackcompose.ui.screenexamples.ColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
+import com.example.jetpackcompose.ui.screenexamples.LazyHorizontalGridJC
 import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
 import com.example.jetpackcompose.ui.screenexamples.LazyVerticalGridJC
 import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
@@ -88,6 +89,7 @@ fun HorizontalPager() {
                 Screens.LazyColumnJC -> LazyColumnJC()
                 Screens.LazyRowJC -> LazyRowJC()
                 Screens.LazyVerticalGridJC -> LazyVerticalGridJC()
+                Screens.LazyHorizontalGridJC -> LazyHorizontalGridJC()
                 Screens.IncrementNumber -> IncrementNumber()
                 Screens.ViewMutableStateExample -> ViewMutableStateExample()
                 Screens.NavigationCat -> NavigationCat()

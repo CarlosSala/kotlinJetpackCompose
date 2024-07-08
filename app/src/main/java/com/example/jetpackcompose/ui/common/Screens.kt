@@ -10,6 +10,7 @@ enum class Screens(val displayName: String) {
     LazyColumnJC("Lazy Column JC"),
     LazyRowJC("Lazy Row JC"),
     LazyVerticalGridJC("Lazy Vertical Grid JC"),
+    LazyHorizontalGridJC("Lazy Horizontal Grid JC"),
     IncrementNumber("Increment Number"),
     ViewMutableStateExample("View Mutable State Example"),
     NavigationCat("Navigation Cat"),

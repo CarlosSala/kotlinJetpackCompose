@@ -49,7 +49,11 @@ class LazyColumnActivity : ComponentActivity() {
 }
 
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+    widthDp = 350,
+    heightDp = 800
+)
 @Composable
 fun LazyColumnJC() {
 
@@ -65,7 +69,6 @@ fun LazyColumnJC() {
 
 }
 
-// @Preview(showBackground = true)
 @Composable
 fun MediaListItem(item: MediaItem) {
 
@@ -77,12 +80,12 @@ fun MediaListItem(item: MediaItem) {
                 .background(color = Color.DarkGray)
         ) {
             AsyncImage(
-
                 // model = "https://loremflickr.com/400/400/cat?lock=1",
-                model = ImageRequest.Builder(LocalContext.current)
+                model = ImageRequest
+                    .Builder(LocalContext.current)
                     .data(item.thumb)
                     //.transformations(CircleCropTransformation())
-                    .crossfade(2000)
+                    .crossfade(1000)
                     .build(),
                 contentDescription = null,
                 modifier = Modifier
@@ -115,6 +118,3 @@ fun MediaListItem(item: MediaItem) {
         }
     }
 }
-
-// if there are more of one parameter with a default value,
-// modifier must be the first parameter
