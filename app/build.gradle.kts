@@ -77,6 +77,7 @@ dependencies {
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.storage)
     implementation(libs.androidx.work.runtime.ktx)
+    implementation(libs.play.services.location)
     ksp(libs.androidx.room.compiler)
 
 
