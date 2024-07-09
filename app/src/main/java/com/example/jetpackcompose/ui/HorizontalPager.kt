@@ -43,7 +43,7 @@ import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumbe
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFirestoreScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
-import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
+import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
 import com.example.jetpackcompose.ui.screenexamples.welcomescreen.WelcomeScreen
@@ -99,7 +99,7 @@ fun HorizontalPager() {
                 Screens.NoteScreen -> NoteScreen()
                 Screens.WelcomeScreen -> WelcomeScreen()
                 Screens.TabRowScreen -> TabRowScreen()
-                Screens.QuoteScreen -> QuoteScreen()
+                Screens.MovieScreen -> MovieScreen()
                 Screens.CrudFireStoreScreen -> CrudFirestoreScreen()
                 Screens.FirebaseStorageScreen -> FirebaseStorageScreen()
                 Screens.MyServiceScreen -> MyServiceScreen()

@@ -18,7 +18,7 @@ enum class Screens(val displayName: String) {
     NoteScreen("Note Screen"),
     WelcomeScreen("Welcome Screen"),
     TabRowScreen("Tab Row Screen"),
-    QuoteScreen("Quote Screen"),
+    MovieScreen("Movie Screen"),
     CrudFireStoreScreen("Crud FireStore Screen"),
     FirebaseStorageScreen("Firebase Storage Screen"),
     MyServiceScreen("My Service Screen"),

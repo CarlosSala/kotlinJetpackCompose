@@ -17,14 +17,48 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jetpackcompose.ui.screenexamples.retrofit.domain.model.Movie
+import com.google.accompanist.permissions.ExperimentalPermissionsApi
+import com.google.accompanist.permissions.rememberPermissionState
+import android.Manifest
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Button
+import com.google.accompanist.permissions.*
 
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
-fun QuoteScreen() {
+fun MovieScreen() {
 
-    val viewModel: QuoteViewModel = viewModel()
+    val viewModel: MovieViewModel = viewModel()
+
+
+    val context = LocalContext.current
+    val locationPermissionState =
+        rememberPermissionState(Manifest.permission.ACCESS_COARSE_LOCATION)
+
+    val isPermissionGranted by viewModel.isPermissionGranted.collectAsState()
+
+    LaunchedEffect(locationPermissionState.status) {
+        if (locationPermissionState.status.isGranted) {
+            viewModel.checkPermissionStatus(true)
+        }
+    }
+
+/*    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+
+    }*/
+
 
     // Solicita las películas populares al iniciar la composición
     LaunchedEffect(Unit) {
@@ -40,6 +74,18 @@ fun QuoteScreen() {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        if (isPermissionGranted) {
+            // Mostrar contenido que necesita el GPS
+            Text("Permiso concedido, contenido con GPS habilitado")
+        } else {
+            // Mostrar un mensaje explicativo o un placeholder
+            Text("Permiso requerido para acceder a la ubicación")
+            Spacer(modifier = Modifier.height(8.dp))
+            Button(onClick = { locationPermissionState.launchPermissionRequest() }) {
+                Text("Solicitar permiso de ubicación")
+            }
+        }
+
         if (progressVisible) {
             CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
         } else {

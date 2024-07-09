@@ -102,6 +102,8 @@ dependencies {
     // Otras dependencias necesarias
 
 
+    implementation(libs.accompanist.permissions)
+
     implementation(libs.compose.foundation)
     implementation(libs.compose.material)
     implementation(libs.compose.ui)

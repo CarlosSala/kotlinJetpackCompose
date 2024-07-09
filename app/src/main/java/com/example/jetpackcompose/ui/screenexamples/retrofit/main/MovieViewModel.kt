@@ -13,7 +13,10 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class QuoteViewModel : ViewModel() {
+class MovieViewModel : ViewModel() {
+
+    private val _isPermissionGranted = MutableStateFlow(false)
+    val isPermissionGranted: StateFlow<Boolean> = _isPermissionGranted
 
     private val loadPopularMoviesUseCase = LoadPopularMoviesUseCase(
         MovieRepository(ServerMovieDataSource())
@@ -43,5 +46,10 @@ class QuoteViewModel : ViewModel() {
         viewModelScope.launch {
             _showMessage.emit(movie.title)
         }
+    }
+
+
+    fun checkPermissionStatus(isGranted: Boolean) {
+        _isPermissionGranted.value = isGranted
     }
 }
