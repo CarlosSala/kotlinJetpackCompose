@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.Color
 
 @Composable
 fun Screen1(modifier: Modifier = Modifier) {
-    Surface(modifier = modifier.fillMaxSize(), color = Color.LightGray) {
+    Surface(modifier = modifier.fillMaxSize(), color = Color.Gray) {
 
         Greeting(name = "Screen 1")
 

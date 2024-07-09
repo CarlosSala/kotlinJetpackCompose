@@ -33,7 +33,7 @@ fun WelcomeDialog(
             Card(
                 shape = RoundedCornerShape(16.dp),
                 // backgroundColor = MaterialTheme.colorScheme.primaryContainer,
-                colors = CardDefaults.cardColors(Color.White),
+                colors = CardDefaults.cardColors(Color.Transparent),
                 elevation = CardDefaults.cardElevation(8.dp),
                 modifier = Modifier
                     .fillMaxWidth(0.98f)
