@@ -41,7 +41,7 @@ import com.example.jetpackcompose.ui.common.MainTopAppBar
 import com.example.jetpackcompose.ui.screenexamples.cat.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
-import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFirestoreScreen
+import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFireStoreScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
@@ -100,7 +100,7 @@ fun HorizontalPager() {
                 Screens.WelcomeScreen -> WelcomeScreen()
                 Screens.TabRowScreen -> TabRowScreen()
                 Screens.MovieScreen -> MovieScreen()
-                Screens.CrudFireStoreScreen -> CrudFirestoreScreen()
+                Screens.CrudFireStoreScreen -> CrudFireStoreScreen()
                 Screens.FirebaseStorageScreen -> FirebaseStorageScreen()
                 Screens.MyServiceScreen -> MyServiceScreen()
                 Screens.MyPeriodicWorkerUI -> MyPeriodicWorkerUI()

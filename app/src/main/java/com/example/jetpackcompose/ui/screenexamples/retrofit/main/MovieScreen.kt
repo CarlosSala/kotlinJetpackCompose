@@ -4,7 +4,9 @@ import android.Manifest
 import android.content.Context
 import android.location.Geocoder
 import android.location.Location
+import android.widget.Toast
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -62,7 +64,9 @@ fun MovieScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (isPermissionGranted) {
             Text("Permission granted GPS enabled")
@@ -95,6 +99,7 @@ fun MovieScreen() {
                 items(popularMovies) { movie ->
                     MovieItem(movie) { selectedMovie ->
                         viewModel.onMovieClicked(selectedMovie)
+                        Toast.makeText(context, selectedMovie.title, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
