@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import java.io.IOException
+import kotlin.contracts.contract
 
 // name groups of preferences
 private val Context.dataStore by preferencesDataStore(name = "welcome_prefs")
@@ -35,4 +36,18 @@ fun getWelcomeShown(context: Context): Flow<Boolean> {
         .map { preferences ->
             preferences[WELCOME_SHOWN_KEY] ?: false
         }
+}
+
+// clear all dataStore
+suspend fun clearDataStore(context: Context) {
+    context.dataStore.edit { preferences ->
+        preferences.clear()
+    }
+}
+
+
+suspend fun removeSpecificValue(context: Context) {
+    context.dataStore.edit { preferences ->
+        preferences.remove(WELCOME_SHOWN_KEY)
+    }
 }

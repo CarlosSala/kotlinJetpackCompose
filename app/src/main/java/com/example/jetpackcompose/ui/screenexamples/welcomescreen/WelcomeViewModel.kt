@@ -26,4 +26,16 @@ class WelcomeViewModel(application: Application) : AndroidViewModel(application)
             _welcomeShown.value = true
         }
     }
+
+    fun clearDataStore() {
+        viewModelScope.launch {
+            clearDataStore(getApplication())
+        }
+    }
+
+    fun removeWelcomeShownValue() {
+        viewModelScope.launch {
+            removeSpecificValue(getApplication())
+        }
+    }
 }

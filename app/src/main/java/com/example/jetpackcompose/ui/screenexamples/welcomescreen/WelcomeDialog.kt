@@ -17,11 +17,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun WelcomeDialog(
-    showDialog: Boolean,
     onDismiss: () -> Unit
 ) {
     AnimatedVisibility(
-        visible = showDialog,
+        visible = true,
         enter = fadeIn() + slideInVertically(initialOffsetY = { it }),
         exit = fadeOut() + slideOutVertically(targetOffsetY = { it })
     ) {
