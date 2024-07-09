@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 
 import kotlinx.coroutines.flow.Flow
@@ -10,20 +10,14 @@ class NoteRepository(private val noteDao: NoteDao) {
     suspend fun insert(text: String) {
         noteDao.insertNoteEntity(NoteEntity(text, "custom_body"))
     }
-}
-
-
-/*
-
-class NoteRepository(private val db: NoteDatabase) {
 
     suspend fun upsertNote(note: NoteEntity) {
-        db.noteDao.upsertNote(note)
+        noteDao.upsertNote(note)
     }
 
     suspend fun deleteNote(note: NoteEntity) {
-        db.noteDao.deleteNote(note)
+        noteDao.deleteNote(note)
     }
 
-    fun getAllNotes() = db.noteDao.getAllNotes()
-}*/
+    fun getAllNotes() = noteDao.getAllNotes()
+}

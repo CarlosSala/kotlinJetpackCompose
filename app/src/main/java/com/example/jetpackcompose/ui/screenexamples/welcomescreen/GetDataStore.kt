@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.settings
+package com.example.jetpackcompose.ui.screenexamples.welcomescreen
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey

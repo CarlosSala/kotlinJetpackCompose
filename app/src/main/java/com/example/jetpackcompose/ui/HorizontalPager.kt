@@ -44,9 +44,9 @@ import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStor
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFirestoreScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.QuoteScreen
-import com.example.jetpackcompose.ui.screenexamples.room.NoteScreen
+import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
-import com.example.jetpackcompose.ui.screenexamples.settings.SettingsScreen
+import com.example.jetpackcompose.ui.screenexamples.welcomescreen.WelcomeScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.worker2.ImageUploadWorkerUI
 import com.example.jetpackcompose.ui.screenexamples.worker.MyPeriodicWorkerUI
@@ -60,20 +60,22 @@ fun HorizontalPager() {
     val coroutineScope = rememberCoroutineScope()
 
     var showDialog by remember { mutableStateOf(false) }
-    var pageNumber by remember { mutableStateOf("") }
+    // var pageNumber by remember { mutableStateOf("") }
 
     Scaffold(
-        topBar = { MainTopAppBar() },
+        topBar = {
+            MainTopAppBar()
+        },
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-
-                showDialog = true
-            }) {
+            FloatingActionButton(
+                onClick = {
+                    showDialog = true
+                }
+            ) {
                 Text("to page")
             }
         }
     ) { paddingValues ->
-
 
         HorizontalPager(
             // count = 14, // number of screens
@@ -95,7 +97,7 @@ fun HorizontalPager() {
                 Screens.CatNavigation -> CatNavigation()
                 Screens.NavDrawerJC -> NavDrawerJC()
                 Screens.NoteScreen -> NoteScreen()
-                Screens.SettingsScreen -> SettingsScreen()
+                Screens.WelcomeScreen -> WelcomeScreen()
                 Screens.TabRowScreen -> TabRowScreen()
                 Screens.QuoteScreen -> QuoteScreen()
                 Screens.CrudFireStoreScreen -> CrudFirestoreScreen()
@@ -109,7 +111,9 @@ fun HorizontalPager() {
         if (showDialog) {
 
             Dialog(
-                onDismissRequest = { showDialog = false }
+                onDismissRequest = {
+                    showDialog = false
+                }
             ) {
                 Surface(
                     modifier = Modifier.fillMaxHeight(0.75f),
@@ -122,7 +126,9 @@ fun HorizontalPager() {
                             style = MaterialTheme.typography.bodyMedium,
                             modifier = Modifier.padding(16.dp)
                         )
-                        Box(modifier = Modifier.fillMaxHeight()) {
+                        Box(
+                            modifier = Modifier.fillMaxHeight()
+                        ) {
                             LazyColumn(
                                 modifier = Modifier.padding(16.dp)
                             )
@@ -137,7 +143,6 @@ fun HorizontalPager() {
                     }
                 }
             }
-
 
             /*AlertDialog(
                 onDismissRequest = { showDialog = false },
@@ -203,8 +208,12 @@ fun ItemScreens(
         shape = MaterialTheme.shapes.medium,
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
-        Box(modifier = Modifier.padding(16.dp)) {
-            Text(text = "${screen.ordinal + 1}. ${screen.displayName}")
+        Box(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            Text(
+                text = "${screen.ordinal + 1}. ${screen.displayName}"
+            )
         }
     }
 }

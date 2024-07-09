@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 import androidx.room.Dao
 import androidx.room.Delete

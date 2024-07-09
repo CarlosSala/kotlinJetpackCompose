@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -9,29 +9,24 @@ import kotlinx.coroutines.launch
 
 class NoteViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: NoteRepository
+    private val noteRepository: NoteRepository
 
     val allTextEntries: Flow<List<NoteEntity>>
 
     init {
         val noteEntityDao = NoteDatabase.getDatabase(application).noteDao
-        repository = NoteRepository(noteEntityDao)
-        allTextEntries = repository.allTextEntries
+        noteRepository = NoteRepository(noteEntityDao)
+        allTextEntries = noteRepository.allTextEntries
     }
 
     fun insert(text: String) {
         viewModelScope.launch {
-            repository.insert(text)
+            noteRepository.insert(text)
         }
     }
-}
 
-/*
-class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
 
-    fun getNotes() = noteRepository.getAllNotes().asLiveData(viewModelScope.coroutineContext)
-
-    fun upsertNote(note: NoteEntity) {
+/*    fun upsertNote(note: NoteEntity) {
         viewModelScope.launch {
             noteRepository.upsertNote(note)
         }
@@ -41,5 +36,5 @@ class NoteViewModel(private val noteRepository: NoteRepository) : ViewModel() {
         viewModelScope.launch {
             noteRepository.deleteNote(note)
         }
-    }
-}*/
+    }*/
+}

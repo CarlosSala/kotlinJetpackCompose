@@ -16,7 +16,7 @@ enum class Screens(val displayName: String) {
     CatNavigation("Cat Navigation"),
     NavDrawerJC("Nav Drawer JC"),
     NoteScreen("Note Screen"),
-    SettingsScreen("Settings Screen"),
+    WelcomeScreen("Welcome Screen"),
     TabRowScreen("Tab Row Screen"),
     QuoteScreen("Quote Screen"),
     CrudFireStoreScreen("Crud FireStore Screen"),

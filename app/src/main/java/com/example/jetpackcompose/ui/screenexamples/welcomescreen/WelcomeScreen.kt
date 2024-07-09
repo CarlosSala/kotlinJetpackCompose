@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.settings
+package com.example.jetpackcompose.ui.screenexamples.welcomescreen
 
 
 import WelcomeDialog
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import kotlinx.coroutines.delay
 
 @Composable
-fun SettingsScreen(
+fun WelcomeScreen(
     viewModel: WelcomeViewModel = viewModel(
         factory = ViewModelProvider.AndroidViewModelFactory.getInstance(
             LocalContext.current.applicationContext as Application

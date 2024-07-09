@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.settings
+package com.example.jetpackcompose.ui.screenexamples.welcomescreen
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

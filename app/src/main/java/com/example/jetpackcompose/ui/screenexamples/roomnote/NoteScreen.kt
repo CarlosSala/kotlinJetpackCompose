@@ -1,8 +1,9 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -26,14 +27,13 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun NoteScreen() {
-    // val context = LocalContext.current
 
     val viewModel: NoteViewModel = viewModel()
 
     Column(
         modifier = Modifier
             .padding(16.dp)
-            .fillMaxWidth(),
+            .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         TextEntryInput(viewModel)
@@ -44,6 +44,7 @@ fun NoteScreen() {
 
 @Composable
 fun TextEntryInput(viewModel: NoteViewModel) {
+
     var text by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -64,6 +65,7 @@ fun TextEntryInput(viewModel: NoteViewModel) {
 
 @Composable
 fun TextEntriesList(viewModel: NoteViewModel) {
+
     val textEntries by viewModel.allTextEntries.collectAsState(initial = emptyList())
 
     LazyColumn {

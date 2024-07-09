@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.room
+package com.example.jetpackcompose.ui.screenexamples.roomnote
 
 import android.content.Context
 import androidx.room.Database
