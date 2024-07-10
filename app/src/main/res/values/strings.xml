@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">JetpackCompose</string>
+    <string name="app_name">Test App JC</string>
+    <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_main3">MainActivity3</string>
     <string name="title_activity_main4">MainActivity4</string>
     <string name="title_activity_main5">MainActivity5</string>
@@ -8,6 +9,5 @@
     <string name="title_activity_main6">MainActivity6</string>
     <string name="title_activity_main7">MainActivity7</string>
     <string name="title_activity_main8">MainActivity8</string>
-    <string name="title_activity_main9">MainActivity9</string>
     <string name="title_activity_main10">MainActivity10</string>
 </resources>

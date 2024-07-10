@@ -3,6 +3,7 @@ package com.example.jetpackcompose.ui.common
 
 enum class Screens(val displayName: String) {
 
+    // SplashScreen("Splash Screen"),
     BoxJC("Box JC"),
     ButtonTextJC("Button Text JC"),
     ColumnJC("Column JC"),

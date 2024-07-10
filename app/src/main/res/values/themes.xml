@@ -2,4 +2,8 @@
 <resources>
 
     <style name="Theme.JetpackCompose" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.SplashScreen" parent="Theme.JetpackCompose">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
 </resources>
