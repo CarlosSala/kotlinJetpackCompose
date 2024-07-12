@@ -46,6 +46,7 @@ import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStat
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
+import com.example.jetpackcompose.ui.screenexamples.styles.StylesScreen
 import com.example.jetpackcompose.ui.screenexamples.welcomescreen.WelcomeScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.worker2.ImageUploadWorkerUI
@@ -64,16 +65,18 @@ fun HorizontalPager() {
 
     Scaffold(
         topBar = {
-            MainTopAppBar()
+            if (pagerState.currentPage != 21)
+                MainTopAppBar()
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    showDialog = true
+            if (pagerState.currentPage != 21)
+                FloatingActionButton(
+                    onClick = {
+                        showDialog = true
+                    }
+                ) {
+                    Text("to page")
                 }
-            ) {
-                Text("to page")
-            }
         }
     ) { paddingValues ->
 
@@ -105,6 +108,7 @@ fun HorizontalPager() {
                 Screens.MyServiceScreen -> MyServiceScreen()
                 Screens.MyPeriodicWorkerUI -> MyPeriodicWorkerUI()
                 Screens.ImageUploadWorkerUI -> ImageUploadWorkerUI()
+                Screens.StylesScreen -> StylesScreen()
             }
         }
 

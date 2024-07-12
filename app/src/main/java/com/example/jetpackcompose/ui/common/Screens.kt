@@ -24,5 +24,6 @@ enum class Screens(val displayName: String) {
     FirebaseStorageScreen("Firebase Storage Screen"),
     MyServiceScreen("My Service Screen"),
     MyPeriodicWorkerUI("My Periodic Worker UI"),
-    ImageUploadWorkerUI("Image Upload Worker")
+    ImageUploadWorkerUI("Image Upload Worker"),
+    StylesScreen("Styles Screen")
 }
