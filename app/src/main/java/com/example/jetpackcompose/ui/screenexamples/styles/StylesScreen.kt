@@ -20,18 +20,23 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.shapes
+import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -40,22 +45,27 @@ import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
 @Composable
 fun StylesScreen() {
-    CustomComposeTheme(
-        darkTheme = true,
-        dynamicColor = true
-    ) {
+    /*    CustomComposeTheme(
+            darkTheme = true,
+            dynamicColor = true
+        ) {*/
+
+    var isDarkTheme by remember { mutableStateOf(false) }
+
+    MyTheme(isDarkTheme = isDarkTheme) {
+
         var showDialog by remember { mutableStateOf(false) }
 
         Scaffold(
             topBar = { TopBar() },
             floatingActionButton = {
-                FloatAB(showDialog) {
-                    showDialog = it
+                FloatAB { open ->
+                    showDialog = open
                 }
             },
             bottomBar = { BottomNavigationBar() },
-            content = { it ->
-                Content(it)
+            content = { paddingValues ->
+                Content(paddingValues)
 
                 if (showDialog) {
 
@@ -65,15 +75,16 @@ fun StylesScreen() {
                         }
                     ) {
                         Surface(
-                            modifier = Modifier.fillMaxHeight(0.75f),
+                            modifier = Modifier.fillMaxHeight(0.5f),
                             shape = MaterialTheme.shapes.medium,
                             color = MaterialTheme.colorScheme.background,
                         ) {
                             Column {
                                 Text(
-                                    text = "Select an option:",
+                                    text = "Select a Theme:",
                                     style = MaterialTheme.typography.bodyMedium,
-                                    modifier = Modifier.padding(16.dp)
+                                    modifier = Modifier
+                                        .padding(16.dp)
                                 )
                                 Box(
                                     modifier = Modifier.fillMaxHeight()
@@ -83,8 +94,8 @@ fun StylesScreen() {
                                     )
                                     {
                                         items(AppTheme.entries) { theme ->
-                                            ItemTheme(theme) { dismissDialog ->
-                                                showDialog = dismissDialog
+                                            ThemeItem(theme, isDarkTheme) { changeTheme ->
+                                                isDarkTheme = changeTheme
                                             }
                                         }
                                     }
@@ -99,21 +110,64 @@ fun StylesScreen() {
 }
 
 @Composable
-fun ItemTheme(theme: AppTheme, content: (Boolean) -> Unit) {
+fun ThemeItem(theme: AppTheme, isDarkTheme: Boolean, content: (Boolean) -> Unit) {
+    /*    when (theme) {
 
+            AppTheme.LIGHT -> {
+                content(false)
+            }
+
+            AppTheme.DARK -> {
+                content(true)
+            }
+
+            AppTheme.USER_DEFINED -> TODO()
+            AppTheme.SYSTEM_DEFAULT -> TODO()
+            AppTheme.HIGH_CONTRAST -> TODO()
+            AppTheme.CUSTOM_THEME1 -> TODO()
+            AppTheme.CUSTOM_THEME2 -> TODO()
+        }*/
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { content(false) },
+            .clickable { if (isDarkTheme) content(false) else content(true) },
         elevation = CardDefaults.elevatedCardElevation(4.dp)
     ) {
         Text(
             text = theme.name,
             modifier = Modifier.padding(16.dp)
-
         )
     }
 }
+
+private val LightThemeColors = lightColorScheme(
+    primary = Color.Blue,
+    background = Color.White,
+    /* otros colores */
+)
+
+private val DarkThemeColors = darkColorScheme(
+    primary = Color.Cyan,
+    background = Color.Black,
+    /* otros colores */
+)
+
+
+@Composable
+fun MyTheme(
+    isDarkTheme: Boolean,
+    content: @Composable () -> Unit
+) {
+    val colors = if (isDarkTheme) DarkThemeColors else LightThemeColors
+
+    MaterialTheme(
+        colorScheme = colors,
+        typography = typography,
+        shapes = shapes,
+        content = content
+    )
+}
+
 
 enum class AppTheme {
     LIGHT,
@@ -127,14 +181,14 @@ enum class AppTheme {
 
 
 @Composable
-fun FloatAB(showDialog: Boolean, onShowDialog: (Boolean) -> Unit) {
+fun FloatAB(onShowDialog: (Boolean) -> Unit) {
 
     FloatingActionButton(
         onClick = {
-            if (showDialog) onShowDialog(false) else onShowDialog(true)
+            onShowDialog(true)
         }
     ) {
-        Text("Theme")
+        Text("Open")
     }
 }
 
