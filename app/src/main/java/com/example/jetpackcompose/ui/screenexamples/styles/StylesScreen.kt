@@ -50,9 +50,10 @@ fun StylesScreen() {
             dynamicColor = true
         ) {*/
 
-    var isDarkTheme by remember { mutableStateOf(false) }
+    // var isDarkTheme by remember { mutableStateOf(false) }
+    var selectedTheme by remember { mutableStateOf(AppTheme.LIGHT_THEME) }
 
-    MyTheme(isDarkTheme = isDarkTheme) {
+    MyTheme(selectedTheme) {
 
         var showDialog by remember { mutableStateOf(false) }
 
@@ -94,8 +95,8 @@ fun StylesScreen() {
                                     )
                                     {
                                         items(AppTheme.entries) { theme ->
-                                            ThemeItem(theme, isDarkTheme) { changeTheme ->
-                                                isDarkTheme = changeTheme
+                                            ThemeItem(theme) { newTheme ->
+                                                selectedTheme = newTheme
                                             }
                                         }
                                     }
@@ -110,7 +111,7 @@ fun StylesScreen() {
 }
 
 @Composable
-fun ThemeItem(theme: AppTheme, isDarkTheme: Boolean, content: (Boolean) -> Unit) {
+fun ThemeItem(theme: AppTheme, selectedTheme: (AppTheme) -> Unit) {
     /*    when (theme) {
 
             AppTheme.LIGHT -> {
@@ -130,7 +131,7 @@ fun ThemeItem(theme: AppTheme, isDarkTheme: Boolean, content: (Boolean) -> Unit)
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { if (isDarkTheme) content(false) else content(true) },
+            .clickable { selectedTheme(theme) },
         elevation = CardDefaults.elevatedCardElevation(4.dp)
     ) {
         Text(
@@ -141,24 +142,117 @@ fun ThemeItem(theme: AppTheme, isDarkTheme: Boolean, content: (Boolean) -> Unit)
 }
 
 private val LightThemeColors = lightColorScheme(
-    primary = Color.Blue,
-    background = Color.White,
-    /* otros colores */
+    primary = Color.Red,
+    background = Color.Yellow,
+    surface = Color(0xFFFFFBFE),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFF1C1B1F),
+    onSurface = Color(0xFF1C1B1F),
 )
 
 private val DarkThemeColors = darkColorScheme(
-    primary = Color.Cyan,
-    background = Color.Black,
-    /* otros colores */
+    primary = Color(0xFF00BCD4), // Cian más oscuro
+    primaryContainer = Color(0xFF00838F), // Contenedor primario
+    secondary = Color(0xFFCDDC39), // Lima para el secundario
+    secondaryContainer = Color(0xFF8BC34A), // Contenedor secundario
+    background = Color(0xFF303030), // Gris oscuro para fondo
+    surface = Color(0xFF424242), // Gris oscuro para superficie
+    onPrimary = Color.Black,
+    onSecondary = Color.Black,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFFE0E0E0), // Gris claro para mejor lectura
+    onSurface = Color(0xFFE0E0E0), // Gris claro para mejor lectura
+)
+
+
+private val BlueThemeColors = lightColorScheme(
+    primary = Color(0xFF2196F3), // Azul primario
+    primaryContainer = Color(0xFFBBDEFB), // Contenedor primario azul claro
+    secondary = Color(0xFFFFC107), // Ámbar para secundario
+    secondaryContainer = Color(0xFFFFE082), // Contenedor secundario ámbar claro
+    background = Color(0xFFE3F2FD), // Fondo azul muy claro
+    surface = Color(0xFFFFFFFF), // Blanco para superficie
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFF0D47A1), // Azul muy oscuro para texto
+    onSurface = Color(0xFF0D47A1), // Azul muy oscuro para texto
+)
+
+private val GreenThemeColors = lightColorScheme(
+    primary = Color(0xFF4CAF50), // Verde primario
+    primaryContainer = Color(0xFFC8E6C9), // Contenedor primario verde claro
+    secondary = Color(0xFFFF9800), // Naranja para secundario
+    secondaryContainer = Color(0xFFFFCC80), // Contenedor secundario naranja claro
+    background = Color(0xFFF1F8E9), // Fondo verde muy claro
+    surface = Color(0xFFFFFFFF), // Blanco para superficie
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFF2E7D32), // Verde muy oscuro para texto
+    onSurface = Color(0xFF2E7D32), // Verde muy oscuro para texto
+)
+
+private val PurpleThemeColors = lightColorScheme(
+    primary = Color(0xFF9C27B0), // Púrpura primario
+    primaryContainer = Color(0xFFE1BEE7), // Contenedor primario púrpura claro
+    secondary = Color(0xFFFF5722), // Naranja para secundario
+    secondaryContainer = Color(0xFFFFAB91), // Contenedor secundario naranja claro
+    background = Color(0xFFF3E5F5), // Fondo púrpura muy claro
+    surface = Color(0xFFFFFFFF), // Blanco para superficie
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFF4A148C), // Púrpura muy oscuro para texto
+    onSurface = Color(0xFF4A148C), // Púrpura muy oscuro para texto
+)
+
+private val OrangeThemeColors = lightColorScheme(
+    primary = Color(0xFFFF9800), // Naranja primario
+    primaryContainer = Color(0xFFFFE0B2), // Contenedor primario naranja claro
+    secondary = Color(0xFF607D8B), // Gris azul para secundario
+    secondaryContainer = Color(0xFFCFD8DC), // Contenedor secundario gris azul claro
+    background = Color(0xFFFFF3E0), // Fondo naranja muy claro
+    surface = Color(0xFFFFFFFF), // Blanco para superficie
+    onPrimary = Color.Black,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFFE65100), // Naranja muy oscuro para texto
+    onSurface = Color(0xFFE65100), // Naranja muy oscuro para texto
+)
+private val TealThemeColors = lightColorScheme(
+    primary = Color(0xFF009688), // Turquesa primario
+    primaryContainer = Color(0xFFB2DFDB), // Contenedor primario turquesa claro
+    secondary = Color(0xFFCDDC39), // Lima para secundario
+    secondaryContainer = Color(0xFFF0F4C3), // Contenedor secundario lima claro
+    background = Color(0xFFE0F2F1), // Fondo turquesa muy claro
+    surface = Color(0xFFFFFFFF), // Blanco para superficie
+    onPrimary = Color.White,
+    onSecondary = Color.Black,
+    onTertiary = Color.Black,
+    onBackground = Color(0xFF004D40), // Turquesa muy oscuro para texto
+    onSurface = Color(0xFF004D40), // Turquesa muy oscuro para texto
 )
 
 
 @Composable
 fun MyTheme(
-    isDarkTheme: Boolean,
+    themeSelected: AppTheme,
     content: @Composable () -> Unit
 ) {
-    val colors = if (isDarkTheme) DarkThemeColors else LightThemeColors
+//     val colors = if (isDarkTheme) DarkThemeColors else LightThemeColors
+    val colors = when (themeSelected) {
+
+        AppTheme.LIGHT_THEME -> LightThemeColors
+        AppTheme.DARK_THEME -> DarkThemeColors
+        AppTheme.BLUE_THEME -> BlueThemeColors
+        AppTheme.GREEN_THEME -> GreenThemeColors
+        AppTheme.PURPLE_THEME -> PurpleThemeColors
+        AppTheme.ORANGE_THEME -> OrangeThemeColors
+        AppTheme.TEAL_THEME -> TealThemeColors
+    }
 
     MaterialTheme(
         colorScheme = colors,
@@ -170,13 +264,13 @@ fun MyTheme(
 
 
 enum class AppTheme {
-    LIGHT,
-    DARK,
-    USER_DEFINED,
-    SYSTEM_DEFAULT,
-    HIGH_CONTRAST,
-    CUSTOM_THEME1,
-    CUSTOM_THEME2
+    LIGHT_THEME,
+    DARK_THEME,
+    BLUE_THEME,
+    GREEN_THEME,
+    PURPLE_THEME,
+    ORANGE_THEME,
+    TEAL_THEME
 }
 
 
