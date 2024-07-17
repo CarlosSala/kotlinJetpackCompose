@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.composable
 import com.example.jetpackcompose.ui.HorizontalPager
+import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 
 
 @Composable
@@ -20,7 +21,8 @@ fun SplashNavigation() {
             SplashScreen(navController)
         }
         composable<MainScreen> {
-            HorizontalPager()
+            PagingScreen()
+            // HorizontalPager()
         }
     }
 }

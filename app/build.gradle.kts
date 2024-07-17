@@ -6,6 +6,8 @@ plugins {
     id("com.google.devtools.ksp")
     alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.google.gms.google.services)
+    alias(libs.plugins.hilt)
+  // kotlin("kapt")
 }
 
 android {
@@ -118,6 +120,10 @@ dependencies {
     implementation(libs.retrofit.gson)
     implementation(libs.okhttp)
     implementation(kotlin("script-runtime"))
+
+    implementation(libs.pagingCompose)
+    implementation(libs.dagger.hilt)
+    ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.kotlinx.serialization.json)
 

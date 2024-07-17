@@ -5,9 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.ui.common.SplashNavigation
+import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 import com.google.firebase.FirebaseApp
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +20,8 @@ class MainActivity : ComponentActivity() {
         setContent {
 
             FirebaseApp.initializeApp(this)
-            SplashNavigation()
+             SplashNavigation()
+            // PagingScreen()
             // HorizontalPager()
             // MyApp()
         }
