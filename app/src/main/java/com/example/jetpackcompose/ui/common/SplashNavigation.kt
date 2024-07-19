@@ -21,8 +21,8 @@ fun SplashNavigation() {
             SplashScreen(navController)
         }
         composable<MainScreen> {
-            PagingScreen()
-            // HorizontalPager()
+            HorizontalPager()
+            // PagingScreen()
         }
     }
 }

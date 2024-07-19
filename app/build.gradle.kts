@@ -126,5 +126,6 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.kotlinx.serialization.json)
+    implementation(platform(libs.androidx.compose.bom))
 
 }
