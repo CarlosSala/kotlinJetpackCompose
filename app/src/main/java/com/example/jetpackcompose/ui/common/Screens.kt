@@ -25,6 +25,7 @@ enum class Screens(val displayName: String) {
     MyServiceScreen("My Service Screen"),
     MyPeriodicWorkerUI("My Periodic Worker UI"),
     ImageUploadWorkerUI("Image Upload Worker"),
+    OneTimeWorkRequest("One Time Work Request"),
     StylesScreen("Styles Screen"),
     PagingScreen("Paging Screen")
 }

@@ -54,6 +54,7 @@ import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.welcomescreen.WelcomeScreen
 import com.example.jetpackcompose.ui.screenexamples.worker.MyPeriodicWorkerUI
 import com.example.jetpackcompose.ui.screenexamples.worker2.ImageUploadWorkerUI
+import com.example.jetpackcompose.ui.screenexamples.worker3.OneTimeWorkRequestUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -91,7 +92,7 @@ fun HorizontalPager() {
                 // count = 14, // number of screens
                 state = pagerState,
                 modifier = Modifier.padding(paddingValues),
-               // beyondViewportPageCount = 0 // cuantas paginas pre cargar
+                // beyondViewportPageCount = 0 // cuantas paginas pre cargar
             ) { page ->
                 when (Screens.entries[page]) {
 
@@ -117,6 +118,7 @@ fun HorizontalPager() {
                     Screens.MyServiceScreen -> MyServiceScreen()
                     Screens.MyPeriodicWorkerUI -> MyPeriodicWorkerUI()
                     Screens.ImageUploadWorkerUI -> ImageUploadWorkerUI()
+                    Screens.OneTimeWorkRequest -> OneTimeWorkRequestUI()
                     Screens.StylesScreen -> StylesScreen()
                 }
             }
