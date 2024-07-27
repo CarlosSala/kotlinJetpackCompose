@@ -10,7 +10,7 @@ class OneTimeWorkRequest(context: Context, params: WorkerParameters) : Worker(co
     override fun doWork(): Result {
 
         for (i: Int in 0..6000) {
-            Log.i("MyTag", "Uploading${i}")
+            Log.i("MyTag", "Uploading $i")
         }
         return Result.success()
     }
