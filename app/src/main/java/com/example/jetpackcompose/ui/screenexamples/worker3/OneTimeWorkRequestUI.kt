@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.jetpackcompose.ui.screenexamples.worker3.OneTimeWorkRequest.Companion.KEY_WORKER
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
@@ -28,6 +29,7 @@ fun OneTimeWorkRequestUI() {
     val viewModel: OneTimeWorkViewModel = viewModel()
     val coroutineScope = rememberCoroutineScope()
     val uploadState by viewModel.uploadState.collectAsState()
+    val state by viewModel.state.collectAsState()
 
     Box(
         modifier = Modifier
@@ -60,6 +62,11 @@ fun OneTimeWorkRequestUI() {
             }
             Text(
                 text = "Status: ${uploadState.name}",
+                modifier = Modifier,
+                color = Color.Black
+            )
+            Text(
+                text = "Date: ${state?.getString(KEY_WORKER)}",
                 modifier = Modifier,
                 color = Color.Black
             )
