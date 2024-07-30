@@ -9,6 +9,7 @@ enum class Screens(val displayName: String) {
     ColumnJC("Column JC"),
     RowJC("Row JC"),
     SnackBarJC("SnackBar JC"),
+    PullRefreshJC("Pull Refresh JC"),
     LazyColumnJC("Lazy Column JC"),
     LazyRowJC("Lazy Row JC"),
     LazyVerticalGridJC("Lazy Vertical Grid JC"),
