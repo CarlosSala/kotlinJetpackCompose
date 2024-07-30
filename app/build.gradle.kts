@@ -2,12 +2,11 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.compose.compiler)
-    id("kotlin-parcelize")
-    id("com.google.devtools.ksp")
-    alias(libs.plugins.kotlinxSerialization)
     alias(libs.plugins.google.gms.google.services)
     alias(libs.plugins.hilt)
-  // kotlin("kapt")
+    alias(libs.plugins.kotlinxSerialization)
+    alias(libs.plugins.dev.tools.ksp)
+    id("kotlin-parcelize")
 }
 
 android {
@@ -82,14 +81,12 @@ dependencies {
     implementation(libs.play.services.location)
     ksp(libs.androidx.room.compiler)
 
-
     // Datastore
     implementation(libs.datastore.preferences)
     implementation(libs.datastore.core)
 
-// LiveData
+    // LiveData
     implementation(libs.androidx.lifecycle.livedata.ktx)
-
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

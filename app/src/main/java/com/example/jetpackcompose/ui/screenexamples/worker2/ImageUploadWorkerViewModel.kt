@@ -3,16 +3,12 @@ package com.example.jetpackcompose.ui.screenexamples.worker2
 import android.app.Application
 import android.net.Uri
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.viewModelScope
-import androidx.work.Data
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.workDataOf
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 
 class ImageUploadWorkerViewModel(application: Application) : AndroidViewModel(application) {
 
