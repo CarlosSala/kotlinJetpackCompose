@@ -39,6 +39,7 @@ import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
 import com.example.jetpackcompose.ui.screenexamples.LazyVerticalGridJC
 import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenexamples.RowJC
+import com.example.jetpackcompose.ui.screenexamples.SnackBarJC
 import com.example.jetpackcompose.ui.screenexamples.cat.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
@@ -71,13 +72,13 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 21)
+                if (pagerState.currentPage != 22)
                     MainTopAppBar {
                         selectedTheme = it
                     }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 21)
+                if (pagerState.currentPage != 22)
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -101,6 +102,7 @@ fun HorizontalPager() {
                     Screens.ButtonTextJC -> ButtonTextJC()
                     Screens.ColumnJC -> ColumnJC()
                     Screens.RowJC -> RowJC()
+                    Screens.SnackBarJC -> SnackBarJC()
                     Screens.LazyColumnJC -> LazyColumnJC()
                     Screens.LazyRowJC -> LazyRowJC()
                     Screens.LazyVerticalGridJC -> LazyVerticalGridJC()

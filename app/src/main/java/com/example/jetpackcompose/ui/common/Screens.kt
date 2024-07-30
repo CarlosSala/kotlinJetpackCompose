@@ -8,6 +8,7 @@ enum class Screens(val displayName: String) {
     ButtonTextJC("Button Text JC"),
     ColumnJC("Column JC"),
     RowJC("Row JC"),
+    SnackBarJC("SnackBar JC"),
     LazyColumnJC("Lazy Column JC"),
     LazyRowJC("Lazy Row JC"),
     LazyVerticalGridJC("Lazy Vertical Grid JC"),
