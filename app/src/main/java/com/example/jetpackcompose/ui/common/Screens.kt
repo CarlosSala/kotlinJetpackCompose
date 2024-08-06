@@ -19,6 +19,7 @@ enum class Screens(val displayName: String) {
     CatNavigation("Cat Navigation"),
     NavDrawerJC("Nav Drawer JC"),
     NoteScreen("Note Screen"),
+    TaskScreen("Task Screen"),
     WelcomeScreen("Welcome Screen"),
     TabRowScreen("Tab Row Screen"),
     MovieScreen("Movie Screen"),
