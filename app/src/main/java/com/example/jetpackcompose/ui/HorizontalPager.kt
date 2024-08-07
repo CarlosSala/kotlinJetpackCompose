@@ -49,6 +49,7 @@ import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStat
 import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.TaskAppNav
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.TasksScreen
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
 import com.example.jetpackcompose.ui.screenexamples.styles.MyTheme
@@ -74,7 +75,7 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 25) {
+                if (pagerState.currentPage != 25 && pagerState.currentPage != 15) {
                     MainTopAppBar {
                         selectedTheme = it
                     }
@@ -117,7 +118,7 @@ fun HorizontalPager() {
                     Screens.CatNavigation -> CatNavigation()
                     Screens.NavDrawerJC -> NavDrawerJC()
                     Screens.NoteScreen -> NoteScreen()
-                    Screens.TaskScreen -> TasksScreen()
+                    Screens.TaskScreen -> TaskAppNav()
                     Screens.WelcomeScreen -> WelcomeScreen()
                     Screens.TabRowScreen -> TabRowScreen()
                     Screens.MovieScreen -> MovieScreen()

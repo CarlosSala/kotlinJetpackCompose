@@ -4,7 +4,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -39,13 +38,26 @@ import androidx.compose.ui.window.Dialog
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun TasksScreen() {
+fun TasksScreen(
+    openDrawer: () -> Unit,
+    modifier: Modifier = Modifier
+    ) {
 
     var showCreateDialog by remember { mutableStateOf(false) }
 
     val viewModel: TaskViewModel = viewModel()
 
     Scaffold(
+        topBar = {
+            TasksTopAppBar(
+                openDrawer = { /*TODO*/ },
+                onFilterAllTasks = { /*TODO*/ },
+                onFilterActiveTasks = { /*TODO*/ },
+                onFilterCompletedTasks = { /*TODO*/ },
+                onClearCompletedTasks = { /*TODO*/ }) {
+
+            }
+        },
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(
@@ -319,3 +331,10 @@ fun ConfirmDeleteDialog(
         }
     )
 }
+
+/*
+@Preview
+@Composable
+fun MyPreview() {
+    TasksScreen()
+}*/
