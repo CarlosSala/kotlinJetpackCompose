@@ -1,8 +1,18 @@
-package com.example.jetpackcompose.ui.screenexamples.roomnote2
+package com.example.jetpackcompose.ui.screenexamples.roomnote2.data
 
+import android.app.ActivityManager.TaskDescription
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
 import kotlinx.coroutines.flow.Flow
 
-class TaskRepository(private val taskDao: TaskDao) {
+interface TaskRepository {
+
+    fun getTasksStream(): Flow<List<Task>>
+
+    suspend fun createTask(title: String, description: String): String
+}
+
+
+/*class TaskRepository(private val taskDao: TaskDao) {
 
     val allTaskEntity: Flow<List<TaskEntity>> = taskDao.getAllTasks()
 
@@ -17,4 +27,4 @@ class TaskRepository(private val taskDao: TaskDao) {
     suspend fun deleteTask(taskEntity: TaskEntity){
         taskDao.deleteTask(taskEntity)
     }
-}
+}*/

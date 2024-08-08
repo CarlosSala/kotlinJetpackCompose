@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.roomnote2
+package com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -24,7 +24,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,27 +34,40 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.TasksTopAppBar
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local.TaskEntity
 
 @Composable
 fun TasksScreen(
     openDrawer: () -> Unit,
-    modifier: Modifier = Modifier
-    ) {
+    modifier: Modifier = Modifier,
+    taskViewModel: TaskViewModel = hiltViewModel(),
+    addTaskViewModel: AddTaskViewModel = hiltViewModel()
+) {
+
+    /*    val context = LocalContext.current
+        val application = context.applicationContext as Application
+        val savedStateHandle = remember { SavedStateHandle() }
+
+        val factory =
+            remember { TaskViewModelFactory(application, defaultRepository, savedStateHandle) }
+        val viewModel: TaskViewModel = viewModel(factory = factory)*/
+
+    // viewModel: TaskViewModel = viewModel()
 
     var showCreateDialog by remember { mutableStateOf(false) }
-
-    val viewModel: TaskViewModel = viewModel()
 
     Scaffold(
         topBar = {
             TasksTopAppBar(
-                openDrawer = { /*TODO*/ },
-                onFilterAllTasks = { /*TODO*/ },
-                onFilterActiveTasks = { /*TODO*/ },
-                onFilterCompletedTasks = { /*TODO*/ },
-                onClearCompletedTasks = { /*TODO*/ }) {
-
+                openDrawer = openDrawer,
+                onFilterAllTasks = { },
+                onFilterActiveTasks = { },
+                onFilterCompletedTasks = { },
+                onClearCompletedTasks = { }) {
             }
         },
         modifier = Modifier.fillMaxSize(),
@@ -68,6 +80,9 @@ fun TasksScreen(
         }
     ) { padding ->
 
+        val uiState by taskViewModel.uiState.collectAsStateWithLifecycle()
+        val addTaskUiState by addTaskViewModel.uiState.collectAsStateWithLifecycle()
+
         Column(
             modifier = Modifier
                 .padding(padding)
@@ -76,14 +91,16 @@ fun TasksScreen(
         ) {
             Spacer(modifier = Modifier.height(16.dp))
 
-            TextEntriesList(viewModel)
+            TextEntriesList(uiState.items)
 
             if (showCreateDialog) {
                 CreateNoteDialog(
                     onDismiss = { showCreateDialog = false },
                     onSave = { title, body ->
                         // Save task here
-                        viewModel.addTask(TaskEntity(title, body))
+                        addTaskViewModel.updateTitle(title)
+                        addTaskViewModel.updateDescription(body)
+                        // addTaskViewModel.saveTask(title, body)
                         showCreateDialog = false
                     }
                 )
@@ -152,18 +169,19 @@ fun CreateNoteDialog(onDismiss: () -> Unit, onSave: (String, String) -> Unit) {
 }
 
 @Composable
-fun TextEntriesList(viewModel: TaskViewModel) {
+fun TextEntriesList(tasksList: List<Task>) {
 
-    val textEntries by viewModel.allTaskEntity.collectAsState(initial = emptyList())
+    // val textEntries by viewModel.allTaskEntity.collectAsState(initial = emptyList())
 
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(1.dp),
     ) {
-        items(textEntries) { item ->
+        items(tasksList) { item ->
 
-            ShowItems(item, viewModel)
+            //ShowItems(item, viewModel)
+            ShowItems(item)
         }
     }
 }
@@ -171,13 +189,13 @@ fun TextEntriesList(viewModel: TaskViewModel) {
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ShowItems(
-    note: TaskEntity,
-    viewModel: TaskViewModel
+    task: Task,
+    // viewModel: TaskViewModel
 ) {
     var showDialogUpdate by remember { mutableStateOf(false) }
-    var noteToUpdate by remember { mutableStateOf<TaskEntity?>(null) }
+    var noteToUpdate by remember { mutableStateOf<Task?>(null) }
     var showDialogDelete by remember { mutableStateOf(false) }
-    var noteToDelete by remember { mutableStateOf<TaskEntity?>(null) }
+    var noteToDelete by remember { mutableStateOf<Task?>(null) }
 
     Card(
         modifier = Modifier
@@ -185,11 +203,11 @@ fun ShowItems(
             .fillMaxWidth(0.95f)
             .combinedClickable(
                 onClick = {
-                    noteToUpdate = note
+                    noteToUpdate = task
                     showDialogUpdate = true
                 },
                 onLongClick = {
-                    noteToDelete = note
+                    noteToDelete = task
                     showDialogDelete = true
                     // onLongClick = { viewModel.deleteNote(note)})
                     // viewModel.deleteNote(note)
@@ -200,13 +218,13 @@ fun ShowItems(
                 .padding(vertical = 24.dp, horizontal = 32.dp)
         ) {
             Text(
-                text = note.title,
+                text = task.title,
                 modifier = Modifier.padding(1.dp),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = note.description,
+                text = task.description,
                 modifier = Modifier.padding(1.dp)
             )
         }
@@ -218,10 +236,10 @@ fun ShowItems(
                 onDismiss = { showDialogUpdate = false },
                 onUpdate = { title, description ->
                     // update note here
-                    currentNote.title = title
-                    currentNote.description = description
+                    /*             currentNote.title = title
+                                 currentNote.description = description
 
-                    viewModel.updateTask(currentNote)
+                                 viewModel.updateTask(currentNote)*/
                     showDialogUpdate = false
                 }
             )
@@ -231,10 +249,10 @@ fun ShowItems(
     if (showDialogDelete) {
         noteToDelete?.let { currentNote ->
             ConfirmDeleteDialog(
-                note = currentNote,
+                task = currentNote,
                 onConfirm = {
                     // Handle the currentNote deletion here
-                    viewModel.deleteTask(currentNote)
+                    // viewModel.deleteTask(currentNote)
                     showDialogDelete = false
                 },
                 onDismiss = { showDialogDelete = false }
@@ -245,7 +263,7 @@ fun ShowItems(
 
 @Composable
 fun NoteUpdateDialog(
-    taskEntity: TaskEntity,
+    task: Task,
     onDismiss: () -> Unit,
     onUpdate: (String, String) -> Unit
 ) {
@@ -263,8 +281,8 @@ fun NoteUpdateDialog(
                     .padding(16.dp)
                     .fillMaxSize()
             ) {
-                var title by remember { mutableStateOf(taskEntity.title) }
-                var body by remember { mutableStateOf(taskEntity.description) }
+                var title by remember { mutableStateOf(task.title) }
+                var body by remember { mutableStateOf(task.description) }
 
                 Text(text = "Update Note")
                 Spacer(modifier = Modifier.height(16.dp))
@@ -307,7 +325,7 @@ fun NoteUpdateDialog(
 
 @Composable
 fun ConfirmDeleteDialog(
-    note: TaskEntity,
+    task: Task,
     onConfirm: () -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -317,7 +335,7 @@ fun ConfirmDeleteDialog(
             Text(text = "Confirm Deletion")
         },
         text = {
-            Text("Are you sure you want to delete the note ${note.title} ?")
+            Text("Are you sure you want to delete the note ${task.title} ?")
         },
         confirmButton = {
             Button(onClick = onConfirm) {

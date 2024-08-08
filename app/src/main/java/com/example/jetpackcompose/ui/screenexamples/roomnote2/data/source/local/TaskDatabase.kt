@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.roomnote2
+package com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local
 
 import android.content.Context
 import androidx.room.Database
@@ -7,14 +7,16 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [TaskEntity::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class TaskDatabase : RoomDatabase() {
 
     abstract fun getTaskDao(): TaskDao
 
     companion object {
-        @Volatile
+
+/*        @Volatile
         private var INSTANCE: TaskDatabase? = null
 
         fun getDatabase(context: Context): TaskDatabase {
@@ -27,6 +29,6 @@ abstract class TaskDatabase : RoomDatabase() {
                 INSTANCE = instance
                 instance
             }
-        }
+        }*/
     }
 }

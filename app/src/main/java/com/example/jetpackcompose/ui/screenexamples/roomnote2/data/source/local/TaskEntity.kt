@@ -1,14 +1,14 @@
-package com.example.jetpackcompose.ui.screenexamples.roomnote2
+package com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "task_table")
 data class TaskEntity(
+    @PrimaryKey
+    val id: String,
     var title: String,
     var description: String,
-    @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    // val isCompleted: Boolean = false
+    val isCompleted: Boolean
 )
 

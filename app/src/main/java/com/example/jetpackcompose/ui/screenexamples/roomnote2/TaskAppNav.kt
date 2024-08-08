@@ -7,12 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.TaskRepository
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen.TasksScreen
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -39,7 +40,7 @@ fun TaskAppNav(
                 currentRoute,
                 navController,
                 content = {
-                    TasksScreen(openDrawer = { /*TODO*/ })
+                    TasksScreen(openDrawer = {  })
                 }
             )
         }
