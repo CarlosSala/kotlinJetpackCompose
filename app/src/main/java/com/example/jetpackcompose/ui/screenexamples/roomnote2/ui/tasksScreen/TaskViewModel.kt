@@ -24,6 +24,7 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /*class TaskViewModelFactory(
@@ -47,7 +48,7 @@ const val TASKS_FILTER_SAVED_STATE_KEY = "TASKS_FILTER_SAVED_STATE_KEY"
 class TaskViewModel @Inject constructor(
     application: Application,
     private val taskRepository: TaskRepository,
-    savedStateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ) : AndroidViewModel(application) {
 
     // first filter applied
@@ -156,6 +157,31 @@ class TaskViewModel @Inject constructor(
         }
     }
 
+    fun setFiltering(requestType: TasksFilterType) {
+        savedStateHandle[TASKS_FILTER_SAVED_STATE_KEY] = requestType
+    }
+
+    fun clearCompletedTasks() {
+        viewModelScope.launch {
+            taskRepository.clearCompletedTask()
+        }
+    }
+
+    fun completeTask(task: Task, completed: Boolean) = viewModelScope.launch {
+        if (completed) {
+            taskRepository.completeTask(task.id)
+        } else {
+            taskRepository.activateTask(task.id)
+        }
+    }
+
+    fun refresh() {
+        _isLoading.value = true
+        viewModelScope.launch {
+            taskRepository.refresh()
+            _isLoading.value = false
+        }
+    }
 
     /*
         val allTaskEntity: Flow<List<TaskEntity>>

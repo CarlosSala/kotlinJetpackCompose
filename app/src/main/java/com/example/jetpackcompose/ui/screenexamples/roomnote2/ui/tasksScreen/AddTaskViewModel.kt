@@ -42,7 +42,7 @@ class AddTaskViewModel @Inject constructor(
     }
 
     private fun createNewTask() = viewModelScope.launch {
-        taskRepository.createTask(_uiState.value.title, _uiState.value.description)
+        taskRepository.createTask(uiState.value.title, uiState.value.description)
         _uiState.update {
             it.copy(isTaskSaved = true)
         }

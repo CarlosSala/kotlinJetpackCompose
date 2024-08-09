@@ -37,4 +37,22 @@ class DefaultRepository @Inject constructor(
         localDataSource.upsertTask(task.toTaskEntity())
         return taskId
     }
+
+    override suspend fun clearCompletedTask() {
+        localDataSource.deleteCompletedTasks()
+    }
+
+    override suspend fun refresh() {
+        withContext(Dispatchers.IO){
+            localDataSource.deleteAll()
+        }
+    }
+
+    override suspend fun completeTask(taskId: String) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun activateTask(taskId: String) {
+        TODO("Not yet implemented")
+    }
 }

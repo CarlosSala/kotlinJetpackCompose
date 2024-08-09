@@ -69,7 +69,11 @@ private fun AppDrawer(
 ) {
     ModalDrawerSheet {
         Column(modifier = modifier.fillMaxSize()) {
+
+            // feather image
             DrawerHeader()
+
+            // task list
             DrawerButton(
                 painter = painterResource(id = R.drawable.ic_list),
                 label = stringResource(id = R.string.list_title),
@@ -79,6 +83,7 @@ private fun AppDrawer(
                     closeDrawer()
                 }
             )
+            // Statistics
             DrawerButton(
                 painter = painterResource(id = R.drawable.ic_statistics),
                 label = stringResource(id = R.string.statistics_title),

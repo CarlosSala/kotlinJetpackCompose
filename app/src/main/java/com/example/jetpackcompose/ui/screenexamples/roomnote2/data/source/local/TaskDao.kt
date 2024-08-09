@@ -13,13 +13,13 @@ import kotlinx.coroutines.flow.Flow
 interface TaskDao {
 
     @Query("SELECT * FROM task_table ORDER BY title DESC")
-     fun getAllTasks(): Flow<List<TaskEntity>>
+    fun getAllTasks(): Flow<List<TaskEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTaskEntity(taskEntity: TaskEntity)
 
     @Query("DELETE FROM task_table")
-    suspend fun deleteAllTasks()
+    suspend fun deleteAll()
 
     @Insert
     fun insertTask(taskEntity: TaskEntity)
@@ -32,5 +32,8 @@ interface TaskDao {
 
     @Upsert
     suspend fun upsertTask(taskEntity: TaskEntity)
+
+    @Query("DELETE FROM task_table WHERE isCompleted = 1")
+    suspend fun deleteCompletedTasks()
 
 }

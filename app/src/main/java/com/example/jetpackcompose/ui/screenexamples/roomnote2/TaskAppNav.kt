@@ -15,6 +15,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.TaskRepository
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen.TasksScreen
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
 fun TaskAppNav(
@@ -36,11 +37,11 @@ fun TaskAppNav(
             route = AppScreens.TasksScreenRoute.route
         ) {
             AppModalDrawer(
-                drawerState,
-                currentRoute,
-                navController,
+                drawerState = drawerState,
+                currentRoute = currentRoute,
+                navController = navController,
                 content = {
-                    TasksScreen(openDrawer = {  })
+                    TasksScreen(openDrawer = { coroutineScope.launch { drawerState.open() } })
                 }
             )
         }
