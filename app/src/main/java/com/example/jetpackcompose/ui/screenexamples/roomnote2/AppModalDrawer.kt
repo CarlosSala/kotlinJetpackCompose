@@ -37,9 +37,9 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun AppModalDrawer(
+    // navigationActions: NoteNavigationActions,
     drawerState: DrawerState,
     currentRoute: String,
-    // navigationActions: NoteNavigationActions,
     navController: NavHostController,
     coroutineScope: CoroutineScope = rememberCoroutineScope(),
     content: @Composable () -> Unit
@@ -47,6 +47,7 @@ fun AppModalDrawer(
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
+            // custom function
             AppDrawer(
                 currentRoute = currentRoute,
                 navigateToTasks = { navController.navigate(AppScreens.TasksScreenRoute.route) },
@@ -61,19 +62,17 @@ fun AppModalDrawer(
 
 @Composable
 private fun AppDrawer(
+    modifier: Modifier = Modifier,
     currentRoute: String,
     navigateToTasks: () -> Unit,
     navigateToStatistics: () -> Unit,
     closeDrawer: () -> Unit,
-    modifier: Modifier = Modifier
 ) {
     ModalDrawerSheet {
         Column(modifier = modifier.fillMaxSize()) {
-
-            // feather image
+            // custom function - feather image
             DrawerHeader()
-
-            // task list
+            // custom function - task list
             DrawerButton(
                 painter = painterResource(id = R.drawable.ic_list),
                 label = stringResource(id = R.string.list_title),
@@ -83,7 +82,7 @@ private fun AppDrawer(
                     closeDrawer()
                 }
             )
-            // Statistics
+            // custom function / Statistics
             DrawerButton(
                 painter = painterResource(id = R.drawable.ic_statistics),
                 label = stringResource(id = R.string.statistics_title),

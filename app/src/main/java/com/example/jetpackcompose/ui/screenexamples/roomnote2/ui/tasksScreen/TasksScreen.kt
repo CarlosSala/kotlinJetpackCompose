@@ -42,18 +42,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.ui.screenexamples.roomnote2.TasksTopAppBar
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.LoadingContent
-import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.*
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.ACTIVE_TASKS
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.ALL_TASKS
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.COMPLETED_TASKS
 
 @Composable
 fun TasksScreen(
@@ -62,11 +61,15 @@ fun TasksScreen(
     taskViewModel: TaskViewModel = hiltViewModel(),
     addTaskViewModel: AddTaskViewModel = hiltViewModel()
 ) {
-
     var showCreateDialog by remember { mutableStateOf(false) }
+    var showDialogUpdate by remember { mutableStateOf(false) }
+    var noteToUpdate by remember { mutableStateOf<Task?>(null) }
+    var showDialogDelete by remember { mutableStateOf(false) }
+    var noteToDelete by remember { mutableStateOf<Task?>(null) }
 
     Scaffold(
         topBar = {
+            // custom function
             TasksTopAppBar(
                 openDrawer = openDrawer,
                 onFilterAllTasks = { taskViewModel.setFiltering(ALL_TASKS) },
@@ -75,7 +78,7 @@ fun TasksScreen(
                 onClearCompletedTasks = { taskViewModel.clearCompletedTasks() },
                 onRefresh = { taskViewModel.refresh() })
         },
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         floatingActionButton = {
             FloatingActionButton(onClick = { showCreateDialog = true }) {
                 Icon(
@@ -84,11 +87,12 @@ fun TasksScreen(
                 )
             }
         }
-    ) { padding ->
+    ) { paddingValues ->
 
         val uiState by taskViewModel.uiState.collectAsStateWithLifecycle()
-        val addTaskUiState by addTaskViewModel.uiState.collectAsStateWithLifecycle()
+        // val addTaskUiState by addTaskViewModel.uiState.collectAsStateWithLifecycle()
 
+        // custom function
         TaskContent(
             loading = uiState.isLoading,
             tasksList = uiState.items,
@@ -98,14 +102,20 @@ fun TasksScreen(
             onRefresh = { taskViewModel.refresh() },
             onTaskClick = {},
             onTaskCheckedChange = { task, bol -> taskViewModel.completeTask(task, bol) },
-            modifier = Modifier.padding(padding)
-        ) { title, description ->
-            addTaskViewModel.updateTitle(title)
-            addTaskViewModel.updateDescription(description)
-        }
+            modifier = Modifier.padding(paddingValues),
+            onTaskUpdate = { taskUpdate, bol ->
+
+
+            }, onTaskDelete = { taskDelete, bol ->
+
+                noteToDelete = taskDelete
+                showDialogDelete = bol
+
+            }
+        )
         Column(
             modifier = Modifier
-                .padding(padding)
+                .padding(paddingValues)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
@@ -123,6 +133,20 @@ fun TasksScreen(
                     }
                 )
             }
+
+            if (showDialogDelete) {
+                noteToDelete?.let { currentNote ->
+                    ConfirmDeleteDialog(
+                        task = currentNote,
+                        onConfirm = {
+                            // Handle the currentNote deletion here
+                            // addTaskViewModel.deleteTask(currentNote)
+                            showDialogDelete = false
+                        },
+                        onDismiss = { showDialogDelete = false }
+                    )
+                }
+            }
         }
     }
 }
@@ -137,8 +161,9 @@ private fun TaskContent(
     onRefresh: () -> Unit,
     onTaskClick: (Task) -> Unit,
     onTaskCheckedChange: (Task, Boolean) -> Unit,
+    onTaskUpdate: (Task, Boolean) -> Unit,
+    onTaskDelete: (Task, Boolean) -> Unit,
     modifier: Modifier = Modifier,
-    onSave: (String, String) -> Unit
 ) {
     LoadingContent(
         loading = loading,
@@ -174,11 +199,12 @@ private fun TaskContent(
                 verticalArrangement = Arrangement.spacedBy(1.dp),
             ) {
                 items(tasksList) { task ->
-                    //ShowItems(task, viewModel)
                     TaskItem(
                         task = task,
                         onTaskClick = onTaskClick,
-                        onTaskCheckedChange = { onTaskCheckedChange(task, it) }
+                        onTaskCheckedChange = { onTaskCheckedChange(task, it) },
+                        onTaskClickUpdate = { taskUpdate, bol -> onTaskUpdate(taskUpdate, bol) },
+                        onTaskLongClickDelete = { taskDelete, bol -> onTaskDelete(taskDelete, bol) }
                     )
                 }
             }
@@ -186,40 +212,61 @@ private fun TaskContent(
     }
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun TaskItem(
     task: Task,
     onTaskCheckedChange: (Boolean) -> Unit,
-    onTaskClick: (Task) -> Unit
-    // viewModel: TaskViewModel
+    onTaskClick: (Task) -> Unit,
+    onTaskLongClickDelete: (Task, Boolean) -> Unit,
+    onTaskClickUpdate: (Task, Boolean) -> Unit
 ) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
+    Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(
-                horizontal = dimensionResource(id = R.dimen.horizontal_margin),
-                vertical = dimensionResource(id = R.dimen.vertical_margin)
-            )
-            .clickable { onTaskClick(task) }
+            .padding(1.dp)
+            .fillMaxWidth(0.95f)
+            .combinedClickable(
+                onClick = {
+                    onTaskClickUpdate(task, true)
+                    /*noteToUpdate = task
+                    showDialogUpdate = true*/
+                },
+                onLongClick = {
+                    onTaskLongClickDelete(task, true)
+                    /*
+                    noteToDelete = task
+                    showDialogDelete = true*/
+                    // onLongClick = { viewModel.deleteNote(note)})
+                    // viewModel.deleteNote(note)
+                })
     ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(
+                    horizontal = dimensionResource(id = R.dimen.horizontal_margin),
+                    vertical = dimensionResource(id = R.dimen.vertical_margin)
+                )
+                .clickable { onTaskClick(task) }
+        ) {
 
-        Checkbox(
-            checked = task.isCompleted,
-            onCheckedChange = onTaskCheckedChange
-        )
-        Text(
-            text = task.title,
-            style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.padding(
-                start = dimensionResource(id = R.dimen.horizontal_margin)
-            ),
-            textDecoration = if (task.isCompleted) {
-                TextDecoration.LineThrough
-            } else {
-                null
-            }
-        )
+            Checkbox(
+                checked = task.isCompleted,
+                onCheckedChange = onTaskCheckedChange
+            )
+            Text(
+                text = task.title,
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(
+                    start = dimensionResource(id = R.dimen.horizontal_margin)
+                ),
+                textDecoration = if (task.isCompleted) {
+                    TextDecoration.LineThrough
+                } else {
+                    null
+                }
+            )
+        }
     }
 
     /*    var showDialogUpdate by remember { mutableStateOf(false) }

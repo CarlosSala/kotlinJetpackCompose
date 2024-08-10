@@ -1,7 +1,5 @@
 package com.example.jetpackcompose.ui.screenexamples.roomnote2
 
-import kotlinx.serialization.Serializable
-
 /*
 @Serializable
 object TasksScreenRoute

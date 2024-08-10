@@ -49,7 +49,7 @@ import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStat
 import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
-import com.example.jetpackcompose.ui.screenexamples.roomnote2.TaskAppNav
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.AppNav
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
 import com.example.jetpackcompose.ui.screenexamples.styles.MyTheme
 import com.example.jetpackcompose.ui.screenexamples.styles.StylesScreen
@@ -117,7 +117,7 @@ fun HorizontalPager() {
                     Screens.CatNavigation -> CatNavigation()
                     Screens.NavDrawerJC -> NavDrawerJC()
                     Screens.NoteScreen -> NoteScreen()
-                    Screens.TaskScreen -> TaskAppNav()
+                    Screens.TaskScreen -> AppNav()
                     Screens.WelcomeScreen -> WelcomeScreen()
                     Screens.TabRowScreen -> TabRowScreen()
                     Screens.MovieScreen -> MovieScreen()

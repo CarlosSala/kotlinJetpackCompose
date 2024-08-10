@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.roomnote2
+package com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.ColumnScope
@@ -12,6 +12,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -23,7 +24,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.R
+import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,8 +46,17 @@ fun TasksTopAppBar(
             }
         },
         actions = {
-            FilterTasksMenu(onFilterAllTasks, onFilterActiveTasks, onFilterCompletedTasks)
-            MoreTasksMenu(onClearCompletedTasks, onRefresh)
+            // custom function
+            FilterTasksMenu(
+                onFilterAllTasks,
+                onFilterActiveTasks,
+                onFilterCompletedTasks
+            )
+            // custom function
+            MoreTasksMenu(
+                onClearCompletedTasks,
+                onRefresh
+            )
         },
         modifier = Modifier.fillMaxWidth()
     )
@@ -56,6 +68,7 @@ private fun FilterTasksMenu(
     onFilterActiveTasks: () -> Unit,
     onFilterCompletedTasks: () -> Unit
 ) {
+    // custom function
     TopAppBarDropdownMenu(
         iconContent = {
             Icon(
@@ -84,6 +97,7 @@ private fun MoreTasksMenu(
     onClearCompletedTasks: () -> Unit,
     onRefresh: () -> Unit
 ) {
+    // custom function
     TopAppBarDropdownMenu(
         iconContent = {
             Icon(Icons.Filled.MoreVert, stringResource(id = R.string.menu_more))
@@ -117,6 +131,23 @@ private fun TopAppBarDropdownMenu(
             modifier = Modifier.wrapContentSize(Alignment.TopEnd)
         ) {
             content { expanded = !expanded }
+        }
+    }
+}
+
+@Preview("TaskTopAppBar")
+@Composable
+fun PreviewTaskTopAppBar() {
+    CustomComposeTheme {
+        Surface {
+            TasksTopAppBar(
+                openDrawer = {},
+                onFilterAllTasks = {},
+                onFilterActiveTasks = {},
+                onFilterCompletedTasks = {},
+                onClearCompletedTasks = {},
+                onRefresh = {}
+            )
         }
     }
 }
