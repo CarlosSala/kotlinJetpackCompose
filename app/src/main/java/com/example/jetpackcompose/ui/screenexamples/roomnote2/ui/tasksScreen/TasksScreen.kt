@@ -135,12 +135,12 @@ fun TasksScreen(
             }
 
             if (showDialogDelete) {
-                noteToDelete?.let { currentNote ->
+                noteToDelete?.let { currentTask ->
                     ConfirmDeleteDialog(
-                        task = currentNote,
+                        task = currentTask,
                         onConfirm = {
-                            // Handle the currentNote deletion here
-                            // addTaskViewModel.deleteTask(currentNote)
+                            // Handle the currentTask deletion here
+                            addTaskViewModel.deleteTask(currentTask.id)
                             showDialogDelete = false
                         },
                         onDismiss = { showDialogDelete = false }

@@ -59,4 +59,8 @@ class AddTaskViewModel @Inject constructor(
             it.copy(title = newDescription)
         }
     }
+
+    fun deleteTask(myTaskId: String) = viewModelScope.launch {
+        taskRepository.deleteTask(myTaskId)
+    }
 }

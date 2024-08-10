@@ -55,4 +55,8 @@ class DefaultRepository @Inject constructor(
     override suspend fun activateTask(taskId: String) {
         TODO("Not yet implemented")
     }
+
+    override suspend fun deleteTask(taskId: String) {
+        localDataSource.deleteTaskById(taskId)
+    }
 }

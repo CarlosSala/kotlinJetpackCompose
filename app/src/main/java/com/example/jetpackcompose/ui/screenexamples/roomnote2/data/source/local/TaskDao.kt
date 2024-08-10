@@ -1,7 +1,6 @@
 package com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -27,8 +26,8 @@ interface TaskDao {
     @Update
     suspend fun updateTask(taskEntity: TaskEntity)
 
-    @Delete
-    suspend fun deleteTask(taskEntity: TaskEntity)
+    @Query("DELETE FROM task_table WHERE id = :taskId")
+    suspend fun deleteTaskById(taskId: String)
 
     @Upsert
     suspend fun upsertTask(taskEntity: TaskEntity)
