@@ -19,7 +19,7 @@ class DefaultRepository @Inject constructor(
     override fun getTasksStream(): Flow<List<Task>> {
         return runBlocking {
             withContext(Dispatchers.IO) {
-                localDataSource.getAllTasks().map { it.toExternal() }
+                localDataSource.observeAll().map { it.toExternal() }
             }
         }
     }
@@ -34,12 +34,12 @@ class DefaultRepository @Inject constructor(
             description = description,
             id = taskId
         )
-        localDataSource.upsertTask(task.toTaskEntity())
+        localDataSource.upsert(task.toTaskEntity())
         return taskId
     }
 
     override suspend fun clearCompletedTask() {
-        localDataSource.deleteCompletedTasks()
+        localDataSource.deleteCompleted()
     }
 
     override suspend fun refresh() {
@@ -57,6 +57,6 @@ class DefaultRepository @Inject constructor(
     }
 
     override suspend fun deleteTask(taskId: String) {
-        localDataSource.deleteTaskById(taskId)
+        localDataSource.deleteById(taskId)
     }
 }

@@ -1,10 +1,10 @@
 package com.example.jetpackcompose.ui.screenexamples.roomnote2.data
 
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
-import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local.TaskEntity
+import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local.LocalTask
 
 // external to local
-fun Task.toTaskEntity() = TaskEntity(
+fun Task.toTaskEntity() = LocalTask(
     id = id,
     title = this.title,
     description = this.description,
@@ -14,7 +14,7 @@ fun Task.toTaskEntity() = TaskEntity(
 
 // local to External
 
-fun TaskEntity.toExternal() = Task(
+fun LocalTask.toExternal() = Task(
     id = this.id.toString(),
     title = this.title,
     description = this.description,
@@ -22,4 +22,4 @@ fun TaskEntity.toExternal() = Task(
 )
 
 @JvmName("localToExternal")
-fun List<TaskEntity>.toExternal() = map(TaskEntity::toExternal)
+fun List<LocalTask>.toExternal() = map(LocalTask::toExternal)
