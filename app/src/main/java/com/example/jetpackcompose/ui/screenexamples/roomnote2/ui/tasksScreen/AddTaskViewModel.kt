@@ -1,6 +1,5 @@
 package com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen
 
-import android.app.ActivityManager.TaskDescription
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

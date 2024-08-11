@@ -3,11 +3,8 @@ package com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.tasksScreen
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.example.jetpackcompose.R
-import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.DefaultRepository
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.TaskRepository
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.FilteringUiInfo
@@ -16,7 +13,6 @@ import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilte
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksUiState
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.WhileUiSubscribed
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
@@ -26,20 +22,6 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
-/*class TaskViewModelFactory(
-    private val application: Application,
-    private val defaultRepository: DefaultRepository,
-    private val savedStateHandle: SavedStateHandle,
-) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(TaskViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return TaskViewModel(application, defaultRepository, savedStateHandle) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}*/
 
 // Used to save the current filtering in SavedStateHandle.
 const val TASKS_FILTER_SAVED_STATE_KEY = "TASKS_FILTER_SAVED_STATE_KEY"
@@ -163,7 +145,7 @@ class TaskViewModel @Inject constructor(
 
     fun clearCompletedTasks() {
         viewModelScope.launch {
-            taskRepository.clearCompletedTask()
+            taskRepository.clearCompletedTasks()
         }
     }
 
@@ -182,41 +164,4 @@ class TaskViewModel @Inject constructor(
             _isLoading.value = false
         }
     }
-
-    /*
-        val allTaskEntity: Flow<List<TaskEntity>>
-    */
-
-    /*    init {
-            val taskEntityDao = TaskDatabase.getDatabase(application).getTaskDao()
-            repository = TaskRepository(taskEntityDao)
-            allTaskEntity = repository.allTaskEntity
-        }*/
-
-
-    /*    fun addTask(task: TaskEntity) {
-            viewModelScope.launch {
-                repository.insert(task)
-            }
-        }
-
-        fun updateTask(task: TaskEntity) {
-            viewModelScope.launch {
-                repository.updateTask(task)
-            }
-        }
-
-        fun deleteTask(task: TaskEntity) {
-            viewModelScope.launch {
-                repository.deleteTask(task)
-            }
-        }*/
-
-    /*    private fun loadNotes() {
-            viewModelScope.launch {
-                _tasks.value = noteDao.getAllNotes()
-            }
-        }
-        }*/
-
 }

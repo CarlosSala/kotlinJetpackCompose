@@ -4,7 +4,7 @@ import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.model.Task
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.data.source.local.LocalTask
 
 // external to local
-fun Task.toTaskEntity() = LocalTask(
+fun Task.toLocalTask() = LocalTask(
     id = id,
     title = this.title,
     description = this.description,
