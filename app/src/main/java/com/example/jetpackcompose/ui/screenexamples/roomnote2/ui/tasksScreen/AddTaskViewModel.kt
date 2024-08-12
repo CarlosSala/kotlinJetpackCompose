@@ -28,24 +28,78 @@ class AddTaskViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val taskId: String? = savedStateHandle[TaskDestinationsArgs.TASK_ID_ARG]
+    // private val taskId: String? = savedStateHandle[TaskDestinationsArgs.TASK_ID_ARG]
+
+    private var _taskId: String? = null
 
     private val _uiState = MutableStateFlow(AddTaskUiState())
     val uiState: StateFlow<AddTaskUiState> = _uiState.asStateFlow()
 
+    fun setTaskId(taskId: String) {
+        _taskId = taskId
+    }
+
     fun saveTask() {
 
-        if (taskId == null) {
+        if (_taskId == null || _taskId == "") {
             createNewTask()
+        } else {
+            updateTask()
         }
     }
 
     private fun createNewTask() = viewModelScope.launch {
-        taskRepository.createTask(uiState.value.title, uiState.value.description)
+        taskRepository.createTask(
+            title = uiState.value.title,
+            description = uiState.value.description
+        )
         _uiState.update {
             it.copy(isTaskSaved = true)
         }
     }
+
+    private fun updateTask() {
+        if (_taskId == null) {
+            throw RuntimeException("updateTask() was called but task is new.")
+        } else {
+            viewModelScope.launch {
+                taskRepository.updateTask(
+                    taskId = _taskId!!,
+                    title = uiState.value.title,
+                    description = uiState.value.description
+                )
+                _uiState.update {
+                    it.copy(isTaskSaved = true)
+                }
+            }
+            _taskId = ""
+        }
+    }
+
+    private fun loadTask(taskId: String) {
+        _uiState.update {
+            it.copy(isLoading = true)
+        }
+        viewModelScope.launch {
+            taskRepository.getTask(taskId = taskId).let { task ->
+                if (task != null) {
+                    _uiState.update {
+                        it.copy(
+                            title = task.title,
+                            description = task.description,
+                            isTaskCompleted = task.isCompleted,
+                            isLoading = false
+                        )
+                    }
+                } else {
+                    _uiState.update {
+                        it.copy(isLoading = false)
+                    }
+                }
+            }
+        }
+    }
+
 
     fun updateTitle(newTitle: String) {
         _uiState.update {
@@ -55,7 +109,7 @@ class AddTaskViewModel @Inject constructor(
 
     fun updateDescription(newDescription: String) {
         _uiState.update {
-            it.copy(title = newDescription)
+            it.copy(description = newDescription)
         }
     }
 

@@ -50,7 +50,7 @@ class TaskViewModel @Inject constructor(
     ) { tasks, typeFilter ->
 
         filterTasks(tasks, typeFilter)
-    } // revisar que hace el codigo
+    }
         .map { MyAsync.Success(it) }
         .catch<MyAsync<List<Task>>> { emit(MyAsync.Error(R.string.loading_tasks_error)) }
 

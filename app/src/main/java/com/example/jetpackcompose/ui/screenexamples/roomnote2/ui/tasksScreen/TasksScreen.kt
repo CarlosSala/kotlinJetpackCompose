@@ -53,6 +53,7 @@ import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.LoadingCon
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.ACTIVE_TASKS
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.ALL_TASKS
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.ui.util.TasksFilterType.COMPLETED_TASKS
+import kotlinx.coroutines.flow.asFlow
 
 @Composable
 fun TasksScreen(
@@ -104,13 +105,13 @@ fun TasksScreen(
             onTaskCheckedChange = { task, bol -> taskViewModel.completeTask(task, bol) },
             modifier = Modifier.padding(paddingValues),
             onTaskUpdate = { taskUpdate, bol ->
-
+                noteToUpdate = taskUpdate
+                showDialogUpdate = bol
 
             }, onTaskDelete = { taskDelete, bol ->
 
                 noteToDelete = taskDelete
                 showDialogDelete = bol
-
             }
         )
         Column(
@@ -144,6 +145,23 @@ fun TasksScreen(
                             showDialogDelete = false
                         },
                         onDismiss = { showDialogDelete = false }
+                    )
+                }
+            }
+
+            if (showDialogUpdate) {
+                noteToUpdate?.let { currentNote ->
+                    NoteUpdateDialog(
+                        onUpdate = { title, body ->
+                            // Save task here
+                            addTaskViewModel.setTaskId(currentNote.id)
+                            addTaskViewModel.updateTitle(title)
+                            addTaskViewModel.updateDescription(body)
+                            addTaskViewModel.saveTask()
+                            showDialogUpdate = false
+                        },
+                        task = currentNote,
+                        onDismiss = { showDialogUpdate = false },
                     )
                 }
             }
@@ -203,8 +221,18 @@ private fun TaskContent(
                         task = task,
                         onTaskClick = onTaskClick,
                         onTaskCheckedChange = { onTaskCheckedChange(task, it) },
-                        onTaskClickUpdate = { taskUpdate, bol -> onTaskUpdate(taskUpdate, bol) },
-                        onTaskLongClickDelete = { taskDelete, bol -> onTaskDelete(taskDelete, bol) }
+                        onTaskClickUpdate = { taskUpdate, bol ->
+                            onTaskUpdate(
+                                taskUpdate,
+                                bol
+                            )
+                        },
+                        onTaskLongClickDelete = { taskDelete, bol ->
+                            onTaskDelete(
+                                taskDelete,
+                                bol
+                            )
+                        }
                     )
                 }
             }
