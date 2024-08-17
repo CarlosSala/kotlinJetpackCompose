@@ -11,12 +11,12 @@ plugins {
 
 android {
     namespace = "com.example.jetpackcompose"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.jetpackcompose"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -124,5 +124,9 @@ dependencies {
 
     implementation(libs.kotlinx.serialization.json)
     implementation(platform(libs.androidx.compose.bom))
+
+    implementation(libs.androidx.constraintlayout.compose)
+    // Accompanist
+    implementation (libs.accompanist.navigation.animation)
 
 }

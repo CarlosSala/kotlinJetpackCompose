@@ -30,5 +30,6 @@ enum class Screens(val displayName: String) {
     ImageUploadWorkerUI("Image Upload Worker"),
     OneTimeWorkRequest("One Time Work Request"),
     StylesScreen("Styles Screen"),
-    PagingScreen("Paging Screen")
+    PagingScreen("Paging Screen"),
+    LoginJetpackComposeScreen("Login JetpackCompose Screen")
 }

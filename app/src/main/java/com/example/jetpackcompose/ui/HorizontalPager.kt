@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -45,6 +46,7 @@ import com.example.jetpackcompose.ui.screenexamples.cat.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFireStoreScreen
+import com.example.jetpackcompose.ui.screenexamples.login.LoginJetpackComposeScreen
 import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
 import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
@@ -61,6 +63,7 @@ import com.example.jetpackcompose.ui.screenexamples.worker3.OneTimeWorkRequestUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun HorizontalPager() {
 
@@ -128,6 +131,7 @@ fun HorizontalPager() {
                     Screens.ImageUploadWorkerUI -> ImageUploadWorkerUI()
                     Screens.OneTimeWorkRequest -> OneTimeWorkRequestUI()
                     Screens.StylesScreen -> StylesScreen()
+                    Screens.LoginJetpackComposeScreen -> LoginJetpackComposeScreen()
                 }
             }
 
