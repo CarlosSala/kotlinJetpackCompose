@@ -18,7 +18,7 @@ class LoginViewModel: ViewModel() {
             R.string.error_input_empty
         } else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             R.string.error_not_a_valid_email
-        } else if(email != "user@gmail.com" || password != "password"){
+        } else if(email != "user@gmail.com" || password != "123"){
             R.string.error_invalid_credentials
         } else null
 

@@ -1,20 +1,18 @@
 package com.example.jetpackcompose.ui.screenexamples.login.presentation.components
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.AlertDialog
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+
 
 @Composable
 fun EventDialog(
@@ -23,16 +21,12 @@ fun EventDialog(
     onDismiss: (() -> Unit)? = null
 ) {
     AlertDialog(
-        modifier = modifier
-            .background(Color.White)
-            .padding(16.dp),
         onDismissRequest = { onDismiss?.invoke() },
         title = {
             Text(
-                "Error",
-                style = TextStyle(
+                text = "Error",
+                style = MaterialTheme.typography.titleLarge.copy(
                     color = MaterialTheme.colorScheme.onSurface,
-                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
             )
@@ -40,23 +34,21 @@ fun EventDialog(
         text = {
             Text(
                 text = LocalContext.current.getString(errorMessage),
-                style = TextStyle(
-                    color = MaterialTheme.colorScheme.onSurface,
-                    fontSize = 16.sp
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             )
         },
-        buttons = {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.End
+        confirmButton = {
+            TextButton(
+                onClick = { onDismiss?.invoke() },
+                colors = ButtonDefaults.textButtonColors(
+                    contentColor = MaterialTheme.colorScheme.primary
+                )
             ) {
-                TextButton(onClick = { onDismiss?.invoke() }) {
-                    Text(text = "Aceptar", style = MaterialTheme.typography.bodySmall)
-                }
+                Text(text = "Aceptar", style = MaterialTheme.typography.labelLarge)
             }
-        }
+        },
+        modifier = modifier.padding(16.dp)
     )
 }
