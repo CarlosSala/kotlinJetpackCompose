@@ -34,6 +34,7 @@ import com.example.jetpackcompose.ui.common.Screens
 import com.example.jetpackcompose.ui.screenexamples.BoxJC
 import com.example.jetpackcompose.ui.screenexamples.ButtonTextJC
 import com.example.jetpackcompose.ui.screenexamples.ColumnJC
+import com.example.jetpackcompose.ui.screenexamples.ConstraintJC
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyHorizontalGridJC
 import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
@@ -77,14 +78,14 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 25 && pagerState.currentPage != 15) {
+                if (pagerState.currentPage != 26 && pagerState.currentPage != 16) {
                     MainTopAppBar {
                         selectedTheme = it
                     }
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 25 && pagerState.currentPage != 15) {
+                if (pagerState.currentPage != 26 && pagerState.currentPage != 16) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -106,6 +107,7 @@ fun HorizontalPager() {
 
                     Screens.PagingScreen -> PagingScreen()
                     Screens.BoxJC -> BoxJC()
+                    Screens.ConstraintJC -> ConstraintJC()
                     Screens.ButtonTextJC -> ButtonTextJC()
                     Screens.ColumnJC -> ColumnJC()
                     Screens.RowJC -> RowJC()
