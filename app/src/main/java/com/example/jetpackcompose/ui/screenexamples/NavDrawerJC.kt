@@ -1,6 +1,7 @@
 package com.example.jetpackcompose.ui.screenexamples
 
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -8,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -60,7 +62,7 @@ import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun NavDrawerJC() {
 
@@ -70,7 +72,7 @@ fun NavDrawerJC() {
 
     ModalNavigationDrawer(
         drawerContent = {
-            ModalDrawerSheet {
+            ModalDrawerSheet(windowInsets = WindowInsets(top = 0.dp)) {
                 Column(
                     Modifier.fillMaxSize(),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
@@ -186,6 +188,7 @@ fun NavDrawerJC() {
         Scaffold(
             topBar = {
                 TopAppBar(
+                    windowInsets = WindowInsets(top = 0.dp),
                     title = {
                         Text(text = "drawer menu")
                     },
@@ -203,6 +206,7 @@ fun NavDrawerJC() {
                 )
             }
         ) { paddingValues ->
+            Log.d("padding", "Top padding: ${paddingValues.calculateTopPadding()}")
             Box(
                 modifier = Modifier
                     .fillMaxSize()
