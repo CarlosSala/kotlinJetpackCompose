@@ -7,7 +7,6 @@ import com.example.jetpackcompose.ui.theme.CustomComposeTheme
  fun MyApp(content: @Composable () -> Unit) {
 
     CustomComposeTheme {
-
         content()
     }
 }

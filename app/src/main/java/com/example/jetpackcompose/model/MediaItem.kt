@@ -8,7 +8,6 @@ data class MediaItem(
     val thumb: String,
     val type: Type
 ) {
-
     enum class Type {
         PHOTO,
         VIDEO

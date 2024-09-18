@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.screenexamples.catnavigation
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -14,11 +14,9 @@ fun CatScreen(
 ) {
     MyApp {
         Scaffold { paddingValues ->
-
             CatMediaList(
                 modifier = Modifier.padding(paddingValues)
             ) { myItem ->
-
                 onCatClick(myItem)
             }
         }

@@ -1,6 +1,7 @@
 package com.example.jetpackcompose.ui.common
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBackIosNew
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
@@ -25,7 +26,10 @@ import com.example.jetpackcompose.ui.screenexamples.styles.MyThemes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainTopAppBar(selectedTheme: (ColorScheme) -> Unit) {
+fun MainTopAppBar(
+    selectedTheme: (ColorScheme) -> Unit,
+    onBack: () -> Unit
+) {
 
     var menuExpanded by remember { mutableStateOf(false) }
     val subMenuExpanded by remember { mutableStateOf(false) }
@@ -43,7 +47,10 @@ fun MainTopAppBar(selectedTheme: (ColorScheme) -> Unit) {
             Text(text = stringResource(id = R.string.app_name))
         },
         navigationIcon = {
-            AppBarAction(imageVector = Icons.Default.Menu, onClick = {/*TODO*/ })
+            AppBarAction(
+                imageVector = Icons.Default.ArrowBackIosNew,
+                onClick = { onBack() }
+            )
         },
         actions = {
 

@@ -1,16 +1,17 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.screenexamples.catnavigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.toRoute
-import com.example.jetpackcompose.ui.screenexamples.cat.detail.CatDetail
+import com.example.jetpackcompose.ui.screenexamples.catnavigation.detail.CatDetail
 
 
 @Composable
 fun CatNavigation() {
 
+    // for controller navigation status
     val navController = rememberNavController()
 
     NavHost(
@@ -25,7 +26,7 @@ fun CatNavigation() {
         composable<Detail> { backStackEntry ->
             val detail = backStackEntry.toRoute<Detail>()
             CatDetail(
-                detail.mediaId,
+                mediaId = detail.mediaId,
                 onBack = {
                     navController.popBackStack()
                 }

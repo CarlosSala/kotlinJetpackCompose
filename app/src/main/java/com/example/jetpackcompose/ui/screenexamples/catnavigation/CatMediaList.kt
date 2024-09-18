@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.screenexamples.catnavigation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable
@@ -41,7 +41,7 @@ fun CatMediaList(
         items(getMedia()) { item ->
 
             MediaListItem4(
-                item,
+                mediaItem = item,
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_xsmall))
             ) { myItem ->
                 onCatClick(myItem)
@@ -54,14 +54,13 @@ fun CatMediaList(
 @Composable
 fun MediaListItem4(
     mediaItem: MediaItem,
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     onCatClick: (MediaItem) -> Unit
 ) {
     Card(
-        modifier = modifier
-            .clickable {
-                onCatClick(mediaItem)
-            },
+        modifier = modifier.clickable {
+            onCatClick(mediaItem)
+        },
         elevation = CardDefaults.cardElevation(
             defaultElevation = 10.dp
         ),

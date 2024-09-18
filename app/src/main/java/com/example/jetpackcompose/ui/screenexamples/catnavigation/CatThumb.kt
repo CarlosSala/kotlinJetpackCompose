@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.screenexamples.catnavigation
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,13 +21,13 @@ import com.example.jetpackcompose.model.MediaItem
 
 
 @Composable
-fun CatThumb(mediaItem: MediaItem, modifier: Modifier = Modifier) {
-
+fun CatThumb(
+    mediaItem: MediaItem,
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = modifier
-            .height(dimensionResource(R.dimen.box_height))
+        modifier = modifier.height(dimensionResource(R.dimen.box_height))
     ) {
-
         AsyncImage(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(mediaItem.thumb)

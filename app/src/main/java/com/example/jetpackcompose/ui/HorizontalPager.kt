@@ -1,6 +1,5 @@
 package com.example.jetpackcompose.ui
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -43,7 +42,7 @@ import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenexamples.PullRefreshJC
 import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.SnackBarJC
-import com.example.jetpackcompose.ui.screenexamples.cat.CatNavigation
+import com.example.jetpackcompose.ui.screenexamples.catnavigation.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFireStoreScreen
@@ -64,7 +63,6 @@ import com.example.jetpackcompose.ui.screenexamples.worker3.OneTimeWorkRequestUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun HorizontalPager() {
 
@@ -78,10 +76,19 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 26 && pagerState.currentPage != 16) {
-                    MainTopAppBar {
-                        selectedTheme = it
-                    }
+                if (pagerState.currentPage != 26) {
+                    MainTopAppBar(
+                        { theme ->
+                            selectedTheme = theme
+                        }, {
+                            val currentPage = pagerState.currentPage
+                            if (currentPage > 0) {
+                                coroutineScope.launch {
+                                    pagerState.animateScrollToPage(currentPage - 1)
+                                }
+                            }
+                        }
+                    )
                 }
             },
             floatingActionButton = {

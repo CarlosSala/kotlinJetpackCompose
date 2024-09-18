@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.cat
+package com.example.jetpackcompose.ui.screenexamples.catnavigation
 
 import kotlinx.serialization.Serializable
 
