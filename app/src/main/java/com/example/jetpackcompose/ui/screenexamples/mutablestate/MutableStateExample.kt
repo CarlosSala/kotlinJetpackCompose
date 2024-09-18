@@ -71,6 +71,7 @@ fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
         verticalArrangement = Arrangement.Center
     ) {
         TextField(
+            modifier = Modifier.fillMaxWidth(),
             value = value,
             onValueChange = { textChanging ->
                 onValueChange(textChanging)
@@ -84,17 +85,13 @@ fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
             text = value,
         )
         Button(
-            onClick = {
-                onValueChange("")
-            },
+            onClick = { onValueChange("") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 20.dp),
             enabled = value.isNotEmpty()
         ) {
-            Text(
-                text = "Clear"
-            )
+            Text(text = "Clear")
         }
     }
 }
