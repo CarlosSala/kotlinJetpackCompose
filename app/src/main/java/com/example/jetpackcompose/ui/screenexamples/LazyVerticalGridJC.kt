@@ -48,7 +48,7 @@ class LazyVerticalGridActivity : ComponentActivity() {
 }
 
 
-@Preview
+@Preview(showSystemUi = true)
 @Composable
 fun LazyVerticalGridJC() {
 
