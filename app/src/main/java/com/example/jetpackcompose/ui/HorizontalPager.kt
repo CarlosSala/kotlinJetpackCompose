@@ -1,7 +1,7 @@
 package com.example.jetpackcompose.ui
 
 
-import MyDragAndDrop
+import LazyColumnDragAndDrop
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -39,6 +39,7 @@ import com.example.jetpackcompose.ui.screenexamples.ConstraintJC
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyHorizontalGridJC
 import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
+import com.example.jetpackcompose.ui.screenexamples.LazyVerticalGridDragAndDrop
 import com.example.jetpackcompose.ui.screenexamples.LazyVerticalGridJC
 import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenexamples.PullRefreshJC
@@ -78,7 +79,7 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 27) {
+                if (pagerState.currentPage != 28) {
                     MainTopAppBar(
                         { theme ->
                             selectedTheme = theme
@@ -94,7 +95,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 27 && pagerState.currentPage != 17) {
+                if (pagerState.currentPage != 28 && pagerState.currentPage != 18) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -143,7 +144,8 @@ fun HorizontalPager() {
                     Screens.OneTimeWorkRequest -> OneTimeWorkRequestUI()
                     Screens.StylesScreen -> StylesScreen()
                     Screens.LoginJetpackComposeScreen -> LoginJetpackComposeScreen()
-                    Screens.DragAndDrop -> MyDragAndDrop()
+                    Screens.LazyColumnDragAndDrop -> LazyColumnDragAndDrop()
+                    Screens.LazyVerticalGridDragAndDrop -> LazyVerticalGridDragAndDrop()
                 }
             }
 

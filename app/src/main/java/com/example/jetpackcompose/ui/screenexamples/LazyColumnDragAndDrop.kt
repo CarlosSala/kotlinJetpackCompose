@@ -24,12 +24,15 @@ import org.burnoutcrew.reorderable.reorderable
 
 
 @Composable
-fun MyDragAndDrop() {
+fun LazyColumnDragAndDrop() {
     var items by remember { mutableStateOf(getMedia()) }
     val reorderableState = rememberReorderableLazyListState(
         onMove = { from, to ->
             items = items.toMutableList().apply {
-                add(to.index, removeAt(from.index))
+                add(
+                    index = to.index,
+                    element = removeAt(from.index)
+                )
             }
         }
     )
@@ -41,9 +44,18 @@ fun MyDragAndDrop() {
             .reorderable(reorderableState)
             .detectReorderAfterLongPress(reorderableState)
     ) {
-        itemsIndexed(items, key = { _, item -> item.id }) { _, item ->
-            ReorderableItem(reorderableState, key = item.id) { isDragging ->
-                val elevation by animateDpAsState(if (isDragging) 8.dp else 0.dp, label = "")
+        itemsIndexed(
+            items = items,
+            key = { _, item -> item.id }
+        ) { _, item ->
+            ReorderableItem(
+                reorderableState = reorderableState,
+                key = item.id
+            ) { isDragging ->
+                val elevation by animateDpAsState(
+                    targetValue = if (isDragging) 8.dp else 0.dp,
+                    label = ""
+                )
 
                 MediaListItem(
                     item = item,
