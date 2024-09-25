@@ -70,11 +70,11 @@ fun LazyColumnJC() {
 }
 
 @Composable
-fun MediaListItem(item: MediaItem) {
+fun MediaListItem(item: MediaItem, modifier: Modifier = Modifier) {
 
     Column {
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .height(200.dp)
                 .background(color = Color.DarkGray)

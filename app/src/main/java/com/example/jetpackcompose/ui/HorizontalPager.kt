@@ -1,5 +1,7 @@
 package com.example.jetpackcompose.ui
 
+
+import MyDragAndDrop
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -76,7 +78,7 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 26) {
+                if (pagerState.currentPage != 27) {
                     MainTopAppBar(
                         { theme ->
                             selectedTheme = theme
@@ -92,7 +94,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 26 && pagerState.currentPage != 16) {
+                if (pagerState.currentPage != 27 && pagerState.currentPage != 17) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -141,6 +143,7 @@ fun HorizontalPager() {
                     Screens.OneTimeWorkRequest -> OneTimeWorkRequestUI()
                     Screens.StylesScreen -> StylesScreen()
                     Screens.LoginJetpackComposeScreen -> LoginJetpackComposeScreen()
+                    Screens.DragAndDrop -> MyDragAndDrop()
                 }
             }
 

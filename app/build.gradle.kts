@@ -129,4 +129,5 @@ dependencies {
     // Accompanist
     implementation (libs.accompanist.navigation.animation)
 
+    implementation(libs.reorderable)
 }

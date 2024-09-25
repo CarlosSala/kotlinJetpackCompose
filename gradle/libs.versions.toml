@@ -21,6 +21,7 @@ accompanist = "0.34.0"
 hiltNavigationCompose = "1.2.0"
 compose = "1.7.1"
 coroutines = "1.8.1"
+reorderable = "0.9.6"
 retrofit = "2.11.0"
 okhttp = "4.12.0"
 datastore = "1.1.1"
@@ -72,6 +73,7 @@ compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 
+reorderable = { module = "org.burnoutcrew.composereorderable:reorderable", version.ref = "reorderable" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
