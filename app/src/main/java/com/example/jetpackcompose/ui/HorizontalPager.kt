@@ -45,6 +45,7 @@ import com.example.jetpackcompose.ui.screenexamples.NavDrawerJC
 import com.example.jetpackcompose.ui.screenexamples.PullRefreshJC
 import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.SnackBarJC
+import com.example.jetpackcompose.ui.screenexamples.SouthAmericanQualifiersScreen
 import com.example.jetpackcompose.ui.screenexamples.catnavigation.CatNavigation
 import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
@@ -146,6 +147,7 @@ fun HorizontalPager() {
                     Screens.LoginJetpackComposeScreen -> LoginJetpackComposeScreen()
                     Screens.LazyColumnDragAndDrop -> LazyColumnDragAndDrop()
                     Screens.LazyVerticalGridDragAndDrop -> LazyVerticalGridDragAndDrop()
+                    Screens.SouthAmericanQualifiersScreen -> SouthAmericanQualifiersScreen()
                 }
             }
 
