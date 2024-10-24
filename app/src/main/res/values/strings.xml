@@ -73,4 +73,5 @@
     <string name="success_registration">Successfully registered new user</string>
     <string name="success_login">Successfully logged in</string>
     <string name="error_unknown">An unknown error occurred</string>
+    <string name="hello_world">hello world widget</string>
 </resources>

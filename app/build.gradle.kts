@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.jetpackcompose"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
@@ -130,4 +130,16 @@ dependencies {
     implementation (libs.accompanist.navigation.animation)
 
     implementation(libs.reorderable)
+
+    implementation (libs.androidx.glance.appwidget)  // Dependencia para Widgets con Glance API
+    implementation (libs.androidx.glance.material3)
+
+    // For Glance support
+    implementation(libs.androidx.glance)
+
+    // For AppWidgets support
+    implementation(libs.androidx.glance.appwidget)
+
+    // For Wear-Tiles support
+    implementation(libs.androidx.glance.wear.tiles)
 }
