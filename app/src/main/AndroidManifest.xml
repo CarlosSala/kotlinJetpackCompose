@@ -32,7 +32,7 @@
         <!-- Declarar WorkManager -->
 
         <receiver
-            android:name=".ui.screenexamples.widget.MyAppWidgetReceiver"
+            android:name=".ui.screenexamples.widgetone.FirstWidgetReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
