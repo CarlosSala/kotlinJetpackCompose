@@ -10,12 +10,16 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
+const val uniqueWorkName = "MyPeriodicWork"
+
 class MyPeriodicWorkerViewModel(application: Application) : AndroidViewModel(application) {
 
     private val workManager = WorkManager.getInstance(application)
 
-    private val workRequest = PeriodicWorkRequestBuilder<MyPeriodicWorker>(15, TimeUnit.MINUTES)
-        .build()
+    private val workRequest = PeriodicWorkRequestBuilder<MyPeriodicWorker>(
+        repeatInterval = 15,
+        repeatIntervalTimeUnit = TimeUnit.MINUTES
+    ).build()
 
     private val _isWorkerRunning = MutableStateFlow(false)
     val isWorkerRunning: StateFlow<Boolean> get() = _isWorkerRunning
@@ -26,7 +30,7 @@ class MyPeriodicWorkerViewModel(application: Application) : AndroidViewModel(app
 
     private fun updateWorkerStatus() {
         viewModelScope.launch {
-            val workInfos = workManager.getWorkInfosForUniqueWorkLiveData("MyPeriodicWork").asFlow()
+            val workInfos = workManager.getWorkInfosForUniqueWorkLiveData(uniqueWorkName).asFlow()
             workInfos.collect { infoList ->
                 _isWorkerRunning.value = infoList.any {
                     it.state == WorkInfo.State.ENQUEUED || it.state == WorkInfo.State.RUNNING
@@ -38,7 +42,7 @@ class MyPeriodicWorkerViewModel(application: Application) : AndroidViewModel(app
     fun startWorker() {
         viewModelScope.launch {
             workManager.enqueueUniquePeriodicWork(
-                "MyPeriodicWork",
+                uniqueWorkName,
                 ExistingPeriodicWorkPolicy.REPLACE,
                 workRequest
             )
@@ -48,7 +52,7 @@ class MyPeriodicWorkerViewModel(application: Application) : AndroidViewModel(app
 
     fun stopWorker() {
         viewModelScope.launch {
-            workManager.cancelUniqueWork("MyPeriodicWork")
+            workManager.cancelUniqueWork(uniqueWorkName)
             updateWorkerStatus()
         }
     }

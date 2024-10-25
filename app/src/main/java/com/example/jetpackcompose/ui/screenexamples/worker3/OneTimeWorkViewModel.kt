@@ -34,7 +34,7 @@ class OneTimeWorkViewModel(application: Application) : AndroidViewModel(applicat
             .build()
         // input and output
         val data: Data = Data.Builder()
-            .putInt(KEY_COUNT_VALUE, 125)
+            .putInt(KEY_COUNT_VALUE, 5)
             .build()
 
         val uploadRequest = OneTimeWorkRequestBuilder<OneTimeWorkRequest>()
