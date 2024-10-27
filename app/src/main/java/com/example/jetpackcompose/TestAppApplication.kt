@@ -2,7 +2,7 @@ package com.example.jetpackcompose
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-import scheduleQuoteUpdate
+import com.example.jetpackcompose.ui.screenexamples.widgethree.scheduleQuoteUpdate
 
 @HiltAndroidApp
 class TestAppApplication : Application() {

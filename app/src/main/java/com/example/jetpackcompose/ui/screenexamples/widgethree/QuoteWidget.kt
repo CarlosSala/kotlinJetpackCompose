@@ -1,21 +1,31 @@
-
+package com.example.jetpackcompose.ui.screenexamples.widgethree
 
 import android.content.Context
-import android.util.Log
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.color.ColorProvider
 import androidx.glance.appwidget.GlanceAppWidget
-import androidx.glance.appwidget.GlanceAppWidgetManager
-import androidx.glance.appwidget.GlanceAppWidgetReceiver
+import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
+import androidx.glance.background
+import androidx.glance.layout.Alignment
+import androidx.glance.layout.Box
 import androidx.glance.layout.Column
 import androidx.glance.layout.fillMaxSize
+import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.padding
+import androidx.glance.layout.wrapContentHeight
+import androidx.glance.text.FontFamily
+import androidx.glance.text.FontWeight
 import androidx.glance.text.Text
+import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
 import androidx.work.*
 import java.util.concurrent.TimeUnit
-import kotlin.random.Random
 
 class QuoteWidget : GlanceAppWidget() {
 
@@ -28,42 +38,45 @@ class QuoteWidget : GlanceAppWidget() {
 
         // Display the content of the widget
         provideContent {
-            Column(modifier = GlanceModifier.fillMaxSize()) {
-                Text(
-                    text = quote,
-                    style = TextStyle(fontSize = 16.sp),
-                )
-            }
+            QuoteWidgetScreen(quote)
         }
-    }
-
-    // Generate a random quote
-    private fun getRandomQuote(): String {
-        val quotes = listOf(
-            "El éxito es la suma de pequeños esfuerzos.",
-            "La vida es un 10% lo que me ocurre y un 90% cómo reacciono a ello.",
-            "El fracaso es simplemente la oportunidad de comenzar de nuevo."
-        )
-        return quotes[Random.nextInt(quotes.size)]
     }
 }
 
 
-// Worker for periodic updates
-class QuoteUpdateWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
-
-    override suspend fun doWork(): Result {
-
-        Log.d("QuoteUpdateWorker", "Ejecutando actualización del widget")
-        // Get all instances of the widget
-        val glanceIds = GlanceAppWidgetManager(applicationContext).getGlanceIds(QuoteWidget::class.java)
-
-        // Update each widget
-        glanceIds.forEach { glanceId ->
-            QuoteWidget().update(applicationContext, glanceId)
+@Composable
+fun QuoteWidgetScreen(quote: String) {
+    Box(
+        modifier = GlanceModifier
+            .fillMaxSize()
+            .padding(12.dp)
+            .background(Color.White)
+            .cornerRadius(12.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Column(
+            modifier = GlanceModifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(16.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                modifier = GlanceModifier,
+                text = quote,
+                style = TextStyle(
+                    color = ColorProvider(
+                        day = Color.DarkGray,
+                        night = Color.White
+                    ),
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+            )
         }
-
-        return Result.success()
     }
 }
 
