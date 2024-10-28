@@ -7,11 +7,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
-import androidx.glance.color.ColorProvider
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.cornerRadius
 import androidx.glance.appwidget.provideContent
 import androidx.glance.background
+import androidx.glance.color.ColorProvider
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.Column
@@ -49,16 +49,15 @@ fun QuoteWidgetScreen(quote: String) {
     Box(
         modifier = GlanceModifier
             .fillMaxSize()
-            .padding(12.dp)
-            .background(Color.White)
-            .cornerRadius(12.dp),
+            .cornerRadius(radius = 16.dp)
+            .background(color = Color.White),
         contentAlignment = Alignment.Center
     ) {
         Column(
             modifier = GlanceModifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .padding(16.dp),
+                .padding(all = 16.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
