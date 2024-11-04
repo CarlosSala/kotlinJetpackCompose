@@ -75,20 +75,12 @@ fun getRandomQuote(): Phrase {
             enQuote = "Ask for help if you need it."
         ),
         Phrase(
-            esQuote = "Ansiedad: preocupación por el futuro, hiperactividad; se origina en mí y no en las cosas externas.",
-            enQuote = "Anxiety: concern for the future, hyperactivity; it originates in me, not in external things."
+            esQuote = "Ansiedad, se origina en mí y no en las cosas externas.",
+            enQuote = "Anxiety, it originates in me, not in external things."
         ),
         Phrase(
-            esQuote = "Depresión: preocupación por el pasado que no se puede cambiar, falta de energía.",
-            enQuote = "Depression: concern for the unchangeable past, lack of energy."
-        ),
-        Phrase(
-            esQuote = "Pérdida de tiempo y energía: incluye preocuparse por opiniones ajenas, quejarse de todo, repetir los mismos errores, intentar hacer todo perfecto y temer al fracaso.",
-            enQuote = "Waste of time and energy: includes worrying about others' opinions, complaining about everything, repeating the same mistakes, trying to do everything perfectly, and fearing failure."
-        ),
-        Phrase(
-            esQuote = "¿Por qué enfermamos? Por adoptar problemas ajenos, reprimir emociones, trabajar en algo que no te gusta, guardar rencores, renunciar a nuestros sueños y dejar que el miedo nos paralice. Si me viera desde afuera, ¿qué diría?",
-            enQuote = "Why do we get sick? By adopting others' problems, repressing emotions, working on something you don't like, holding grudges, giving up on our dreams, and letting fear paralyze us. If I saw myself from the outside, what would I say?"
+            esQuote = "Pérdida de tiempo y energía: quejarse de todo, repetir los mismos errores.",
+            enQuote = "Waste of time and energy: complaining about everything, repeating the same mistakes."
         ),
         Phrase(
             esQuote = "¿Cuánto puedes resistir y seguir adelante?",
@@ -103,44 +95,16 @@ fun getRandomQuote(): Phrase {
             enQuote = "If the idea is good, force yourself to do it!"
         ),
         Phrase(
-            esQuote = "Controla tus emociones; generalmente no son razones válidas para hacer cosas, ya que eventualmente desaparecen.",
-            enQuote = "Control your emotions; they are usually not valid reasons for actions, as they eventually disappear."
-        ),
-        Phrase(
             esQuote = "Juzgar a otros es juzgarse a uno mismo.",
             enQuote = "Judging others is judging yourself."
         ),
         Phrase(
-            esQuote = "El fracaso es simplemente la oportunidad de comenzar de nuevo, con más sabiduría.",
-            enQuote = "Failure is simply the opportunity to start again, with more wisdom."
+            esQuote = "El fracaso es la oportunidad de comenzar de nuevo, con más sabiduría.",
+            enQuote = "Failure is the opportunity to start again, with more wisdom."
         ),
         Phrase(
             esQuote = "El único modo de hacer un gran trabajo es amar lo que haces.",
             enQuote = "The only way to do great work is to love what you do."
-        ),
-        Phrase(
-            esQuote = "El optimismo es la fe que conduce al logro; nada puede hacerse sin esperanza y confianza.",
-            enQuote = "Optimism is the faith that leads to achievement; nothing can be done without hope and confidence."
-        ),
-        Phrase(
-            esQuote = "Dios ayuda a quien se ayuda.",
-            enQuote = "God helps those who help themselves."
-        ),
-        Phrase(
-            esQuote = "Supérate a ti mismo, no a los demás.",
-            enQuote = "Surpass yourself, not others."
-        ),
-        Phrase(
-            esQuote = "Los muertos reciben más flores que los vivos porque el arrepentimiento es más fuerte que la gratitud.",
-            enQuote = "The dead receive more flowers than the living because regret is stronger than gratitude."
-        ),
-        Phrase(
-            esQuote = "Cuida tus pensamientos, ni tus peores enemigos pueden hacerte tanto daño como tus pensamientos.",
-            enQuote = "Guard your thoughts, for even your worst enemies can't harm you as much as your own thoughts can."
-        ),
-        Phrase(
-            esQuote = "Cuando sabes lo que quieres (tienes metas), tienes un plan para conseguirlo y haces el trabajo con constancia, nada te detendrá.",
-            enQuote = "When you know what you want (have goals), have a plan to achieve it, and work with consistency, nothing will stop you."
         ),
         Phrase(
             esQuote = "Hazlo (solo/con miedo/triste/motivado/a tu ritmo), pero hazlo.",
@@ -165,6 +129,42 @@ fun getRandomQuote(): Phrase {
         Phrase(
             esQuote = "Nuestra tranquilidad emocional no debe depender de nadie.",
             enQuote = "Our emotional peace should depend on no one."
+        ),
+        Phrase(
+            esQuote = "Dios ayuda a quien se ayuda.",
+            enQuote = "God helps those who help themselves."
+        ),
+        Phrase(
+            esQuote = "Supérate a ti mismo, no a los demás.",
+            enQuote = "Surpass yourself, not others."
+        ),
+        Phrase(
+            esQuote = "Los muertos reciben más flores que los vivos porque el arrepentimiento es más fuerte que la gratitud.",
+            enQuote = "The dead receive more flowers than the living because regret is stronger than gratitude."
+        ),
+        Phrase(
+            esQuote = "Controla tus emociones; generalmente no son razones válidas para hacer cosas, ya que eventualmente desaparecen.",
+            enQuote = "Control your emotions; they are usually not valid reasons for actions, as they eventually disappear."
+        ),
+        Phrase(
+            esQuote = "El optimismo es la fe que conduce al logro; nada puede hacerse sin esperanza y confianza.",
+            enQuote = "Optimism is the faith that leads to achievement; nothing can be done without hope and confidence."
+        ),
+        Phrase(
+            esQuote = "Cuida tus pensamientos, ni tus peores enemigos pueden hacerte tanto daño como tus pensamientos.",
+            enQuote = "Guard your thoughts, for even your worst enemies can't harm you as much as your own thoughts can."
+        ),
+        Phrase(
+            esQuote = "Cuando sabes lo que quieres (tienes metas), tienes un plan para conseguirlo y haces el trabajo con constancia, nada te detendrá.",
+            enQuote = "When you know what you want (have goals), have a plan to achieve it, and work with consistency, nothing will stop you."
+        ),
+        Phrase(
+            esQuote = "La gratitud no solo es la mayor de las virtudes, sino la madre de todas las demás.",
+            enQuote = "Gratitude is not only the greatest of virtues, but the parent of all the others."
+        ),
+        Phrase(
+            esQuote = "Practica la gratitud para con todas las personas y cosas; verás que la vida te devuelve a manos llenas.",
+            enQuote = "Practice gratitude toward all people and things; you’ll see that life gives back to you abundantly."
         )
     )
     return quotes[Random.nextInt(quotes.size)]
