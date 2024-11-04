@@ -15,8 +15,10 @@ import androidx.glance.color.ColorProvider
 import androidx.glance.layout.Alignment
 import androidx.glance.layout.Box
 import androidx.glance.layout.Column
+import androidx.glance.layout.Spacer
 import androidx.glance.layout.fillMaxSize
 import androidx.glance.layout.fillMaxWidth
+import androidx.glance.layout.height
 import androidx.glance.layout.padding
 import androidx.glance.layout.wrapContentHeight
 import androidx.glance.text.FontFamily
@@ -45,7 +47,7 @@ class QuoteWidget : GlanceAppWidget() {
 
 
 @Composable
-fun QuoteWidgetScreen(quote: String) {
+fun QuoteWidgetScreen(quote: Phrase) {
     Box(
         modifier = GlanceModifier
             .fillMaxSize()
@@ -63,13 +65,28 @@ fun QuoteWidgetScreen(quote: String) {
         ) {
             Text(
                 modifier = GlanceModifier,
-                text = quote,
+                text = quote.esQuote,
                 style = TextStyle(
                     color = ColorProvider(
                         day = Color.DarkGray,
                         night = Color.White
                     ),
                     fontSize = 18.sp,
+                    fontFamily = FontFamily.Serif,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ),
+            )
+            Spacer(modifier = GlanceModifier.height(8.dp))
+            Text(
+                modifier = GlanceModifier,
+                text = quote.enQuote,
+                style = TextStyle(
+                    color = ColorProvider(
+                        day = Color.DarkGray,
+                        night = Color.White
+                    ),
+                    fontSize = 12.sp,
                     fontFamily = FontFamily.Serif,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
