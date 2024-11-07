@@ -52,7 +52,7 @@
                 android:resource="@xml/counter_widget_info" />
         </receiver>
         <receiver
-            android:name=".ui.screenexamples.widgethree.QuoteWidgetReceiver"
+            android:name=".ui.screenexamples.widgetthree.QuoteWidgetReceiver"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.widgethree
+package com.example.jetpackcompose.ui.screenexamples.widgetthree
 
 import android.content.Context
 import android.util.Log
@@ -12,7 +12,8 @@ class QuoteUpdateWorker(context: Context, params: WorkerParameters) :
 
     override suspend fun doWork(): Result {
 
-        Log.d("QuoteUpdateWorker", "Ejecutando actualización del widget")
+        Log.d(KEY_LOG, "Updating quote widget")
+
         // Get all instances of the widget
         val glanceIds =
             GlanceAppWidgetManager(applicationContext).getGlanceIds(QuoteWidget::class.java)

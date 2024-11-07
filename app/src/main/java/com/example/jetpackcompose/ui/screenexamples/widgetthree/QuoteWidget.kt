@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.widgethree
+package com.example.jetpackcompose.ui.screenexamples.widgetthree
 
 import android.content.Context
 import android.util.Log
@@ -38,8 +38,11 @@ import androidx.glance.text.TextStyle
 import androidx.work.*
 import java.util.concurrent.TimeUnit
 
+private const val KEY_QUOTE_ES = "quoteEs"
+private const val KEY_QUOTE_EN = "quoteEn"
+const val KEY_LOG = "QuoteWidgetLog"
+
 var myConfig = 0
-// var quote = Phrase("my phrase in spanish", "my phrase in english")
 
 class QuoteWidget : GlanceAppWidget() {
 
@@ -52,38 +55,29 @@ class QuoteWidget : GlanceAppWidget() {
 
         // Display the content of the widget
         provideContent {
-            QuoteWidgetScreen(quote)
+            QuoteWidgetScreen(quote = quote)
         }
     }
 }
 
-
 @Composable
 fun QuoteWidgetScreen(quote: Phrase) {
 
-    // Get a random quote for display
-    /*    if (myConfig == 0) {
-            quote = getRandomQuote()
-        } else {
-            val preferences = currentState<Preferences>()
-            quote.esQuote = (preferences[stringPreferencesKey("quote2")] ?: getRandomQuote()).toString()
-            quote.enQuote = quote.esQuote
-            myConfig = 0
-        }*/
     if (myConfig == 1) {
         val preferences = currentState<Preferences>()
-        quote.esQuote =
-            ((preferences[stringPreferencesKey("quoteEs")] ?: getRandomQuote().esQuote).toString())
-        quote.enQuote =
-            ((preferences[stringPreferencesKey("quoteEn")] ?: getRandomQuote().enQuote).toString())
+        quote.apply {
+            quoteEs = preferences[stringPreferencesKey(KEY_QUOTE_ES)] ?: getRandomQuote().quoteEs
+            quoteEn = preferences[stringPreferencesKey(KEY_QUOTE_EN)] ?: getRandomQuote().quoteEn
+        }
         myConfig = 0
     }
+
     Box(
         modifier = GlanceModifier
             .fillMaxSize()
             .cornerRadius(radius = 16.dp)
             .background(color = Color.White)
-            .clickable(onClick = actionRunCallback(UpdateQuoteAction2::class.java)),
+            .clickable(onClick = actionRunCallback(ChangeQuoteAction::class.java)),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -96,7 +90,7 @@ fun QuoteWidgetScreen(quote: Phrase) {
         ) {
             Text(
                 modifier = GlanceModifier,
-                text = quote.esQuote,
+                text = quote.quoteEs,
                 style = TextStyle(
                     color = ColorProvider(
                         day = Color.DarkGray,
@@ -111,7 +105,7 @@ fun QuoteWidgetScreen(quote: Phrase) {
             Spacer(modifier = GlanceModifier.height(8.dp))
             Text(
                 modifier = GlanceModifier,
-                text = quote.enQuote,
+                text = quote.quoteEn,
                 style = TextStyle(
                     color = ColorProvider(
                         day = Color.DarkGray,
@@ -129,7 +123,7 @@ fun QuoteWidgetScreen(quote: Phrase) {
 
 // Schedule the worker
 fun scheduleQuoteUpdate(context: Context) {
-    val workRequest = PeriodicWorkRequestBuilder<QuoteUpdateWorker>(1, TimeUnit.MINUTES)
+    val workRequest = PeriodicWorkRequestBuilder<QuoteUpdateWorker>(15, TimeUnit.MINUTES)
         .setConstraints(Constraints.NONE)
         .build()
 
@@ -140,25 +134,24 @@ fun scheduleQuoteUpdate(context: Context) {
     )
 }
 
-class UpdateQuoteAction2 : ActionCallback {
+class ChangeQuoteAction : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
         parameters: ActionParameters
     ) {
-        Log.d("QuoteUpdateWorker", "onClick")
+        Log.d(KEY_LOG, "onClick")
 
         myConfig = 1
         val newQuote = getRandomQuote()
 
         updateAppWidgetState(context, glanceId) { prefs ->
-            prefs[stringPreferencesKey("quoteEs")] = newQuote.esQuote
-            prefs[stringPreferencesKey("quoteEn")] = newQuote.enQuote
+            prefs[stringPreferencesKey(KEY_QUOTE_ES)] = newQuote.quoteEs
+            prefs[stringPreferencesKey(KEY_QUOTE_EN)] = newQuote.quoteEn
         }
         QuoteWidget().update(
             context = context,
             id = glanceId
         )
     }
-
 }

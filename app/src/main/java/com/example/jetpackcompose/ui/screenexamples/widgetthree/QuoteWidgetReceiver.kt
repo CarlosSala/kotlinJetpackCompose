@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.widgethree
+package com.example.jetpackcompose.ui.screenexamples.widgetthree
 
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.GlanceAppWidgetReceiver
