@@ -18,7 +18,7 @@ import com.example.jetpackcompose.ui.screenexamples.login.presentation.login.Log
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.login.LoginViewModel
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.registration.RegisterViewModel
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.registration.RegistrationScreen
-import dev.leonardom.loginjetpackcompose.ui.theme.LoginJetpackComposeTheme
+import com.example.jetpackcompose.ui.screenexamples.login.theme.LoginJetpackComposeTheme
 
 
 @Composable

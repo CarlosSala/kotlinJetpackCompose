@@ -35,8 +35,8 @@ import com.example.jetpackcompose.ui.screenexamples.login.presentation.component
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.RoundedButton
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.SocialMediaButton
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TransparentTextField
-import dev.leonardom.loginjetpackcompose.ui.theme.FACEBOOKCOLOR
-import dev.leonardom.loginjetpackcompose.ui.theme.GMAILCOLOR
+import com.example.jetpackcompose.ui.screenexamples.login.theme.FACEBOOKCOLOR
+import com.example.jetpackcompose.ui.screenexamples.login.theme.GMAILCOLOR
 
 @Composable
 fun RegistrationScreen(

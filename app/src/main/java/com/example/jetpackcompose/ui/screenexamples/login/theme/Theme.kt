@@ -1,42 +1,46 @@
-package dev.leonardom.loginjetpackcompose.ui.theme
+package com.example.jetpackcompose.ui.screenexamples.login.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import com.example.jetpackcompose.ui.screenexamples.login.theme.Typography
 
-private val DarkColorPalette = darkColors(
-    primary =   BLUE900,
-    primaryVariant = BLUE950,
-    secondary = CYAN900,
-    secondaryVariant = CYAN800,
-    background = BLUEGREY900,
-    surface = BLUEGREY800,
-    error = RED800,
+private val DarkColorScheme = darkColorScheme(
+    primary = BLUE900,
     onPrimary = Color.White,
+    primaryContainer = BLUE950,
+    onPrimaryContainer = Color.White,
+    secondary = CYAN900,
     onSecondary = Color.White,
+    secondaryContainer = CYAN800,
+    onSecondaryContainer = Color.White,
+    background = BLUEGREY900,
     onBackground = Color.White,
+    surface = BLUEGREY800,
     onSurface = Color.White,
-    onError = Color.White
+    error = RED800,
+    onError = Color.White,
 )
 
-private val LightColorPalette = lightColors(
-    primary =   Blue500,
-    primaryVariant = BLUE800,
-    secondary = CYAN500,
-    secondaryVariant = CYAN700,
-    background = LIGHTBLUE50,
-    surface = Color.White,
-    error = RED600,
+private val LightColorScheme = lightColorScheme(
+    primary = Blue500,
     onPrimary = Color.Black,
+    primaryContainer = BLUE800,
+    onPrimaryContainer = Color.Black,
+    secondary = CYAN500,
     onSecondary = Color.Black,
+    secondaryContainer = CYAN700,
+    onSecondaryContainer = Color.Black,
+    background = LIGHTBLUE50,
     onBackground = Color.Black,
+    surface = Color.White,
     onSurface = Color.Black,
-    onError = Color.Black
+    error = RED600,
+    onError = Color.Black,
 )
+
 
 @Composable
 fun LoginJetpackComposeTheme(
@@ -44,13 +48,13 @@ fun LoginJetpackComposeTheme(
     content: @Composable() () -> Unit
 ) {
     val colors = if (darkTheme) {
-        DarkColorPalette
+        DarkColorScheme
     } else {
-        LightColorPalette
+        LightColorScheme
     }
 
     MaterialTheme(
-        colors = colors,
+        colorScheme = colors,
         typography = Typography,
         shapes = Shapes,
         content = content

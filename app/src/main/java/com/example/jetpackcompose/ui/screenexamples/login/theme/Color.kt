@@ -1,4 +1,4 @@
-package dev.leonardom.loginjetpackcompose.ui.theme
+package com.example.jetpackcompose.ui.screenexamples.login.theme
 
 import androidx.compose.ui.graphics.Color
 
