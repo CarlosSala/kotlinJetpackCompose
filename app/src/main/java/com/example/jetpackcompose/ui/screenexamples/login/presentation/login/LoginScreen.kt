@@ -2,9 +2,10 @@ package com.example.jetpackcompose.ui.screenexamples.login.presentation.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -17,11 +18,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
@@ -37,14 +38,26 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import com.example.jetpackcompose.R
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.EventDialog
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.RoundedButton
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TransparentTextField
-import com.example.jetpackcompose.R
 
+@Preview
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(
+        state = LoginState(),
+        onLogin = { _, _ -> },
+        onNavigateToRegister = {},
+        onDismissDialog = {}
+    )
+}
 
 @Composable
 fun LoginScreen(
@@ -53,29 +66,28 @@ fun LoginScreen(
     onNavigateToRegister: () -> Unit,
     onDismissDialog: () -> Unit
 ) {
-
-    val emailValue = rememberSaveable{ mutableStateOf("") }
-    val passwordValue = rememberSaveable{ mutableStateOf("") }
+    val emailValue = rememberSaveable { mutableStateOf("") }
+    val passwordValue = rememberSaveable { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
     val focusManager = LocalFocusManager.current
 
-    Box(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-    ){
+    ) {
         Image(
             painter = painterResource(id = R.drawable.logo),
             contentDescription = "Login Image",
-            contentScale = ContentScale.Inside
+            contentScale = ContentScale.Inside,
+            alignment = Alignment.TopCenter
         )
 
         Box(
             modifier = Modifier.fillMaxSize(),
-            contentAlignment = Alignment.BottomCenter
-        ){
-            ConstraintLayout {
+        ) {
 
+            ConstraintLayout {
                 val (surface, fab) = createRefs()
 
                 Surface(
@@ -90,34 +102,37 @@ fun LoginScreen(
                         topStartPercent = 8,
                         topEndPercent = 8
                     )
-                ){
+                ) {
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp),
+                            .padding(
+                                start = 16.dp,
+                                top = 0.dp,
+                                end = 16.dp,
+                                bottom = 16.dp
+                            ),
                         verticalArrangement = Arrangement.SpaceEvenly
-                    ){
+                    ) {
                         Text(
                             text = "Welcome Back!",
                             style = MaterialTheme.typography.bodySmall.copy(
                                 fontWeight = FontWeight.Medium
                             )
                         )
-
                         Text(
                             text = "Login to your Account",
                             style = MaterialTheme.typography.bodyMedium.copy(
                                 color = MaterialTheme.colorScheme.primary
                             )
                         )
-
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(horizontal = 16.dp),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.spacedBy(8.dp)
-                        ){
+                        ) {
                             TransparentTextField(
                                 textFieldValue = emailValue,
                                 textLabel = "Email",
@@ -137,7 +152,6 @@ fun LoginScreen(
                                 keyboardActions = KeyboardActions(
                                     onDone = {
                                         focusManager.clearFocus()
-
                                         onLogin(emailValue.value, passwordValue.value)
                                     }
                                 ),
@@ -149,7 +163,7 @@ fun LoginScreen(
                                         }
                                     ) {
                                         Icon(
-                                            imageVector = if(passwordVisibility) {
+                                            imageVector = if (passwordVisibility) {
                                                 Icons.Default.Visibility
                                             } else {
                                                 Icons.Default.VisibilityOff
@@ -158,7 +172,7 @@ fun LoginScreen(
                                         )
                                     }
                                 },
-                                visualTransformation = if(passwordVisibility) {
+                                visualTransformation = if (passwordVisibility) {
                                     VisualTransformation.None
                                 } else {
                                     PasswordVisualTransformation()
@@ -185,22 +199,26 @@ fun LoginScreen(
                                     onLogin(emailValue.value, passwordValue.value)
                                 }
                             )
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(4.dp) // Espacio entre los textos
+                            ) {
+                                Text(
+                                    text = "Do not have an Account?",
+                                    style = MaterialTheme.typography.bodyMedium.copy(
+                                        color = MaterialTheme.colorScheme.onBackground
+                                    )
+                                )
 
-                            ClickableText(
-                                text = buildAnnotatedString {
-                                    append("Do not have an Account?")
-
-                                    withStyle(
-                                        style = SpanStyle(
-                                            color = MaterialTheme.colorScheme.primary,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    ){
-                                        append("Sign up")
-                                    }
-                                }
-                            ){
-                                onNavigateToRegister()
+                                Text(
+                                    text = "Sign up",
+                                    modifier = Modifier.clickable { onNavigateToRegister() },
+                                    style = MaterialTheme.typography.bodyMedium.copy(
+                                        color = MaterialTheme.colorScheme.primary,
+                                        fontWeight = FontWeight.Bold,
+                                        textDecoration = TextDecoration.Underline
+                                    ),
+                                    textAlign = TextAlign.Center
+                                )
                             }
                         }
                     }
@@ -227,26 +245,12 @@ fun LoginScreen(
                 }
             }
         }
+    }
 
-        if(state.errorMessage != null){
-            EventDialog(
-                errorMessage = state.errorMessage,
-                onDismiss = onDismissDialog
-            )
-        }
+    if (state.errorMessage != null) {
+        EventDialog(
+            errorMessage = state.errorMessage,
+            onDismiss = onDismissDialog
+        )
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
