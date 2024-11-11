@@ -23,7 +23,6 @@ fun HomeScreen(
             "Home Screen",
             style = MaterialTheme.typography.bodyMedium
         )
-
         Text("Email: $email, password: $password")
     }
 }

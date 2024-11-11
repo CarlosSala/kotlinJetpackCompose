@@ -46,7 +46,7 @@ fun EventDialog(
                     contentColor = MaterialTheme.colorScheme.primary
                 )
             ) {
-                Text(text = "Aceptar", style = MaterialTheme.typography.labelLarge)
+                Text(text = "Accept", style = MaterialTheme.typography.labelLarge)
             }
         },
         modifier = modifier.padding(16.dp)

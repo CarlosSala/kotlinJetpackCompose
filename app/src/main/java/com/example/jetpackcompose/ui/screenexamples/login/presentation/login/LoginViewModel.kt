@@ -32,7 +32,10 @@ class LoginViewModel: ViewModel() {
 
             delay(3000)
 
-            state.value = state.value.copy(email = email, password = password)
+            state.value = state.value.copy(
+                email = email,
+                password = password
+            )
             state.value = state.value.copy(displayProgressBar = false)
             state.value = state.value.copy(successLogin = true)
         }
