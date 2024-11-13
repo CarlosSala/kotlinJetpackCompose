@@ -2,15 +2,13 @@ package com.example.jetpackcompose.ui.screenexamples.login.presentation.registra
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -21,22 +19,33 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.EventDialog
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.RoundedButton
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.SocialMediaButton
+import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TextLinked
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TransparentTextField
 import com.example.jetpackcompose.ui.screenexamples.login.theme.FACEBOOKCOLOR
 import com.example.jetpackcompose.ui.screenexamples.login.theme.GMAILCOLOR
+
+@Preview(showSystemUi = true)
+@Composable
+fun RegistrationScreenPreview() {
+
+    RegistrationScreen(
+        state = RegisterState(),
+        onRegister = { _, _, _, _, _ -> },
+        onBack = {},
+        onDismissDialog = {}
+    )
+}
 
 @Composable
 fun RegistrationScreen(
@@ -58,20 +67,19 @@ fun RegistrationScreen(
     val focusManager = LocalFocusManager.current
 
     Box(
-      modifier = Modifier.fillMaxWidth()
-    ){
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp)
-            .verticalScroll(rememberScrollState())
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp)
+                // for small screens
+                .verticalScroll(rememberScrollState())
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically
-            ){
-                IconButton(
-                    onClick = {
-                        onBack()
-                    }
+            ) {
+                IconButton(onClick = { onBack() }
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -79,7 +87,6 @@ fun RegistrationScreen(
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-
                 Text(
                     text = "Create An Account",
                     style = MaterialTheme.typography.bodySmall.copy(
@@ -88,9 +95,10 @@ fun RegistrationScreen(
                 )
             }
 
-            Column(modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp),
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
@@ -100,12 +108,13 @@ fun RegistrationScreen(
                     keyboardType = KeyboardType.Text,
                     keyboardActions = KeyboardActions(
                         onNext = {
+                            // move focus to next textField
                             focusManager.moveFocus(FocusDirection.Down)
                         }
                     ),
+                    // call to onNext
                     imeAction = ImeAction.Next
                 )
-
                 TransparentTextField(
                     textFieldValue = emailValue,
                     textLabel = "Email",
@@ -115,7 +124,6 @@ fun RegistrationScreen(
                     ),
                     imeAction = ImeAction.Next
                 )
-
                 TransparentTextField(
                     textFieldValue = phoneValue,
                     textLabel = "Phone Number",
@@ -126,7 +134,6 @@ fun RegistrationScreen(
                     ),
                     imeAction = ImeAction.Next
                 )
-
                 TransparentTextField(
                     textFieldValue = passwordValue,
                     textLabel = "Password",
@@ -200,40 +207,28 @@ fun RegistrationScreen(
                         )
                     }
                 )
-
-                ClickableText(
-                    text = buildAnnotatedString {
-                        append("Already have an account?")
-
-                        withStyle(
-                            style = SpanStyle(
-                                color = MaterialTheme.colorScheme.primary,
-                                fontWeight = FontWeight.Bold
-                            )
-                        ){
-                            append("Log in")
-                        }
-                    },
-                    onClick = {
-                        onBack()
-                    }
+                TextLinked(
+                    text = "Already have an account?",
+                    textLinked = "Log in",
+                    onNavigate = onBack
                 )
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(2.dp)
+            ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center
-                ){
-                    Divider(
+                ) {
+                    HorizontalDivider(
                         modifier = Modifier.width(24.dp),
                         thickness = 1.dp,
                         color = Color.Gray
                     )
-
                     Text(
                         modifier = Modifier.padding(8.dp),
                         text = "OR",
@@ -241,8 +236,7 @@ fun RegistrationScreen(
                             fontWeight = FontWeight.Black
                         )
                     )
-
-                    Divider(
+                    HorizontalDivider(
                         modifier = Modifier.width(24.dp),
                         thickness = 1.dp,
                         color = Color.Gray
@@ -265,10 +259,10 @@ fun RegistrationScreen(
                 modifier = Modifier.fillMaxWidth(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
-            ){
+            ) {
                 SocialMediaButton(
                     text = "Login with Facebook",
-                    onClick = {  },
+                    onClick = { },
                     socialMediaColor = FACEBOOKCOLOR
                 )
 
@@ -281,8 +275,9 @@ fun RegistrationScreen(
 
         }
 
-        if(state.errorMessage != null) {
+        if (state.errorMessage != null) {
             EventDialog(errorMessage = state.errorMessage, onDismiss = onDismissDialog)
         }
     }
 }
+

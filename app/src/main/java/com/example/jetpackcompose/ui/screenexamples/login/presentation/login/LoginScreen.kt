@@ -2,7 +2,6 @@ package com.example.jetpackcompose.ui.screenexamples.login.presentation.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,7 +27,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -38,13 +36,13 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.EventDialog
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.RoundedButton
+import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TextLinked
 import com.example.jetpackcompose.ui.screenexamples.login.presentation.components.TransparentTextField
 
 @Preview
@@ -200,27 +198,11 @@ fun LoginScreen(
                                     onLogin(emailValue.value, passwordValue.value)
                                 }
                             )
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(4.dp)
-                            ) {
-                                Text(
-                                    text = "Do not have an Account?",
-                                    style = MaterialTheme.typography.bodyMedium.copy(
-                                        color = MaterialTheme.colorScheme.onBackground
-                                    )
-                                )
-
-                                Text(
-                                    text = "Sign up",
-                                    modifier = Modifier.clickable { onNavigateToRegister() },
-                                    style = MaterialTheme.typography.bodyMedium.copy(
-                                        color = MaterialTheme.colorScheme.primary,
-                                        fontWeight = FontWeight.Bold,
-                                        textDecoration = TextDecoration.Underline
-                                    ),
-                                    textAlign = TextAlign.Center
-                                )
-                            }
+                            TextLinked(
+                                text = "Do not have an Account?",
+                                textLinked = "Sign up",
+                                onNavigate = onNavigateToRegister
+                            )
                         }
                     }
                 }
