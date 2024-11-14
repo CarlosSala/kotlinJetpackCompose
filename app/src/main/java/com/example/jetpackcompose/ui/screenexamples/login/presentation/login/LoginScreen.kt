@@ -201,7 +201,7 @@ fun LoginScreen(
                             TextLinked(
                                 text = "Do not have an Account?",
                                 textLinked = "Sign up",
-                                onNavigate = onNavigateToRegister
+                                onNavigate = { onNavigateToRegister() }
                             )
                         }
                     }
@@ -216,7 +216,7 @@ fun LoginScreen(
                         },
                     containerColor = MaterialTheme.colorScheme.primary,
                     onClick = {
-                        onNavigateToRegister()
+                        onLogin(emailValue.value, passwordValue.value)
                     }
                 ) {
                     Icon(

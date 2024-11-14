@@ -34,7 +34,7 @@ fun LoginJetpackComposeScreen() {
             ) {
                 addLogin(navController)
                 addRegister(navController)
-                addHome()
+                addHome(navController)
             }
         }
     }
@@ -142,7 +142,7 @@ fun NavGraphBuilder.addRegister(
     }
 }
 
-fun NavGraphBuilder.addHome() {
+fun NavGraphBuilder.addHome(navController: NavHostController) {
     composable(
         route = Destinations.Home.route + "/{email}" + "/{password}",
         arguments = Destinations.Home.arguments
@@ -151,6 +151,10 @@ fun NavGraphBuilder.addHome() {
         val email = backStackEntry.arguments?.getString("email") ?: ""
         val password = backStackEntry.arguments?.getString("password") ?: ""
 
-        HomeScreen(email, password)
+        HomeScreen(
+            email = email,
+            password = password,
+            onBack = { navController.navigate(Destinations.Login.route) }
+        )
     }
 }

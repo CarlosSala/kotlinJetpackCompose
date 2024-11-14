@@ -34,10 +34,10 @@ class LoginViewModel: ViewModel() {
 
             state.value = state.value.copy(
                 email = email,
-                password = password
+                password = password,
+                displayProgressBar = false,
+                successLogin = true
             )
-            state.value = state.value.copy(displayProgressBar = false)
-            state.value = state.value.copy(successLogin = true)
         }
     }
 
