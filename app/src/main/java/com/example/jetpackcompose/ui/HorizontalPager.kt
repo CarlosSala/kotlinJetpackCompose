@@ -36,6 +36,7 @@ import com.example.jetpackcompose.ui.screenexamples.BoxJC
 import com.example.jetpackcompose.ui.screenexamples.ButtonTextJC
 import com.example.jetpackcompose.ui.screenexamples.ColumnJC
 import com.example.jetpackcompose.ui.screenexamples.ConstraintJC
+import com.example.jetpackcompose.ui.screenexamples.ConstraintJC2
 import com.example.jetpackcompose.ui.screenexamples.LazyColumnJC
 import com.example.jetpackcompose.ui.screenexamples.LazyHorizontalGridJC
 import com.example.jetpackcompose.ui.screenexamples.LazyRowJC
@@ -80,7 +81,7 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 28) {
+                if (pagerState.currentPage != 29) {
                     MainTopAppBar(
                         { theme ->
                             selectedTheme = theme
@@ -96,7 +97,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 28 && pagerState.currentPage != 18) {
+                if (pagerState.currentPage != 29 && pagerState.currentPage != 19) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -112,13 +113,15 @@ fun HorizontalPager() {
                 // count = 14, // number of screens
                 state = pagerState,
                 modifier = Modifier.padding(paddingValues),
-                // beyondViewportPageCount = 0 // cuantas paginas pre cargar
+                // How many pages pre load
+                // beyondViewportPageCount = 0
             ) { page ->
                 when (Screens.entries[page]) {
 
                     Screens.PagingScreen -> PagingScreen()
                     Screens.BoxJC -> BoxJC()
                     Screens.ConstraintJC -> ConstraintJC()
+                    Screens.ConstraintJC2 -> ConstraintJC2()
                     Screens.ButtonTextJC -> ButtonTextJC()
                     Screens.ColumnJC -> ColumnJC()
                     Screens.RowJC -> RowJC()

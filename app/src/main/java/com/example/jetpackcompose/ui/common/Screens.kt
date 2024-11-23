@@ -6,6 +6,7 @@ enum class Screens(val displayName: String) {
     // SplashScreen("Splash Screen"),
     BoxJC("Box JC"),
     ConstraintJC("Constraint JC"),
+    ConstraintJC2("Constraint JC2"),
     ButtonTextJC("Button Text JC"),
     ColumnJC("Column JC"),
     RowJC("Row JC"),
