@@ -62,11 +62,9 @@ fun LazyColumnJC() {
         verticalArrangement = Arrangement.spacedBy(2.dp)
     ) {
         items(getMedia()) { item ->
-
             MediaListItem(item)
         }
     }
-
 }
 
 @Composable
