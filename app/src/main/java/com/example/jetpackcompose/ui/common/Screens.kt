@@ -18,7 +18,7 @@ enum class Screens(val displayName: String) {
     LazyHorizontalGridJC("Lazy Horizontal Grid JC"),
     LazyColumnDragAndDrop("Lazy Column Drag and Drop"),
     LazyVerticalGridDragAndDrop("Vertical Grid Drag and Drop"),
-    IncrementNumber("Increment Number"),
+    CounterScreen("Counter Screen"),
     ViewMutableStateExample("View Mutable State Example"),
     CatNavigation("Cat Navigation"),
     NavDrawerJC("Nav Drawer JC"),

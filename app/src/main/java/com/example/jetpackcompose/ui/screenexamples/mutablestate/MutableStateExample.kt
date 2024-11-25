@@ -28,12 +28,11 @@ class MutableStateActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CustomComposeTheme {
-
-                /*  val (value, onValueChange) = rememberSaveable { mutableStateOf("") }
-                           StateSample(
-                               value = value,
-                               onValueChange = onValueChange
-                           )*/
+                /*   val (value, onValueChange) = rememberSaveable { mutableStateOf("") }
+                   MutableStateExample(
+                       value = value,
+                       onValueChange = onValueChange
+                   )*/
             }
         }
     }
@@ -46,23 +45,22 @@ class MutableStateActivity : ComponentActivity() {
     heightDp = 400
 )
 @Composable
-fun ViewMutableStateExample() {
-
-    // mutable variable
+fun MutableStateExamplePreview() {
+    // variable persistent to recompositions
     // var text by remember { mutableStateOf("") }
 
-    // mutable and persistent variable
+    // variable persistent to recompositions and rotate screen
     var text by rememberSaveable { mutableStateOf("") }
 
-    MutableStateExample(
-        value = text
-    ) {
+    MutableStateExample(text = text) {
         text = it
     }
 }
 
+// function Stateless, because the state is controlled outside the function
+// it's recommended
 @Composable
-fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
+fun MutableStateExample(text: String, onValueChange: (String) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -72,7 +70,7 @@ fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
     ) {
         TextField(
             modifier = Modifier.fillMaxWidth(),
-            value = value,
+            value = text,
             onValueChange = { textChanging ->
                 onValueChange(textChanging)
             },
@@ -82,14 +80,14 @@ fun MutableStateExample(value: String, onValueChange: (String) -> Unit) {
                 .fillMaxWidth()
                 .background(Color.Cyan)
                 .padding(8.dp),
-            text = value,
+            text = text,
         )
         Button(
             onClick = { onValueChange("") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(vertical = 20.dp),
-            enabled = value.isNotEmpty()
+            enabled = text.isNotEmpty()
         ) {
             Text(text = "Clear")
         }

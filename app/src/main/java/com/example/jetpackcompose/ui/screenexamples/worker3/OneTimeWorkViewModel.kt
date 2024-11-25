@@ -45,7 +45,7 @@ class OneTimeWorkViewModel(application: Application) : AndroidViewModel(applicat
 
         workManager.getWorkInfoByIdFlow(uploadRequest.id)
             .collect {
-                when (it.state) {
+                when (it?.state) {
                     WorkInfo.State.SUCCEEDED -> {
                         _uploadState.value = UploadState.Success
                         if (it.state.isFinished) _state.value = it.outputData
@@ -75,6 +75,8 @@ class OneTimeWorkViewModel(application: Application) : AndroidViewModel(applicat
                         _uploadState.value = UploadState.Idle
                         _state.value = it.outputData
                     }
+
+                    null -> TODO()
                 }
             }
     }

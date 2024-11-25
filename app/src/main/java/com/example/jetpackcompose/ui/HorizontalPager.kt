@@ -48,11 +48,11 @@ import com.example.jetpackcompose.ui.screenexamples.RowJC
 import com.example.jetpackcompose.ui.screenexamples.SnackBarJC
 import com.example.jetpackcompose.ui.screenexamples.SouthAmericanQualifiersScreen
 import com.example.jetpackcompose.ui.screenexamples.catnavigation.CatNavigation
-import com.example.jetpackcompose.ui.screenexamples.counterscreen.IncrementNumber
+import com.example.jetpackcompose.ui.screenexamples.counterscreen.CounterScreen
 import com.example.jetpackcompose.ui.screenexamples.firebasestorage.FirebaseStorageScreen
 import com.example.jetpackcompose.ui.screenexamples.firestorescreen.CrudFireStoreScreen
 import com.example.jetpackcompose.ui.screenexamples.login.LoginJetpackComposeScreen
-import com.example.jetpackcompose.ui.screenexamples.mutablestate.ViewMutableStateExample
+import com.example.jetpackcompose.ui.screenexamples.mutablestate.MutableStateExamplePreview
 import com.example.jetpackcompose.ui.screenexamples.paging.presentation.PagingScreen
 import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
@@ -131,8 +131,8 @@ fun HorizontalPager() {
                     Screens.LazyRowJC -> LazyRowJC()
                     Screens.LazyVerticalGridJC -> LazyVerticalGridJC()
                     Screens.LazyHorizontalGridJC -> LazyHorizontalGridJC()
-                    Screens.IncrementNumber -> IncrementNumber()
-                    Screens.ViewMutableStateExample -> ViewMutableStateExample()
+                    Screens.CounterScreen -> CounterScreen()
+                    Screens.ViewMutableStateExample -> MutableStateExamplePreview()
                     Screens.CatNavigation -> CatNavigation()
                     Screens.NavDrawerJC -> NavDrawerJC()
                     Screens.NoteScreen -> NoteScreen()
