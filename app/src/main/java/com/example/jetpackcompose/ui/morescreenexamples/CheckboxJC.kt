@@ -15,10 +15,14 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+
+@Preview(showBackground = true)
 @Composable
-fun CheckboxM3() {
+fun CheckboxJC() {
+
     val items = listOf("Pickles", "Tomato", "Lettuce", "Cheese")
     val checkboxStates = remember { mutableStateMapOf<String, Boolean>().withDefault { false } }
 
@@ -36,7 +40,8 @@ fun CheckboxM3() {
                         onValueChange = { checkboxStates[item] = it }
                     )
                     .padding(horizontal = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
             ) {
                 Checkbox(
                     checked = checkboxStates.getValue(item),

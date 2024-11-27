@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.morescreenexamples
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
@@ -23,13 +24,28 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
 @Composable
-fun AssistChipM3() {
+fun ChipsJC(modifier: Modifier = Modifier) {
+    Column {
+        AssistChipJC()
+        ElevatedAssistChipJC()
+        FilterChipJC()
+        ElevatedFilterChipJC()
+        SuggestionChipJC()
+        ElevatedSuggestionChipJC()
+        InputChipJC()
+    }
+}
+
+@Composable
+fun AssistChipJC() {
     AssistChip(
         onClick = { /* do something! */ },
-        label = { Text(text = "Assist Chip")},
+        label = { Text(text = "Assist Chip") },
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Settings,
@@ -40,12 +56,11 @@ fun AssistChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedAssistChipM3() {
+fun ElevatedAssistChipJC() {
     ElevatedAssistChip(
         onClick = { /* do something! */ },
-        label = { Text(text = "Assist Chip")},
+        label = { Text(text = "Assist Chip") },
         leadingIcon = {
             Icon(
                 imageVector = Icons.Filled.Settings,
@@ -56,16 +71,15 @@ fun ElevatedAssistChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilterChipM3() {
+fun FilterChipJC() {
 
     var selected by remember { mutableStateOf(false) }
 
     FilterChip(
         selected = selected,
         onClick = { selected = !selected },
-        label = { Text(text = "Filter Chip")},
+        label = { Text(text = "Filter Chip") },
         leadingIcon = if (selected) {
             {
                 Icon(
@@ -78,16 +92,15 @@ fun FilterChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedFilterChipM3() {
+fun ElevatedFilterChipJC() {
 
     var selected by remember { mutableStateOf(false) }
 
     ElevatedFilterChip(
         selected = selected,
         onClick = { selected = !selected },
-        label = { Text(text = "Filter Chip")},
+        label = { Text(text = "Filter Chip") },
         leadingIcon = if (selected) {
             {
                 Icon(
@@ -100,12 +113,11 @@ fun ElevatedFilterChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SuggestionChipM3() {
+fun SuggestionChipJC() {
     SuggestionChip(
         onClick = { /* do something! */ },
-        label = { Text(text = "Suggestion Chip")},
+        label = { Text(text = "Suggestion Chip") },
         icon = {
             Icon(
                 imageVector = Icons.Filled.Settings,
@@ -116,12 +128,11 @@ fun SuggestionChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ElevatedSuggestionChipM3() {
+fun ElevatedSuggestionChipJC() {
     ElevatedSuggestionChip(
         onClick = { /* do something! */ },
-        label = { Text(text = "Suggestion Chip")},
+        label = { Text(text = "Suggestion Chip") },
         icon = {
             Icon(
                 imageVector = Icons.Filled.Settings,
@@ -132,14 +143,13 @@ fun ElevatedSuggestionChipM3() {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InputChipM3() {
+fun InputChipJC() {
     var selected by remember { mutableStateOf(false) }
     InputChip(
         selected = selected,
         onClick = { selected = !selected },
-        label = { Text(text = "Input Chip")},
+        label = { Text(text = "Input Chip") },
         avatar = {
             Icon(
                 imageVector = Icons.Filled.Settings,

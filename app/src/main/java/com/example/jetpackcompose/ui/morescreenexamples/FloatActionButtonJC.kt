@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.morescreenexamples
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -24,6 +25,7 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -34,7 +36,7 @@ fun FABWithScaffold() {
 
     Scaffold(
         floatingActionButton = {
-            ExtendedFABM3(expanded = isExpanded)
+            ExtendedFloatActionButton(expanded = isExpanded)
         },
         floatingActionButtonPosition = FabPosition.Center
     ) { padding ->
@@ -57,22 +59,33 @@ fun FABWithScaffold() {
     }
 }
 
+@Preview
 @Composable
-fun FABM3() {
+fun FABPreview(modifier: Modifier = Modifier) {
+    Column {
+        NormalFloatActionButton()
+        SmallFloatActionButton()
+        LargeFloatActionButton()
+        ExtendedFloatActionButton(expanded = true)
+    }
+}
+
+@Composable
+fun NormalFloatActionButton() {
     FloatingActionButton(onClick = { /* do something*/ }) {
         Icon(imageVector = Icons.Filled.Add, contentDescription = null)
     }
 }
 
 @Composable
-fun SmallFABM3() {
+fun SmallFloatActionButton() {
     SmallFloatingActionButton(onClick = { /* do something*/ }) {
         Icon(imageVector = Icons.Filled.Add, contentDescription = null)
     }
 }
 
 @Composable
-fun LargeFABM3() {
+fun LargeFloatActionButton() {
     LargeFloatingActionButton(onClick = { /* do something*/ }) {
         Icon(
             imageVector = Icons.Filled.Add,
@@ -83,13 +96,11 @@ fun LargeFABM3() {
 }
 
 @Composable
-fun ExtendedFABM3(
-    expanded: Boolean
-) {
+fun ExtendedFloatActionButton(expanded: Boolean) {
     ExtendedFloatingActionButton(
         onClick = { /* do something*/ },
         icon = { Icon(imageVector = Icons.Filled.Add, contentDescription = null) },
-        text = { Text(text = "Compose")},
+        text = { Text(text = "Compose") },
         expanded = expanded
     )
 }

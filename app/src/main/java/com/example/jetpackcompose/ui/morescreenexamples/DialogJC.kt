@@ -1,7 +1,8 @@
-package com.example.material3components
+package com.example.jetpackcompose.ui.morescreenexamples
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
@@ -14,30 +15,42 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 
+@Preview(showBackground = true)
 @Composable
 fun AlertDialogM3() {
 
+    var openAlertDialog by remember { mutableStateOf(false) }
     var openDialog by remember { mutableStateOf(false) }
 
-    IconButton(onClick = { openDialog = true }) {
-        Icon(
-            imageVector = Icons.Default.Delete,
-            contentDescription = "Delete Icon"
-        )
+    Row {
+        IconButton(onClick = { openAlertDialog = true }) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete Icon"
+            )
+        }
+        IconButton(onClick = { openDialog = true }) {
+            Icon(
+                imageVector = Icons.Default.Delete,
+                contentDescription = "Delete Icon"
+            )
+        }
     }
 
-    if (openDialog) {
+    // alertDialog
+    if (openAlertDialog) {
         AlertDialog(
-            onDismissRequest = { openDialog = false },
+            onDismissRequest = { openAlertDialog = false },
             title = {
                 Text(text = "Delete Selected Image?")
             },
@@ -47,31 +60,20 @@ fun AlertDialogM3() {
             confirmButton = {
                 TextButton(onClick = {
                     /* viewModel.deleteImage */
-                    openDialog = false
+                    openAlertDialog = false
                 }) {
                     Text(text = "Yes")
                 }
             },
             dismissButton = {
-                TextButton(onClick = { openDialog = false }) {
+                TextButton(onClick = { openAlertDialog = false }) {
                     Text(text = "No")
                 }
             }
         )
     }
-}
 
-@Composable
-fun DialogM3() {
-    var openDialog by remember { mutableStateOf(false) }
-
-    IconButton(onClick = { openDialog = true }) {
-        Icon(
-            imageVector = Icons.Default.Delete,
-            contentDescription = "Delete Icon"
-        )
-    }
-
+    // Dialog
     if (openDialog) {
         Dialog(onDismissRequest = { openDialog = false }) {
             Surface {

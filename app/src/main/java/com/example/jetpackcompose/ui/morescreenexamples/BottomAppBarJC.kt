@@ -22,12 +22,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+
+@Preview(showBackground = true)
 @Composable
-fun BottomAppBarWithScaffoldM3() {
+fun BottomAppBarWithScaffoldJC() {
     Scaffold(
-        bottomBar = { BottomAppBarM3() }
+        bottomBar = { BottomAppBarJC() }
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -35,9 +38,9 @@ fun BottomAppBarWithScaffoldM3() {
                 .padding(padding),
             contentPadding = PaddingValues(16.dp)
         ) {
-            items(50) {
+            items(30) {
                 ListItem(
-                    headlineContent = { Text(text = "Item $it")},
+                    headlineContent = { Text(text = "Item $it") },
                     leadingContent = {
                         Icon(imageVector = Icons.Default.Face, contentDescription = null)
                     }
@@ -47,8 +50,9 @@ fun BottomAppBarWithScaffoldM3() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun BottomAppBarM3() {
+fun BottomAppBarJC() {
     BottomAppBar(
         actions = {
             IconButton(onClick = { /* do something */ }) {
