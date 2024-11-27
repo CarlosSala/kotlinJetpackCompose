@@ -25,32 +25,30 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun SnackBarJC() {
-    val scope = rememberCoroutineScope()
     val snackBarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
     Scaffold(
-        snackbarHost = {
-            SnackbarHost(hostState = snackBarHostState)
-        },
+        snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text("Show snackbar") },
+                text = { Text("Show snackBar") },
                 icon = { Icon(Icons.Filled.Image, contentDescription = "") },
                 onClick = {
                     scope.launch {
                         val result = snackBarHostState
                             .showSnackbar(
-                                message = "Snackbar",
+                                message = "SnackBar",
                                 actionLabel = "Action",
                                 // Defaults to SnackbarDuration.Short
                                 duration = SnackbarDuration.Indefinite
                             )
                         when (result) {
                             SnackbarResult.ActionPerformed -> {
-                                /* Handle snackbar action performed */
+                                /* Handle snackBar action performed */
                             }
 
                             SnackbarResult.Dismissed -> {
-                                /* Handle snackbar dismissed */
+                                /* Handle snackBar dismissed */
                             }
                         }
                     }
@@ -66,7 +64,6 @@ fun SnackBarJC() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
             Box(modifier = Modifier) {
                 Text(text = "hola")
             }

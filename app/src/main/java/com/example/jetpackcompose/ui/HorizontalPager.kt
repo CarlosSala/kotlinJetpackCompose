@@ -82,7 +82,7 @@ fun HorizontalPager() {
 
         Scaffold(
             topBar = {
-                if (pagerState.currentPage != 30) {
+                if (pagerState.currentPage != 31) {
                     MainTopAppBar(
                         { theme ->
                             selectedTheme = theme
@@ -98,7 +98,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 30 && pagerState.currentPage != 20) {
+                if (pagerState.currentPage != 31 && pagerState.currentPage != 21) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -128,6 +128,7 @@ fun HorizontalPager() {
                     Screens.RowJC -> RowJC()
                     Screens.SnackBarJC -> SnackBarJC()
                     Screens.PullRefreshJC -> PullRefreshJC()
+                    Screens.VerticalPager -> VerticalPagerExample()
                     Screens.LazyColumnJC -> LazyColumnJC()
                     Screens.LazyColumnJC2 -> LazyColumnJC2()
                     Screens.LazyRowJC -> LazyRowJC()
