@@ -26,15 +26,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBarWithScaffold() {
+fun LargeTopAppBarWithScaffold() {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { LargeTopAppBarM3(scrollBehavior = scrollBehavior) }
+        topBar = { LargeTopAppBarJC(scrollBehavior = scrollBehavior) }
     ) { padding ->
         LazyColumn(
             modifier = Modifier
@@ -59,7 +60,7 @@ fun TopAppBarWithScaffold() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBarM3(
+fun TopAppBarJC(
     scrollBehavior: TopAppBarScrollBehavior
 ) {
     TopAppBar(
@@ -83,7 +84,7 @@ fun TopAppBarM3(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CenterTopAppBarM3(
+fun CenterTopAppBarJC(
     scrollBehavior: TopAppBarScrollBehavior
 ) {
     CenterAlignedTopAppBar(
@@ -107,7 +108,7 @@ fun CenterTopAppBarM3(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MediumTopAppBarM3(
+fun MediumTopAppBarJC(
     scrollBehavior: TopAppBarScrollBehavior
 ) {
     MediumTopAppBar(
@@ -131,14 +132,14 @@ fun MediumTopAppBarM3(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LargeTopAppBarM3(
+fun LargeTopAppBarJC(
     scrollBehavior: TopAppBarScrollBehavior
 ) {
     LargeTopAppBar(
         scrollBehavior = scrollBehavior,
         title = {
             Text(
-                text = "Banff National Park Trails",
+                text = "LargeTopAppBar",
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
@@ -161,3 +162,45 @@ fun LargeTopAppBarM3(
         }
     )
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FakeScrollBehavior(): TopAppBarScrollBehavior {
+    return TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
+}
+
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun TopAppBarWithScaffoldJCPreview(modifier: Modifier = Modifier) {
+    LargeTopAppBarWithScaffold()
+}
+
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun TopAppBarJCPreview(modifier: Modifier = Modifier) {
+    TopAppBarJC(FakeScrollBehavior())
+}
+
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun CenterTopAppBaJCPreview(modifier: Modifier = Modifier) {
+    CenterTopAppBarJC(FakeScrollBehavior())
+}
+
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun MediumTopAppBarJCPreview(modifier: Modifier = Modifier) {
+    MediumTopAppBarJC(FakeScrollBehavior())
+}
+
+@ExperimentalMaterial3Api
+@Preview(showBackground = true)
+@Composable
+fun LargeTopAppBarJCPreview(modifier: Modifier = Modifier) {
+    LargeTopAppBarJC(FakeScrollBehavior())
+}
+
