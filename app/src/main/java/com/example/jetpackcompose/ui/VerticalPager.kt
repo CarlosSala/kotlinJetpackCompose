@@ -12,19 +12,18 @@ import com.example.jetpackcompose.ui.morescreenexamples.BadgeJC
 import com.example.jetpackcompose.ui.morescreenexamples.BottomAppBarWithScaffoldJC
 import com.example.jetpackcompose.ui.morescreenexamples.CheckboxJC
 import com.example.jetpackcompose.ui.morescreenexamples.ChipsJC
-import com.example.jetpackcompose.ui.morescreenexamples.CircularProgressIndicatorM3
+import com.example.jetpackcompose.ui.morescreenexamples.CircularProgressIndicator2JC
 import com.example.jetpackcompose.ui.morescreenexamples.FABWithScaffold
-import com.example.jetpackcompose.ui.morescreenexamples.ListsM3
-import com.example.jetpackcompose.ui.morescreenexamples.MenusM3
+import com.example.jetpackcompose.ui.morescreenexamples.ListsJC
+import com.example.jetpackcompose.ui.morescreenexamples.MenusJC
 import com.example.jetpackcompose.ui.morescreenexamples.ModalBottomSheetJC
-import com.example.jetpackcompose.ui.morescreenexamples.NavigationBarM3
-import com.example.jetpackcompose.ui.morescreenexamples.NavigationDrawerM3
-import com.example.jetpackcompose.ui.morescreenexamples.RadioButtonM3
+import com.example.jetpackcompose.ui.morescreenexamples.NavigationBarWithScaffoldJC
+import com.example.jetpackcompose.ui.morescreenexamples.NavigationDrawerJC
+import com.example.jetpackcompose.ui.morescreenexamples.RadioButtonJC
 import com.example.jetpackcompose.ui.morescreenexamples.SearchBarM3
-import com.example.jetpackcompose.ui.morescreenexamples.SliderM3
-import com.example.jetpackcompose.ui.morescreenexamples.SnackbarM3
-import com.example.jetpackcompose.ui.morescreenexamples.SwitchM3
-import com.example.jetpackcompose.ui.morescreenexamples.TextFieldsM3
+import com.example.jetpackcompose.ui.morescreenexamples.SliderJC
+import com.example.jetpackcompose.ui.morescreenexamples.SwitchJC
+import com.example.jetpackcompose.ui.morescreenexamples.TextFieldsJC
 import com.example.jetpackcompose.ui.morescreenexamples.TopAppBarWithScaffold
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -46,17 +45,16 @@ fun VerticalPagerExample() {
             MoreScreens.ChipsJC -> ChipsJC()
             MoreScreens.Dialog -> AlertDialogM3()
             MoreScreens.FloatActionButtonJC -> FABWithScaffold()
-            MoreScreens.ListsJC -> ListsM3()
-            MoreScreens.MenuJC -> MenusM3()
-            MoreScreens.NavigationBarJC -> NavigationBarM3()
-            MoreScreens.NavigationDrawerJC -> NavigationDrawerM3()
-            MoreScreens.ProgressIndicatorsJC -> CircularProgressIndicatorM3()
-            MoreScreens.RadioButtonJC -> RadioButtonM3()
+            MoreScreens.ListsJC -> ListsJC()
+            MoreScreens.MenuJC -> MenusJC()
+            MoreScreens.NavigationBarJC -> NavigationBarWithScaffoldJC()
+            MoreScreens.NavigationDrawerJC -> NavigationDrawerJC()
+            MoreScreens.ProgressIndicatorsJC -> CircularProgressIndicator2JC()
+            MoreScreens.RadioButtonJC -> RadioButtonJC()
             MoreScreens.SearchBarJC -> SearchBarM3()
-            MoreScreens.SliderJC -> SliderM3()
-            MoreScreens.SnackBarJC -> SnackbarM3()
-            MoreScreens.SwitchJC -> SwitchM3()
-            MoreScreens.TextFieldsJC -> TextFieldsM3()
+            MoreScreens.SliderJC -> SliderJC()
+            MoreScreens.SwitchJC -> SwitchJC()
+            MoreScreens.TextFieldsJC -> TextFieldsJC()
             MoreScreens.TopAppBarJC -> TopAppBarWithScaffold()
         }
     }

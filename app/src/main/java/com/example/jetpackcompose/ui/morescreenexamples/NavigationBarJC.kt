@@ -26,14 +26,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun NavigationBarWithScaffold() {
+fun NavigationBarWithScaffoldJC() {
     Scaffold(
-        bottomBar = { NavigationBarM3() },
+        bottomBar = { NavigationBarJC() },
         floatingActionButton = {
             FloatingActionButton(onClick = { /*TODO*/ }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
@@ -59,34 +60,8 @@ fun NavigationBarWithScaffold() {
 }
 
 @Composable
-fun NavigationBarM3() {
-    var selectedItem by remember { mutableStateOf(0) }
-    val barItems = listOf(
-        BarItem(
-            title = "Home",
-            selectedIcon = Icons.Filled.Home,
-            unselectedIcon = Icons.Outlined.Home,
-            route = "home"
-        ),
-        BarItem(
-            title = "Contacts",
-            selectedIcon = Icons.Filled.Face,
-            unselectedIcon = Icons.Outlined.Face,
-            route = "contacts"
-        ),
-        BarItem(
-            title = "Settings",
-            selectedIcon = Icons.Filled.Settings,
-            unselectedIcon = Icons.Outlined.Settings,
-            route = "setting"
-        ),
-        BarItem(
-            title = "Shop",
-            selectedIcon = Icons.Filled.ShoppingCart,
-            unselectedIcon = Icons.Outlined.ShoppingCart,
-            route = "shop"
-        )
-    )
+fun NavigationBarJC() {
+    var selectedItem by remember { mutableIntStateOf(0) }
 
     NavigationBar {
         barItems.forEachIndexed { index, barItem ->
@@ -115,4 +90,31 @@ data class BarItem(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
     val route: String
+)
+
+val barItems = listOf(
+    BarItem(
+        title = "Home",
+        selectedIcon = Icons.Filled.Home,
+        unselectedIcon = Icons.Outlined.Home,
+        route = "home"
+    ),
+    BarItem(
+        title = "Contacts",
+        selectedIcon = Icons.Filled.Face,
+        unselectedIcon = Icons.Outlined.Face,
+        route = "contacts"
+    ),
+    BarItem(
+        title = "Settings",
+        selectedIcon = Icons.Filled.Settings,
+        unselectedIcon = Icons.Outlined.Settings,
+        route = "setting"
+    ),
+    BarItem(
+        title = "Shop",
+        selectedIcon = Icons.Filled.ShoppingCart,
+        unselectedIcon = Icons.Outlined.ShoppingCart,
+        route = "shop"
+    )
 )

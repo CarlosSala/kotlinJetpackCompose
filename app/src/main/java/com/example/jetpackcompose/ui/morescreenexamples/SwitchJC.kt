@@ -13,9 +13,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
+@Preview(
+    showBackground = true,
+    widthDp = 200,
+    heightDp = 200
+)
 @Composable
-fun SwitchM3() {
+fun SwitchJC() {
 
     var isChecked by remember { mutableStateOf(false) }
 

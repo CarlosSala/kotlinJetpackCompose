@@ -15,17 +15,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SliderM3() {
+fun SliderJC() {
 
-    var sliderPosition by remember { mutableStateOf(0f) }
+    var sliderPosition by remember { mutableFloatStateOf(0f) }
 
     Column(
         modifier = Modifier.padding(horizontal = 10.dp),
@@ -52,9 +55,10 @@ fun SliderM3() {
     }
 }
 
+@Preview(showBackground = true)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RangeSliderM3() {
+fun RangeSliderJC() {
     var sliderPosition by remember { mutableStateOf(0f..100f) }
 
     Column(
@@ -64,7 +68,7 @@ fun RangeSliderM3() {
         Text(text = sliderPosition.toString())
         RangeSlider(
             value = sliderPosition,
-            onValueChange = {sliderPosition = it},
+            onValueChange = { sliderPosition = it },
             valueRange = 0f..100f
         )
     }

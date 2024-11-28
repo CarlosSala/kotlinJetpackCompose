@@ -13,12 +13,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
+@Preview(showBackground = true)
 @Composable
-fun CircularProgressIndicatorM3() {
+fun CircularProgressIndicatorJC() {
 
     var isLoading by remember { mutableStateOf(false) }
 
@@ -36,13 +39,14 @@ fun CircularProgressIndicatorM3() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun CircularProgressIndicator2M3() {
+fun CircularProgressIndicator2JC() {
 
-    var progress by remember { mutableStateOf(0.1f) }
+    var progress by remember { mutableFloatStateOf(0.1f) }
     val animatedProgress by animateFloatAsState(
         targetValue = progress,
-        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec, label = ""
     )
 
     Column(
@@ -50,7 +54,7 @@ fun CircularProgressIndicator2M3() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        CircularProgressIndicator(progress = animatedProgress)
+        CircularProgressIndicator(progress = { animatedProgress })
         Button(onClick = {
             if (progress < 1f) progress += 0.1f
         }) {
@@ -59,8 +63,9 @@ fun CircularProgressIndicator2M3() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun LinearProgressIndicatorM3() {
+fun LinearProgressIndicatorJC() {
 
     var isLoading by remember { mutableStateOf(false) }
 
@@ -78,13 +83,14 @@ fun LinearProgressIndicatorM3() {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun LinearProgressIndicator2M3() {
+fun LinearProgressIndicator2JC() {
 
-    var progress by remember { mutableStateOf(0.1f) }
+    var progress by remember { mutableFloatStateOf(0.1f) }
     val animatedProgress by animateFloatAsState(
         targetValue = progress,
-        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+        animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec, label = ""
     )
 
     Column(
@@ -92,7 +98,7 @@ fun LinearProgressIndicator2M3() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LinearProgressIndicator(progress = animatedProgress)
+        LinearProgressIndicator(progress = { animatedProgress })
         Button(onClick = {
             if (progress < 1f) progress += 0.1f
         }) {

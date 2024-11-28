@@ -1,14 +1,9 @@
 package com.example.jetpackcompose.ui.screenexamples
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Image
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.Icon
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
@@ -23,51 +18,46 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import kotlinx.coroutines.launch
 
+
+@Preview(showBackground = true)
 @Composable
 fun SnackBarJC() {
     val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     Scaffold(
         snackbarHost = { SnackbarHost(hostState = snackBarHostState) },
-        floatingActionButton = {
-            ExtendedFloatingActionButton(
-                text = { Text("Show snackBar") },
-                icon = { Icon(Icons.Filled.Image, contentDescription = "") },
+    ) { contentPadding ->
+
+        // Screen content
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(contentPadding),
+            contentAlignment = Alignment.Center
+        ) {
+            Button(
                 onClick = {
                     scope.launch {
-                        val result = snackBarHostState
-                            .showSnackbar(
-                                message = "SnackBar",
-                                actionLabel = "Action",
-                                // Defaults to SnackbarDuration.Short
-                                duration = SnackbarDuration.Indefinite
-                            )
+                        val result = snackBarHostState.showSnackbar(
+                            message = "Couldn't send photo",
+                            actionLabel = "Retry",
+                            withDismissAction = true,
+                            duration = SnackbarDuration.Long
+                        )
                         when (result) {
-                            SnackbarResult.ActionPerformed -> {
-                                /* Handle snackBar action performed */
+                            SnackbarResult.Dismissed -> {
+
                             }
 
-                            SnackbarResult.Dismissed -> {
-                                /* Handle snackBar dismissed */
+                            SnackbarResult.ActionPerformed -> {
+                                /* viewModel.sendPhoto*/
                             }
                         }
                     }
                 }
-            )
-        }
-    ) { contentPadding ->
-        // Screen content
-        Column(
-            modifier = Modifier
-                .padding(contentPadding)
-                .fillMaxSize(),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Box(modifier = Modifier) {
-                Text(text = "hola")
+            ) {
+                Text(text = "Show SnackBar")
             }
-            Text(text = "adios")
         }
     }
 }

@@ -40,20 +40,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
+@Preview
 @Composable
-fun NavigationDrawerM3() {
+fun NavigationDrawerJC() {
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
-    val items = listOf(
-        DrawerItem(icon = Icons.Default.Favorite, label = "Likes", secondaryLabel = "64"),
-        DrawerItem(icon = Icons.Default.Face, label = "Messages", secondaryLabel = "12"),
-        DrawerItem(icon = Icons.Default.Email, label = "Mail", secondaryLabel = "64"),
-        DrawerItem(icon = Icons.Default.Settings, label = "Settings", secondaryLabel = ""),
-    )
     var selectedItem by remember { mutableStateOf(items[0]) }
 
     ModalNavigationDrawer(
@@ -77,8 +73,8 @@ fun NavigationDrawerM3() {
                             scope.launch { drawerState.close() }
                             selectedItem = item
                         },
-                        icon = { Icon(imageVector = item.icon, contentDescription = item.label)},
-                        badge = { Text(text = item.secondaryLabel)},
+                        icon = { Icon(imageVector = item.icon, contentDescription = item.label) },
+                        badge = { Text(text = item.secondaryLabel) },
                         modifier = Modifier.padding(NavigationDrawerItemDefaults.ItemPadding)
                     )
                 }
@@ -91,12 +87,6 @@ fun NavigationDrawerM3() {
         }
     )
 }
-
-data class DrawerItem(
-    val icon: ImageVector,
-    val label: String,
-    val secondaryLabel: String
-)
 
 @Composable
 fun Content(
@@ -128,7 +118,7 @@ fun Content2(
                         Icon(imageVector = Icons.Default.Menu, contentDescription = "Open Drawer")
                     }
                 },
-                title = { Text(text = "Top Stories")}
+                title = { Text(text = "Top Stories") }
             )
         }
     ) { padding ->
@@ -140,7 +130,7 @@ fun Content2(
         ) {
             items(50) {
                 ListItem(
-                    headlineContent = { Text(text = "Item $it")},
+                    headlineContent = { Text(text = "Item $it") },
                     leadingContent = {
                         Icon(Icons.Default.Face, contentDescription = null)
                     }
@@ -149,3 +139,16 @@ fun Content2(
         }
     }
 }
+
+data class DrawerItem(
+    val icon: ImageVector,
+    val label: String,
+    val secondaryLabel: String
+)
+
+val items = listOf(
+    DrawerItem(icon = Icons.Default.Favorite, label = "Likes", secondaryLabel = "64"),
+    DrawerItem(icon = Icons.Default.Face, label = "Messages", secondaryLabel = "12"),
+    DrawerItem(icon = Icons.Default.Email, label = "Mail", secondaryLabel = "64"),
+    DrawerItem(icon = Icons.Default.Settings, label = "Settings", secondaryLabel = ""),
+)

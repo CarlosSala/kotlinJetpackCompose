@@ -18,7 +18,6 @@ enum class MoreScreens(val displayName: String) {
     RadioButtonJC("RadioButtonJC"),
     SearchBarJC("SearchBarJC"),
     SliderJC("SliderJC"),
-    SnackBarJC("SnackBarJC"),
     SwitchJC("SwitchJC"),
     TextFieldsJC("TextFieldsJC"),
     TopAppBarJC("TopAppBarJC")

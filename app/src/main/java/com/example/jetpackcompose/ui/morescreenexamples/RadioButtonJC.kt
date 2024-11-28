@@ -17,10 +17,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
+@Preview(
+    showBackground = true,
+    widthDp = 200,
+    heightDp = 400
+)
 @Composable
-fun RadioButtonM3() {
+fun RadioButtonJC() {
     val options = listOf("English", "Hindi", "Urdu")
     var selectedOption by remember { mutableStateOf(options[0]) }
 
@@ -38,7 +44,8 @@ fun RadioButtonM3() {
                         onClick = { selectedOption = option }
                     )
                     .padding(horizontal = 16.dp),
-                verticalAlignment = Alignment.CenterVertically
+                verticalAlignment = Alignment.CenterVertically,
+                 horizontalArrangement = Arrangement.Center
             ) {
                 RadioButton(
                     selected = selectedOption == option,
