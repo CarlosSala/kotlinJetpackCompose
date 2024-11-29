@@ -77,6 +77,7 @@ fun HorizontalPager() {
     var showDialog by remember { mutableStateOf(false) }
     // var pageNumber by remember { mutableStateOf("") }
     var selectedTheme by remember { mutableStateOf(lightColorScheme()) }
+    var title by remember { mutableStateOf("") }
 
     MyTheme(selectedTheme) {
 
@@ -84,9 +85,11 @@ fun HorizontalPager() {
             topBar = {
                 if (pagerState.currentPage != 31) {
                     MainTopAppBar(
-                        { theme ->
+                        onTitleChange = title,
+                        selectedTheme = { theme ->
                             selectedTheme = theme
-                        }, {
+                        },
+                        onBack = {
                             val currentPage = pagerState.currentPage
                             if (currentPage > 0) {
                                 coroutineScope.launch {
@@ -114,13 +117,18 @@ fun HorizontalPager() {
                 // count = 14, // number of screens
                 state = pagerState,
                 modifier = Modifier.padding(paddingValues),
+                // use unique id
+                key = { page -> Screens.entries[page].displayName }
                 // How many pages pre load
                 // beyondViewportPageCount = 0
             ) { page ->
-                when (Screens.entries[page]) {
 
-                    Screens.PagingScreen -> PagingScreen()
-                    Screens.BoxJC -> BoxJC()
+                // pagerState always has value of the actual page
+                val currentPage = Screens.entries[pagerState.currentPage]
+                title = currentPage.displayName
+
+                when (currentPage) {
+                    Screens.BoxJC -> BoxJC { }
                     Screens.ConstraintJC -> ConstraintJC()
                     Screens.ConstraintJC2 -> ConstraintJC2()
                     Screens.ButtonTextJC -> ButtonTextJC()
@@ -152,6 +160,7 @@ fun HorizontalPager() {
                     Screens.StylesScreen -> StylesScreen()
                     Screens.LoginJetpackComposeScreen -> LoginJetpackComposeScreen()
                     Screens.LazyColumnDragAndDrop -> LazyColumnDragAndDrop()
+                    Screens.PagingScreen -> PagingScreen()
                     Screens.LazyVerticalGridDragAndDrop -> LazyVerticalGridDragAndDrop()
                     Screens.SouthAmericanQualifiersScreen -> SouthAmericanQualifiersScreen()
                 }

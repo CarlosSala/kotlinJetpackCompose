@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,14 +30,16 @@ class BoxActivity : ComponentActivity() {
     }
 }
 
-@Preview(
+/*@Preview(
     showBackground = true,
     name = "Testing My first app with JC",
     widthDp = 250,
     heightDp = 250
-)
+)*/
 @Composable
-fun BoxJC() {
+fun BoxJC(onTitleChange: (String) -> Unit) {
+    // one option to change title
+    LaunchedEffect(Unit) { onTitleChange("BoxJC") }
 
     CustomComposeTheme {
         Box(

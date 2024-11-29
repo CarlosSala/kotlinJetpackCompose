@@ -21,12 +21,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
 import com.example.jetpackcompose.ui.screenexamples.styles.MyThemes
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainTopAppBar(
+    onTitleChange: String,
     selectedTheme: (ColorScheme) -> Unit,
     onBack: () -> Unit
 ) {
@@ -44,7 +47,11 @@ fun MainTopAppBar(
                             contentDescription = null
                         )
                     }*/
-            Text(text = stringResource(id = R.string.app_name))
+            // Text(text = stringResource(id = R.string.app_name))
+            Text(
+                text = onTitleChange,
+                fontSize = 18.sp
+            )
         },
         navigationIcon = {
             AppBarAction(
