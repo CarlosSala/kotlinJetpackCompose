@@ -124,10 +124,9 @@ fun HorizontalPager() {
             ) { page ->
 
                 // pagerState always has value of the actual page
-                val currentPage = Screens.entries[pagerState.currentPage]
-                title = currentPage.displayName
+                title = Screens.entries[pagerState.currentPage].displayName
 
-                when (currentPage) {
+                when (Screens.entries[page]) {
                     Screens.BoxJC -> BoxJC { }
                     Screens.ConstraintJC -> ConstraintJC()
                     Screens.ConstraintJC2 -> ConstraintJC2()
