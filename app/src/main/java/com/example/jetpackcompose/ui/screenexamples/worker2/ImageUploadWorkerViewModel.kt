@@ -29,7 +29,7 @@ class ImageUploadWorkerViewModel(application: Application) : AndroidViewModel(ap
         WorkManager.getInstance(getApplication<Application>().applicationContext)
             .getWorkInfoByIdLiveData(uploadWorkRequest.id)
             .observeForever { workInfo ->
-                when (workInfo.state) {
+                when (workInfo?.state) {
                     WorkInfo.State.SUCCEEDED -> _uploadState.value = UploadState.Success
                     WorkInfo.State.FAILED -> _uploadState.value = UploadState.Error
                     WorkInfo.State.RUNNING -> _uploadState.value = UploadState.Uploading
