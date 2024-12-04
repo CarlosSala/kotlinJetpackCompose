@@ -4,9 +4,17 @@ package com.example.jetpackcompose.ui
 import LazyColumnDragAndDrop
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.MutableWindowInsets
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.HorizontalPager
@@ -27,6 +35,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
@@ -68,7 +77,10 @@ import com.example.jetpackcompose.ui.screenexamples.worker2.ImageUploadWorkerUI
 import com.example.jetpackcompose.ui.screenexamples.worker3.OneTimeWorkRequestUI
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
+import androidx.compose.runtime.setValue
 
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun HorizontalPager() {
 
@@ -78,12 +90,15 @@ fun HorizontalPager() {
     // var pageNumber by remember { mutableStateOf("") }
     var selectedTheme by remember { mutableStateOf(lightColorScheme()) }
     var title by remember { mutableStateOf("") }
+    var myWindowInsets by remember { mutableStateOf(WindowInsets(0, 0, 0, 0)) }
 
     MyTheme(selectedTheme) {
 
         Scaffold(
+            modifier = Modifier.windowInsetsPadding(insets = myWindowInsets),
+            containerColor = Color.Cyan,
             topBar = {
-                if (pagerState.currentPage != 31) {
+                if (pagerState.currentPage != 31 && pagerState.currentPage != 8) {
                     MainTopAppBar(
                         onTitleChange = title,
                         selectedTheme = { theme ->
@@ -116,9 +131,11 @@ fun HorizontalPager() {
             HorizontalPager(
                 // count = 14, // number of screens
                 state = pagerState,
-                modifier = Modifier.padding(paddingValues),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(paddingValues),
                 // use unique id
-                key = { page -> Screens.entries[page].displayName }
+                key = { page -> Screens.entries[page].displayName },
                 // How many pages pre load
                 // beyondViewportPageCount = 0
             ) { page ->
@@ -135,7 +152,7 @@ fun HorizontalPager() {
                     Screens.RowJC -> RowJC()
                     Screens.SnackBarJC -> SnackBarJC()
                     Screens.PullRefreshJC -> PullRefreshJC()
-                    Screens.VerticalPager -> VerticalPagerExample()
+                    Screens.VerticalPager -> VerticalPagerExample() { myWindowInsets = it }
                     Screens.LazyColumnJC -> LazyColumnJC()
                     Screens.LazyColumnJC2 -> LazyColumnJC2()
                     Screens.LazyRowJC -> LazyRowJC()
