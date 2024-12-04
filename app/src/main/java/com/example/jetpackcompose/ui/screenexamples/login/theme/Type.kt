@@ -10,16 +10,16 @@ import androidx.compose.ui.unit.sp
 import com.example.jetpackcompose.R
 
 val Montserrat = FontFamily(
-    Font(R.font.montserrat_thin, FontWeight.Thin),
-    Font(R.font.montserrat_light, FontWeight.Light),
-    Font(R.font.montserrat_regular, FontWeight.Normal),
-    Font(R.font.montserrat_medium, FontWeight.Medium),
-    Font(R.font.montserrat_bold, FontWeight.Bold),
-    Font(R.font.montserrat_black, FontWeight.Black),
-    Font(R.font.montserrat_italic, FontWeight.Normal, FontStyle.Italic),
+    Font(resId = R.font.montserrat_thin, weight = FontWeight.Thin),
+    Font(resId = R.font.montserrat_light, weight = FontWeight.Light),
+    Font(resId = R.font.montserrat_regular, weight = FontWeight.Normal),
+    Font(resId = R.font.montserrat_medium, weight = FontWeight.Medium),
+    Font(resId = R.font.montserrat_bold, weight = FontWeight.Bold),
+    Font(resId = R.font.montserrat_black, weight = FontWeight.Black),
+    Font(resId = R.font.montserrat_italic, weight = FontWeight.Normal, FontStyle.Italic),
 )
 
-val Typography = Typography(
+val montserratTypography = Typography(
     displayLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Light,

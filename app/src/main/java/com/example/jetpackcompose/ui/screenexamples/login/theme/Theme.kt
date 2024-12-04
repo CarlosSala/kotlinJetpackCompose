@@ -55,7 +55,7 @@ fun LoginJetpackComposeTheme(
 
     MaterialTheme(
         colorScheme = colors,
-        typography = Typography,
+        typography = montserratTypography,
         shapes = Shapes,
         content = content
     )
