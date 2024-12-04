@@ -34,6 +34,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
+import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
@@ -49,15 +50,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
-
+@Preview
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StylesScreen() {
+fun StylesScreen(colorScheme: ColorScheme = lightColorScheme()) {
 
     // var isDarkTheme by remember { mutableStateOf(false) }
-    var selectedTheme by remember { mutableStateOf<ColorScheme>(lightColorScheme()) }
+    var selectedTheme by remember { mutableStateOf<ColorScheme>(colorScheme) }
     // type scroll or scroll behavior
-    val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
+    val scrollBehavior =
+        TopAppBarDefaults.exitUntilCollapsedScrollBehavior(rememberTopAppBarState())
 
     MyTheme(selectedTheme) {
 
@@ -86,13 +88,13 @@ fun StylesScreen() {
                     ) {
                         Surface(
                             modifier = Modifier.fillMaxHeight(0.5f),
-                            shape = MaterialTheme.shapes.medium,
+                            shape = shapes.medium,
                             color = MaterialTheme.colorScheme.background,
                         ) {
                             Column {
                                 Text(
                                     text = "Select a Theme:",
-                                    style = MaterialTheme.typography.bodyMedium,
+                                    style = typography.bodyMedium,
                                     modifier = Modifier
                                         .padding(16.dp)
                                 )
@@ -257,8 +259,14 @@ fun BottomNavigationBar() {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
-    CustomComposeTheme {
-        StylesScreen()
-    }
+fun StylesScreenPreview2() {
+    StylesScreen(colorScheme = darkColorScheme())
 }
+
+@Preview(showBackground = true)
+@Composable
+fun StylesScreenPreview3() {
+    val (key, value) = MyThemes().listColorSchemes.entries.first { it.key == "Blue Theme" }
+    StylesScreen(colorScheme = value)
+}
+
