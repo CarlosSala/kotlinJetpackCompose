@@ -51,7 +51,7 @@ fun MainTopAppBar(
 
     TopAppBar(
         // windowInsets = WindowInsets(top = 0.dp),
-        modifier = modifier, //.windowInsetsTopHeight(WindowInsets(top = 0)),
+        modifier = modifier,
         colors = TopAppBarDefaults.topAppBarColors(containerColor = color),
         title = {
             /*        Row {

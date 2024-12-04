@@ -1,7 +1,6 @@
 package com.example.jetpackcompose.ui
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.pager.VerticalPager
@@ -15,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import com.example.jetpackcompose.ui.common.MainTopAppBar
 import com.example.jetpackcompose.ui.common.MoreScreens
 import com.example.jetpackcompose.ui.morescreenexamples.AlertDialogM3
@@ -49,7 +47,7 @@ fun VerticalPagerExample(windowInsets: (WindowInsets) -> Unit) {
         topBar = {
             MainTopAppBar(
                 //modifier = Modifier.windowInsetsTopHeight(insets = WindowInsets(top = 70.dp)),
-                color = Color.DarkGray,
+                // color = Color.DarkGray,
                 onTitleChange = title,
                 selectedTheme = {},
                 onBack = {}
@@ -62,7 +60,7 @@ fun VerticalPagerExample(windowInsets: (WindowInsets) -> Unit) {
             .windowInsetsPadding(insets = WindowInsets.statusBars)
             .background(Color.Cyan),
         // contentWindowInsets =
-        containerColor = Color.Yellow
+        // containerColor = Color.Yellow
     ) { paddingValues ->
 
         VerticalPager(
