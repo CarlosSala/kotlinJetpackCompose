@@ -10,6 +10,7 @@ enum class Screens(val displayName: String) {
     ButtonTextJC("Button Text JC"),
     ColumnJC("Column JC"),
     RowJC("Row JC"),
+    TestThemes("Test Themes"),
     SnackBarJC("SnackBar JC"),
     PullRefreshJC("Pull Refresh JC"),
     VerticalPager("Vertical Pager"),

@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.ui.screenexamples.styles
+package com.example.jetpackcompose.ui.screenexamples.styles2
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -48,7 +48,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.example.jetpackcompose.ui.theme.CustomComposeTheme
 
 @Preview
 @OptIn(ExperimentalMaterial3Api::class)
@@ -105,7 +104,7 @@ fun StylesScreen(colorScheme: ColorScheme = lightColorScheme()) {
                                         modifier = Modifier.padding(16.dp)
                                     )
                                     {
-                                        items(MyThemes().listColorSchemes.entries.toList()) { theme ->
+                                        items(CustomsColorScheme().listColorSchemes.entries.toList()) { theme ->
                                             ThemeItem(theme) { newTheme ->
                                                 selectedTheme = newTheme
                                             }
@@ -266,7 +265,7 @@ fun StylesScreenPreview2() {
 @Preview(showBackground = true)
 @Composable
 fun StylesScreenPreview3() {
-    val (key, value) = MyThemes().listColorSchemes.entries.first { it.key == "Blue Theme" }
+    val (key, value) = CustomsColorScheme().listColorSchemes.entries.first { it.key == "Blue Theme" }
     StylesScreen(colorScheme = value)
 }
 

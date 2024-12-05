@@ -63,8 +63,9 @@ import com.example.jetpackcompose.ui.screenexamples.retrofit.main.MovieScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote.NoteScreen
 import com.example.jetpackcompose.ui.screenexamples.roomnote2.AppNav
 import com.example.jetpackcompose.ui.screenexamples.service.MyServiceScreen
-import com.example.jetpackcompose.ui.screenexamples.styles.MyTheme
-import com.example.jetpackcompose.ui.screenexamples.styles.StylesScreen
+import com.example.jetpackcompose.ui.screenexamples.styles.TestThemes
+import com.example.jetpackcompose.ui.screenexamples.styles2.MyTheme
+import com.example.jetpackcompose.ui.screenexamples.styles2.StylesScreen
 import com.example.jetpackcompose.ui.screenexamples.tabrowscreen.TabRowScreen
 import com.example.jetpackcompose.ui.screenexamples.welcomescreen.WelcomeScreen
 import com.example.jetpackcompose.ui.screenexamples.worker.MyPeriodicWorkerUI
@@ -92,7 +93,7 @@ fun HorizontalPager() {
             modifier = Modifier.windowInsetsPadding(insets = myWindowInsets),
             //containerColor = Color.Cyan,
             topBar = {
-                if (pagerState.currentPage != 31 && pagerState.currentPage != 8) {
+                if (pagerState.currentPage != 32 && pagerState.currentPage != 9) {
                     MainTopAppBar(
                         onTitleChange = title,
                         selectedTheme = { theme ->
@@ -110,7 +111,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 31 && pagerState.currentPage != 21) {
+                if (pagerState.currentPage != 32 && pagerState.currentPage != 22) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -144,6 +145,7 @@ fun HorizontalPager() {
                     Screens.ButtonTextJC -> ButtonTextJC()
                     Screens.ColumnJC -> ColumnJC()
                     Screens.RowJC -> RowJC()
+                    Screens.TestThemes -> TestThemes()
                     Screens.SnackBarJC -> SnackBarJC()
                     Screens.PullRefreshJC -> PullRefreshJC()
                     Screens.VerticalPager -> VerticalPagerExample() { myWindowInsets = it }

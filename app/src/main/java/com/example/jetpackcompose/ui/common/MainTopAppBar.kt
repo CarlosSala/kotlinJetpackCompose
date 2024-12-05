@@ -1,15 +1,7 @@
 package com.example.jetpackcompose.ui.common
 
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.WindowInsetsSides
-import androidx.compose.foundation.layout.only
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Share
@@ -21,7 +13,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -31,11 +22,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.R
-import com.example.jetpackcompose.ui.screenexamples.styles.MyThemes
+import com.example.jetpackcompose.ui.screenexamples.styles2.CustomsColorScheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -83,7 +71,7 @@ fun MainTopAppBar(
                 expanded = menuExpanded,
                 onDismissRequest = { menuExpanded = false }
             ) {
-                MyThemes().listColorSchemes.entries.forEach { item ->
+                CustomsColorScheme().listColorSchemes.entries.forEach { item ->
                     DropdownMenuItem(
                         text = { Text(item.key) },
                         onClick = {

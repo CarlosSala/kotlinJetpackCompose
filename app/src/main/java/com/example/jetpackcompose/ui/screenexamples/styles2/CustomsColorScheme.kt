@@ -1,11 +1,11 @@
-package com.example.jetpackcompose.ui.screenexamples.styles
+package com.example.jetpackcompose.ui.screenexamples.styles2
 
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.ui.graphics.Color
 
-class MyThemes {
+class CustomsColorScheme {
 
     private val lightThemeColors: ColorScheme = lightColorScheme(
         primary = Color.Red,
@@ -88,6 +88,7 @@ class MyThemes {
         onBackground = Color(0xFFE65100), // Naranja muy oscuro para texto
         onSurface = Color(0xFFE65100), // Naranja muy oscuro para texto
     )
+
     private val tealThemeColors = lightColorScheme(
         primary = Color(0xFF009688), // Turquesa primario
         primaryContainer = Color(0xFFB2DFDB), // Contenedor primario turquesa claro
