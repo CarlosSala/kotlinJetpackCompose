@@ -21,6 +21,7 @@ import com.example.jetpackcompose.ui.morescreenexamples.BadgeJC
 import com.example.jetpackcompose.ui.morescreenexamples.BottomAppBarWithScaffoldJC
 import com.example.jetpackcompose.ui.morescreenexamples.CheckboxJC
 import com.example.jetpackcompose.ui.morescreenexamples.ChipsJC
+import com.example.jetpackcompose.ui.morescreenexamples.CircularProgressCanvasJC
 import com.example.jetpackcompose.ui.morescreenexamples.CircularProgressIndicator2JC
 import com.example.jetpackcompose.ui.morescreenexamples.DockedSearchBarJC
 import com.example.jetpackcompose.ui.morescreenexamples.FABWithScaffold
@@ -75,6 +76,7 @@ fun VerticalPagerExample(windowInsets: (WindowInsets) -> Unit) {
 
             when (MoreScreens.entries[page]) {
 
+                MoreScreens.CustomCanvas -> CircularProgressCanvasJC()
                 MoreScreens.BadgeJC -> BadgeJC()
                 MoreScreens.BottomAppBarJC -> BottomAppBarWithScaffoldJC()
                 MoreScreens.BottomSheetJC -> ModalBottomSheetJC()
