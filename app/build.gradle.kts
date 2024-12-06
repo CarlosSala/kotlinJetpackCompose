@@ -127,12 +127,12 @@ dependencies {
 
     implementation(libs.androidx.constraintlayout.compose)
     // Accompanist
-    implementation (libs.accompanist.navigation.animation)
+    implementation(libs.accompanist.navigation.animation)
 
     implementation(libs.reorderable)
 
-    implementation (libs.androidx.glance.appwidget)  // Dependencia para Widgets con Glance API
-    implementation (libs.androidx.glance.material3)
+    implementation(libs.androidx.glance.appwidget)  // Dependencia para Widgets con Glance API
+    implementation(libs.androidx.glance.material3)
 
     // For Glance support
     implementation(libs.androidx.glance)
@@ -142,4 +142,8 @@ dependencies {
 
     // For Wear-Tiles support
     implementation(libs.androidx.glance.wear.tiles)
+
+    implementation(libs.play.services.maps)
+    implementation(libs.maps.compose)
+
 }

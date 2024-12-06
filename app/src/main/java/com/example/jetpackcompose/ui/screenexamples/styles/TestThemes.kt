@@ -1,5 +1,6 @@
 package com.example.jetpackcompose.ui.screenexamples.styles
 
+import android.widget.Toast
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.jetpackcompose.ui.screenexamples.styles.themes.DesertTheme
 import com.example.jetpackcompose.ui.screenexamples.styles.themes.TropicalTheme
@@ -54,6 +56,9 @@ fun TestThemes(modifier: Modifier = Modifier) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SimpleScreen(onSwitchTheme: () -> Unit) {
+
+    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
@@ -65,7 +70,13 @@ fun SimpleScreen(onSwitchTheme: () -> Unit) {
             )
         },
         floatingActionButton = {
-            FloatingActionButton(modifier = Modifier, onClick = onSwitchTheme) {
+            FloatingActionButton(
+                modifier = Modifier,
+                onClick = {
+                    onSwitchTheme()
+                    Toast.makeText(context, "theme changed", Toast.LENGTH_SHORT).show()
+                }
+            ) {
                 Icon(Icons.Default.Refresh, contentDescription = "Change Theme")
             }
         },

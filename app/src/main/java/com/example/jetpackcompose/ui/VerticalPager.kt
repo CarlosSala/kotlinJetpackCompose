@@ -29,6 +29,7 @@ import com.example.jetpackcompose.ui.morescreenexamples.LargeTopAppBarWithScaffo
 import com.example.jetpackcompose.ui.morescreenexamples.ListsJC
 import com.example.jetpackcompose.ui.morescreenexamples.MenusJC
 import com.example.jetpackcompose.ui.morescreenexamples.ModalBottomSheetJC
+import com.example.jetpackcompose.ui.morescreenexamples.MyGoogleMaps
 import com.example.jetpackcompose.ui.morescreenexamples.NavigationBarWithScaffoldJC
 import com.example.jetpackcompose.ui.morescreenexamples.NavigationDrawerJC
 import com.example.jetpackcompose.ui.morescreenexamples.RadioButtonJC
@@ -76,6 +77,7 @@ fun VerticalPagerExample(windowInsets: (WindowInsets) -> Unit) {
 
             when (MoreScreens.entries[page]) {
 
+                MoreScreens.MyGoogleMaps -> MyGoogleMaps()
                 MoreScreens.CustomCanvas -> CircularProgressCanvasJC()
                 MoreScreens.BadgeJC -> BadgeJC()
                 MoreScreens.BottomAppBarJC -> BottomAppBarWithScaffoldJC()

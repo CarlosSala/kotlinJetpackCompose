@@ -3,6 +3,7 @@ package com.example.jetpackcompose.ui.common
 
 enum class MoreScreens(val displayName: String) {
 
+    MyGoogleMaps("GoogleMapsJC"),
     CustomCanvas("CanvasJC"),
     BadgeJC("BadgeJC"),
     BottomAppBarJC("BottomAppBarJC"),

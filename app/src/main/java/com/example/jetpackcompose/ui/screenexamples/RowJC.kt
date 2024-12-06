@@ -8,6 +8,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -54,7 +55,7 @@ fun RowJC() {
         // for to use all space in the screen
         Row(
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .border(
                     width = 1.dp,
                     color = Color.Red
