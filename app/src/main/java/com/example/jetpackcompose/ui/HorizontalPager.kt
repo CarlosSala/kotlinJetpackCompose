@@ -1,6 +1,7 @@
 package com.example.jetpackcompose.ui
 
 
+import DownloadScreen
 import LazyColumnDragAndDrop
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -93,7 +94,7 @@ fun HorizontalPager() {
             modifier = Modifier.windowInsetsPadding(insets = myWindowInsets),
             //containerColor = Color.Cyan,
             topBar = {
-                if (pagerState.currentPage != 32 && pagerState.currentPage != 9) {
+                if (pagerState.currentPage != 33 && pagerState.currentPage != 9) {
                     MainTopAppBar(
                         onTitleChange = title,
                         selectedTheme = { theme ->
@@ -111,7 +112,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 32 && pagerState.currentPage != 22) {
+                if (pagerState.currentPage != 33 && pagerState.currentPage != 22) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -166,6 +167,7 @@ fun HorizontalPager() {
                     Screens.CrudFireStoreScreen -> CrudFireStoreScreen()
                     Screens.FirebaseStorageScreen -> FirebaseStorageScreen()
                     Screens.MyServiceScreen -> MyServiceScreen()
+                    Screens.MyServiceScreen2 -> DownloadScreen()
                     Screens.MyPeriodicWorkerUI -> MyPeriodicWorkerUI()
                     Screens.ImageUploadWorkerUI -> ImageUploadWorkerUI()
                     Screens.OneTimeWorkRequest -> OneTimeWorkRequestUI()

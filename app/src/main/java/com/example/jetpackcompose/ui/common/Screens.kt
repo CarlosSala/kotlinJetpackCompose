@@ -33,6 +33,7 @@ enum class Screens(val displayName: String) {
     CrudFireStoreScreen("Crud FireStore Screen"),
     FirebaseStorageScreen("Firebase Storage Screen"),
     MyServiceScreen("My Service Screen"),
+    MyServiceScreen2("My Service Screen 2"),
     MyPeriodicWorkerUI("My Periodic Worker UI"),
     ImageUploadWorkerUI("Image Upload Worker"),
     OneTimeWorkRequest("One Time Work Request"),
