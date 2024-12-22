@@ -13,6 +13,7 @@ enum class Screens(val displayName: String) {
     TestThemes("Test Themes"),
     SnackBarJC("SnackBar JC"),
     PullRefreshJC("Pull Refresh JC"),
+    CustomNotifications("Custom Notifications"),
     VerticalPager("Vertical Pager"),
     LazyColumnJC("Lazy Column JC"),
     LazyColumnJC2("Lazy Column JC2"),

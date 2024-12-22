@@ -3,6 +3,7 @@ package com.example.jetpackcompose.ui
 
 import com.example.jetpackcompose.ui.screenexamples.service2.DownloadScreen
 import LazyColumnDragAndDrop
+import NotificationExample
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -94,7 +95,7 @@ fun HorizontalPager() {
             modifier = Modifier.windowInsetsPadding(insets = myWindowInsets),
             //containerColor = Color.Cyan,
             topBar = {
-                if (pagerState.currentPage != 33 && pagerState.currentPage != 9) {
+                if (pagerState.currentPage != 34 && pagerState.currentPage != 10) {
                     MainTopAppBar(
                         onTitleChange = title,
                         selectedTheme = { theme ->
@@ -112,7 +113,7 @@ fun HorizontalPager() {
                 }
             },
             floatingActionButton = {
-                if (pagerState.currentPage != 33 && pagerState.currentPage != 22) {
+                if (pagerState.currentPage != 34 && pagerState.currentPage != 23) {
                     FloatingActionButton(
                         onClick = {
                             showDialog = true
@@ -149,6 +150,7 @@ fun HorizontalPager() {
                     Screens.TestThemes -> TestThemes()
                     Screens.SnackBarJC -> SnackBarJC()
                     Screens.PullRefreshJC -> PullRefreshJC()
+                    Screens.CustomNotifications -> NotificationExample()
                     Screens.VerticalPager -> VerticalPagerExample() { myWindowInsets = it }
                     Screens.LazyColumnJC -> LazyColumnJC()
                     Screens.LazyColumnJC2 -> LazyColumnJC2()
