@@ -1,5 +1,4 @@
 import android.Manifest
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -15,8 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createActionNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createBigPictureNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createBigTextNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createMessagingNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createProgressNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createReplyNotification
+import com.example.jetpackcompose.ui.screenexamples.customnotifications.createSimpleNotification
 
 @Composable
 fun NotificationExample() {
@@ -31,7 +36,8 @@ fun NotificationExample() {
     ) { isGranted ->
         hasNotificationPermission = isGranted
         if (!isGranted) {
-            Toast.makeText(context, "Permiso de notificaciones denegado.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Permiso de notificaciones denegado.", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -92,6 +98,62 @@ fun NotificationExample() {
             }) {
                 Text("Mostrar Notificación con Texto Largo")
             }
+            Spacer(modifier = Modifier.height(16.dp))
+            Button(onClick = {
+                if (checkNotificationPermission(context)) {
+                    NotificationManagerCompat.from(context).notify(5, createProgressNotification(context, channelId))
+                } else {
+                    Toast.makeText(context, "Permiso de notificaciones no otorgado.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Mostrar Notificación de Progreso")
+            }
+
+            Button(onClick = {
+                if (checkNotificationPermission(context)) {
+                    NotificationManagerCompat.from(context).notify(6, createMessagingNotification(context, channelId))
+                } else {
+                    Toast.makeText(context, "Permiso de notificaciones no otorgado.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Mostrar Notificación de Mensajes")
+            }
+
+            Button(onClick = {
+                if (checkNotificationPermission(context)) {
+                    NotificationManagerCompat.from(context).notify(7, createActionNotification(context, channelId))
+                } else {
+                    Toast.makeText(context, "Permiso de notificaciones no otorgado.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Mostrar Notificación con Acciones")
+            }
+            Button(onClick = {
+                if (checkNotificationPermission(context)) {
+                    NotificationManagerCompat.from(context).notify(8,
+                        createBigPictureNotification(context, channelId)
+                    )
+                } else {
+                    Toast.makeText(context, "Permiso de notificaciones no otorgado.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Mostrar Notificación con Acciones")
+            }
+
+            Button(onClick = {
+                if (checkNotificationPermission(context)) {
+                    NotificationManagerCompat.from(context).notify(9,
+                        createReplyNotification(context, channelId)
+                    )
+                } else {
+                    Toast.makeText(context, "Permiso de notificaciones no otorgado.", Toast.LENGTH_SHORT).show()
+                }
+            }) {
+                Text("Mostrar Notificación con Acciones")
+            }
+
+
+
         } else {
             Button(onClick = {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -118,27 +180,7 @@ fun checkNotificationPermission(context: Context): Boolean {
     }
 }
 
-fun createSimpleNotification(context: Context, channelId: String): Notification {
-    return NotificationCompat.Builder(context, channelId)
-        .setSmallIcon(android.R.drawable.ic_dialog_info)
-        .setContentTitle("Notificación Simple")
-        .setContentText("Esta es una notificación simple.")
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
-        .build()
-}
 
-fun createBigTextNotification(context: Context, channelId: String): Notification {
-    return NotificationCompat.Builder(context, channelId)
-        .setSmallIcon(android.R.drawable.ic_dialog_info)
-        .setContentTitle("Notificación con Texto Largo")
-        .setStyle(
-            NotificationCompat.BigTextStyle().bigText(
-                "Este es un ejemplo de notificación con más texto para mostrar BigTextStyle."
-            )
-        )
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
-        .build()
-}
 
 @Preview
 @Composable
