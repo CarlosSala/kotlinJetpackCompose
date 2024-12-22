@@ -1,3 +1,5 @@
+package com.example.jetpackcompose.ui.screenexamples.service2
+
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,12 +11,16 @@ class DownloadViewModel : ViewModel() {
     private val _progress = MutableStateFlow(0) // Estado del progreso
     val progress: StateFlow<Int> = _progress
 
-    private val _hasNotificationPermission = MutableStateFlow(false) // Estado del permiso
+    // state for notification permission
+    private val _hasNotificationPermission = MutableStateFlow(false)
     val hasNotificationPermission: StateFlow<Boolean> = _hasNotificationPermission
 
-    fun updateProgress(progress: Int) {
+    init {
+        // listener for progress from service
         viewModelScope.launch {
-            _progress.value = progress
+            DownloadService.Companion.progressFlow.collect { newProgress ->
+                _progress.value = newProgress
+            }
         }
     }
 

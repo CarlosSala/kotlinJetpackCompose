@@ -1,7 +1,7 @@
 package com.example.jetpackcompose.ui
 
 
-import DownloadScreen
+import com.example.jetpackcompose.ui.screenexamples.service2.DownloadScreen
 import LazyColumnDragAndDrop
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

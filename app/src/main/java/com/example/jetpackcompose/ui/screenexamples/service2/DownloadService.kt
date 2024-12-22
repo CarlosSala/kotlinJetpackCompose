@@ -1,6 +1,6 @@
 package com.example.jetpackcompose.ui.screenexamples.service2
 
-import com.example.jetpackcompose.R
+import android.R
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -10,12 +10,16 @@ import android.os.Build
 import android.os.IBinder
 import android.util.Log
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableSharedFlow
 
 class DownloadService : Service() {
 
-    private val CHANNEL_ID = "DownloadServiceChannel"
+    companion object {
+        val progressFlow = MutableSharedFlow<Int>(replay = 1) // Flujo compartido para el progreso
+    }
+
     private var job: Job? = null
-    private val TAG = "DownloadService"
+    private val CHANNEL_ID = "DownloadServiceChannel"
 
     override fun onCreate() {
         super.onCreate()
@@ -25,9 +29,11 @@ class DownloadService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startForeground(1, createNotification(0))
 
+        // Simula la descarga y emite progreso
         job = CoroutineScope(Dispatchers.IO).launch {
             for (progress in 1..100) {
-                delay(100) // Simula progreso cada 100 ms
+                delay(100) // Simula un progreso cada 100 ms
+                progressFlow.emit(progress) // Emitir el progreso
                 updateNotification(progress)
                 Log.d("DownloadService", "Progreso: $progress%")
             }
@@ -61,7 +67,7 @@ class DownloadService : Service() {
         return Notification.Builder(this, CHANNEL_ID)
             .setContentTitle("Descarga en progreso")
             .setContentText("Progreso: $progress%")
-            .setSmallIcon(R.drawable.ic_statistics)
+            .setSmallIcon(R.drawable.stat_sys_download)
             .setProgress(100, progress, false)
             .build()
     }
