@@ -1,24 +1,22 @@
 package com.example.jetpackcompose.ui.screenexamples.service2
 
-import android.R
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
-import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import com.example.jetpackcompose.R
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableSharedFlow
 
-class DownloadService : Service() {
+class DownloadService : Service(), CoroutineScope by CoroutineScope(Dispatchers.Main) {
 
     companion object {
-        val progressFlow = MutableSharedFlow<Int>(replay = 1) // Flujo compartido para el progreso
+        val progressFlow = MutableSharedFlow<Int>(replay = 1) // Shared flow for progress
     }
 
-    private var job: Job? = null
     private val CHANNEL_ID = "DownloadServiceChannel"
 
     override fun onCreate() {
@@ -29,16 +27,21 @@ class DownloadService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startForeground(1, createNotification(0))
 
-        // Simula la descarga y emite progreso
-        job = CoroutineScope(Dispatchers.IO).launch {
-            for (progress in 1..100) {
-                delay(100) // Simula un progreso cada 100 ms
-                progressFlow.emit(progress) // Emitir el progreso
-                updateNotification(progress)
-                Log.d("DownloadService", "Progreso: $progress%")
+        // Simulates the download and emits progress
+        launch(Dispatchers.IO) {
+            try {
+                for (progress in 1..100) {
+                    delay(100) // Simulates progress every 100 ms
+                    progressFlow.emit(progress) // Emit progress
+                    updateNotification(progress)
+                    Log.d("DownloadService", "Progress: $progress%")
+                }
+            } catch (e: Exception) {
+                Log.e("DownloadService", "Error in download simulation", e)
+            } finally {
+                stopForeground(STOP_FOREGROUND_REMOVE)
+                stopSelf()
             }
-            stopForeground(true)
-            stopSelf()
         }
 
         return START_STICKY
@@ -46,32 +49,33 @@ class DownloadService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        job?.cancel()
+        cancel() // Cancel the CoroutineScope
     }
 
     override fun onBind(intent: Intent?): IBinder? = null
 
+    // this function is called to create the notification channel
     private fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val serviceChannel = NotificationChannel(
-                CHANNEL_ID,
-                "Download Service Channel",
-                NotificationManager.IMPORTANCE_LOW
-            )
-            val manager = getSystemService(NotificationManager::class.java)
-            manager.createNotificationChannel(serviceChannel)
-        }
+        val serviceChannel = NotificationChannel(
+            CHANNEL_ID,
+            "Download Service Channel",
+            NotificationManager.IMPORTANCE_LOW
+        )
+        val notificationManager = getSystemService(NotificationManager::class.java)
+        notificationManager.createNotificationChannel(serviceChannel)
     }
 
+    // this function is called to create the notification
     private fun createNotification(progress: Int): Notification {
         return Notification.Builder(this, CHANNEL_ID)
-            .setContentTitle("Descarga en progreso")
-            .setContentText("Progreso: $progress%")
-            .setSmallIcon(R.drawable.stat_sys_download)
+            .setContentTitle("Download in progress")
+            .setContentText("Progress: $progress%")
+            .setSmallIcon(R.drawable.baseline_cloud_download_24)
             .setProgress(100, progress, false)
             .build()
     }
 
+    // this function is called to update the progress displayed in the notification
     private fun updateNotification(progress: Int) {
         val notificationManager = getSystemService(NotificationManager::class.java)
         notificationManager.notify(1, createNotification(progress))
