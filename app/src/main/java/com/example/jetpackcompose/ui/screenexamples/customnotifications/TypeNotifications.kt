@@ -5,12 +5,14 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
+import androidx.core.app.Person
+
 
 fun createSimpleNotification(context: Context, channelId: String): Notification {
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_dialog_info)
-        .setContentTitle("Notificación Simple")
-        .setContentText("Esta es una notificación simple.")
+        .setContentTitle("Simple Notification")
+        .setContentText("This is a simple notification.")
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .build()
 }
@@ -18,10 +20,10 @@ fun createSimpleNotification(context: Context, channelId: String): Notification 
 fun createBigTextNotification(context: Context, channelId: String): Notification {
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_dialog_info)
-        .setContentTitle("Notificación con Texto Largo")
+        .setContentTitle("Notification with Long Text")
         .setStyle(
             NotificationCompat.BigTextStyle().bigText(
-                "Este es un ejemplo de notificación con más texto para mostrar BigTextStyle."
+                "This is an example of a notification with more text to show BigTextStyle."
             )
         )
         .setPriority(NotificationCompat.PRIORITY_HIGH)
@@ -31,7 +33,7 @@ fun createBigTextNotification(context: Context, channelId: String): Notification
 fun createBigPictureNotification(context: Context, channelId: String): Notification {
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_dialog_info)
-        .setContentTitle("Notificación con Imagen Grande")
+        .setContentTitle("Notification with Big Image")
         .setStyle(
             NotificationCompat.BigPictureStyle()
                 .bigPicture(
@@ -46,7 +48,7 @@ fun createBigPictureNotification(context: Context, channelId: String): Notificat
 }
 
 fun createReplyNotification(context: Context, channelId: String): Notification {
-    val replyLabel = "Escribe tu respuesta aquí"
+    val replyLabel = "Type your response here"
     val remoteInput = androidx.core.app.RemoteInput.Builder("key_text_reply")
         .setLabel(replyLabel)
         .build()
@@ -60,14 +62,14 @@ fun createReplyNotification(context: Context, channelId: String): Notification {
 
     val action = NotificationCompat.Action.Builder(
         android.R.drawable.ic_menu_send,
-        "Responder",
+        "Reply",
         replyPendingIntent
     ).addRemoteInput(remoteInput).build()
 
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_dialog_email)
-        .setContentTitle("Notificación con Respuesta Directa")
-        .setContentText("Puedes responder directamente desde aquí.")
+        .setContentTitle("Notification with Direct Reply")
+        .setContentText("You can reply directly from here.")
         .addAction(action)
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .build()
@@ -76,18 +78,47 @@ fun createReplyNotification(context: Context, channelId: String): Notification {
 fun createProgressNotification(context: Context, channelId: String): Notification {
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_menu_save)
-        .setContentTitle("Notificación de Progreso")
-        .setContentText("Progreso en curso...")
-        .setProgress(100, 50, false) // Progreso al 50%
+        .setContentTitle("Progress Notification")
+        .setContentText("Progress in progress...")
+        .setProgress(100, 50, false) // Progress at 50%
         .setPriority(NotificationCompat.PRIORITY_LOW)
         .build()
 }
+
 fun createMessagingNotification(context: Context, channelId: String): Notification {
-    val messagingStyle = NotificationCompat.MessagingStyle("Usuario Actual")
-        .setConversationTitle("Conversación")
-        .addMessage("Hola, ¿cómo estás?", System.currentTimeMillis(), "Amigo 1")
-        .addMessage("¡Todo bien! ¿Y tú?", System.currentTimeMillis(), "Usuario Actual")
-        .addMessage("¡Perfecto! 😊", System.currentTimeMillis(), "Amigo 2")
+    val friend1 = NotificationCompat.MessagingStyle.Message(
+        "Hi, how are you?",
+        System.currentTimeMillis(),
+        Person.Builder()
+            .setName("Friend 1")
+            .build()
+    )
+
+    val currentUser = NotificationCompat.MessagingStyle.Message(
+        "All good! And you?",
+        System.currentTimeMillis(),
+        Person.Builder()
+            .setName("Current User")
+            .setImportant(true) // Indica que es el usuario actual
+            .build()
+    )
+
+    val friend2 = NotificationCompat.MessagingStyle.Message(
+        "Perfect! 😊",
+        System.currentTimeMillis(),
+        Person.Builder()
+            .setName("Friend 2")
+            .build()
+    )
+
+    val messagingStyle = NotificationCompat.MessagingStyle(
+        Person.Builder()
+            .setName("Current User")
+            .build()
+    ).setConversationTitle("Conversation")
+        .addMessage(friend1)
+        .addMessage(currentUser)
+        .addMessage(friend2)
 
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_dialog_email)
@@ -96,22 +127,29 @@ fun createMessagingNotification(context: Context, channelId: String): Notificati
         .build()
 }
 
+
 fun createActionNotification(context: Context, channelId: String): Notification {
-    // Intent para realizar una acción sin abrir una actividad
+    // Intent to perform an action without opening an activity
     val actionIntent = PendingIntent.getBroadcast(
         context,
-        0, // Identificador único
-        Intent(context, NotificationReceiver::class.java), // Un BroadcastReceiver en lugar de una actividad
+        0, // Unique identifier
+        Intent(
+            context,
+            NotificationReceiver::class.java
+        ), // A BroadcastReceiver instead of an activity
         PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
     )
 
     return NotificationCompat.Builder(context, channelId)
         .setSmallIcon(android.R.drawable.ic_input_add)
-        .setContentTitle("Notificación con Acciones")
-        .setContentText("Tiene opciones de acción.")
-        .addAction(android.R.drawable.ic_menu_view, "Realizar acción", actionIntent)  // Acción personalizada
-        .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancelar", null)  // Acción de cancelar
+        .setContentTitle("Notification with Actions")
+        .setContentText("It has action options.")
+        .addAction(
+            android.R.drawable.ic_menu_view,
+            "Perform action",
+            actionIntent
+        )  // Custom action
+        .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Cancel", null)  // Cancel action
         .setPriority(NotificationCompat.PRIORITY_HIGH)
         .build()
 }
-
