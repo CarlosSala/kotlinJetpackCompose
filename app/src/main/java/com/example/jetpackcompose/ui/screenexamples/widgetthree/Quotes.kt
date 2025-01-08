@@ -217,6 +217,17 @@ fun getRandomQuote(): Phrase {
         Phrase(
             quoteEs = "Toda opinión es una visión cargada de historia personal, todo juicio es una confesión; los ataques y críticas dicen más de quien lo dice que de ti.",
             quoteEn = "Every opinion is a view loaded with personal history, every judgment is a confession; attacks and criticism say more about the speaker than about you."
+        ), Phrase(
+            quoteEs = "Focus en tu meta.",
+            quoteEn = "Focus on your goal."
+        ),
+        Phrase(
+            quoteEs = "La amabilidad te convierte en la persona más bella del mundo sin importar cómo luzcas.",
+            quoteEn = "Kindness makes you the most beautiful person in the world, no matter how you look."
+        ),
+        Phrase(
+            quoteEs = "Nunca esperes, nunca exijas, nunca asumas.",
+            quoteEn = "Never wait, never demand, never assume."
         )
     )
     return quotes[Random.nextInt(quotes.size)]
