@@ -11,6 +11,22 @@ fun getRandomQuote(): Phrase {
             quoteEn = "Gradual changes."
         ),
         Phrase(
+            quoteEs = "Repite creencias positivas cada día.",
+            quoteEn = "Repeat positive beliefs every day."
+        ),
+        Phrase(
+            quoteEs = "Imagina tu éxito con todos los detalles.",
+            quoteEn = "Imagine your success in every detail."
+        ),
+        Phrase(
+            quoteEs = "Siéntete agradecido como si ya lo hubieras conseguido.",
+            quoteEn = "Feel grateful as if you had already achieved it."
+        ),
+        Phrase(
+            quoteEs = "Nunca estarás 100% listo, solo hazlo.",
+            quoteEn = "You'll never be ready, just do it."
+        ),
+        Phrase(
             quoteEs = "Hazlo (solo/con miedo/triste/motivado/a tu ritmo), pero hazlo.",
             quoteEn = "Do it (alone/afraid/sad/motivated/at your own pace), but do it."
         ),
