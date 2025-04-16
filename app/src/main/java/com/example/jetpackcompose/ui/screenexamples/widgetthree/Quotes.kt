@@ -103,10 +103,6 @@ fun getRandomQuote(): Phrase {
             quoteEn = "Never wait, never demand, never assume."
         ),
         Phrase(
-            quoteEs = "Controla tus emociones; generalmente no son razones válidas para hacer cosas, ya que eventualmente desaparecen.",
-            quoteEn = "Control your emotions; they are usually not valid reasons for actions, as they eventually disappear."
-        ),
-        Phrase(
             quoteEs = "Ansiedad, se origina en mí y no en las cosas externas.",
             quoteEn = "Anxiety, it originates in me, not in external things."
         ),
@@ -149,9 +145,27 @@ fun getRandomQuote(): Phrase {
         Phrase(
             quoteEs = "Imagina tu éxito con todos los detalles.",
             quoteEn = "Imagine your success in every detail."
+        ),
+        Phrase(
+            quoteEs = "Disfruta de la vida porque es corta.",
+            quoteEn = "Enjoy life because it's short."
+        ),
+        Phrase(
+            quoteEs = "Las emociones no toman decisiones por mí.",
+            quoteEn = "Emotions don't make decisions for me."
+        ),
+        Phrase(
+            quoteEs = "No eres tus pensamientos; eres el observador de ellos.",
+            quoteEn = "You are not your thoughts; you are the observer of them."
         )
 
         /*
+
+           Phrase(
+            quoteEs = "Controla tus emociones; generalmente no son razones válidas para hacer cosas, ya que eventualmente desaparecen.",
+            quoteEn = "Control your emotions; they are usually not valid reasons for actions, as they eventually disappear."
+        ),
+
                 Phrase(
                     quoteEs = "Soñar no te hará ningún bien si olvidas vivir.",
                     quoteEn = "Dreaming does you no good if you forget to live."
