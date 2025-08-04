@@ -62,10 +62,7 @@ fun getRandomQuote(): Phrase {
             quoteEs = "Perdonarse y perdonar.",
             quoteEn = "Forgive yourself and forgive others."
         ),
-        Phrase(
-            quoteEs = "Focus en tu meta.",
-            quoteEn = "Focus on your goal."
-        ),
+
         Phrase(
             quoteEs = "Pide ayuda si lo necesitas.",
             quoteEn = "Ask for help if you need it."
@@ -157,114 +154,143 @@ fun getRandomQuote(): Phrase {
         Phrase(
             quoteEs = "No eres tus pensamientos; eres el observador de ellos.",
             quoteEn = "You are not your thoughts; you are the observer of them."
-        )
+        ),
+        Phrase(
+            quoteEs = "Dividir las tareas en pasos simples, uno tras otro.",
+            quoteEn = "Break tasks into simple steps, one after another."
+        ),
+        Phrase(
+            quoteEs = "Vestirme bien todos los días, dentro de mis posibilidades, aunque no me vea nadie.",
+            quoteEn = "Dress well every day, within your means, even if no one sees you."
+        ),
+        Phrase(
+            quoteEs = "Ten un propósito elevado en la vida.",
+            quoteEn = "Have a higher purpose in life."
+        ),
+        Phrase(
+            quoteEs = "Sociabiliza más, sé popular.",
+            quoteEn = "Socialize more, be popular."
+        ),
+        Phrase(
+            quoteEs = "Manifiesta interés S. de forma indirecta.",
+            quoteEn = "Show S. interest indirectly."
+        ),
+        Phrase(
+            quoteEs = "Siempre asume que les caes bien y no lo tomes personal.",
+            quoteEn = "Always assume they like you and don’t take it personally."
+        ),
+        Phrase(
+            quoteEs = "Demuestra aprecio genuino por los demás, encuentra lo bueno de cada quien.",
+            quoteEn = "Show genuine appreciation for others; find the good in everyone."
+        ),
 
-        /*
-
-           Phrase(
+       /* Phrase(
             quoteEs = "Controla tus emociones; generalmente no son razones válidas para hacer cosas, ya que eventualmente desaparecen.",
             quoteEn = "Control your emotions; they are usually not valid reasons for actions, as they eventually disappear."
         ),
+        Phrase(
+            quoteEs = "Focus en tu meta.",
+            quoteEn = "Focus on your goal."
+        ),
 
-                Phrase(
-                    quoteEs = "Soñar no te hará ningún bien si olvidas vivir.",
-                    quoteEn = "Dreaming does you no good if you forget to live."
-                ),
-                Phrase(
-                    quoteEs = "El éxito es la suma de pequeños esfuerzos, repetidos día tras día.",
-                    quoteEn = "Success is the sum of small efforts, repeated day after day."
-                ),
-                Phrase(
-                    quoteEs = "¿Cuánto puedes resistir y seguir adelante?",
-                    quoteEn = "How much can you withstand and keep going?"
-                ),
-                Phrase(
-                    quoteEs = "Hay que creernos capaces de todo; si no, no vamos a lograr nada.",
-                    quoteEn = "We must believe we are capable of anything; otherwise, we won't achieve anything."
-                ),
-                Phrase(
-                    quoteEs = "Vamos a salir de esta como salimos de todas.",
-                    quoteEn = "We'll get through this as we always have."
-                ),
-                Phrase(
-                    quoteEs = "La gratitud no solo es la mayor de las virtudes, sino la madre de todas las demás.",
-                    quoteEn = "Gratitude is not only the greatest of virtues, but the parent of all the others."
-                ),
+        Phrase(
+            quoteEs = "Soñar no te hará ningún bien si olvidas vivir.",
+            quoteEn = "Dreaming does you no good if you forget to live."
+        ),
+        Phrase(
+            quoteEs = "El éxito es la suma de pequeños esfuerzos, repetidos día tras día.",
+            quoteEn = "Success is the sum of small efforts, repeated day after day."
+        ),
+        Phrase(
+            quoteEs = "¿Cuánto puedes resistir y seguir adelante?",
+            quoteEn = "How much can you withstand and keep going?"
+        ),
+        Phrase(
+            quoteEs = "Hay que creernos capaces de todo; si no, no vamos a lograr nada.",
+            quoteEn = "We must believe we are capable of anything; otherwise, we won't achieve anything."
+        ),
+        Phrase(
+            quoteEs = "Vamos a salir de esta como salimos de todas.",
+            quoteEn = "We'll get through this as we always have."
+        ),
+        Phrase(
+            quoteEs = "La gratitud no solo es la mayor de las virtudes, sino la madre de todas las demás.",
+            quoteEn = "Gratitude is not only the greatest of virtues, but the parent of all the others."
+        ),
 
-                Phrase(
-                    quoteEs = "Si tienes ira, reconócela, pero no actúes en base a ella.",
-                    quoteEn = "If you feel anger, acknowledge it, but don’t act on it."
-                ),
-                Phrase(
-                    quoteEs = "El pensamiento condiciona la acción, la acción determina el comportamiento, el comportamiento repetitivo crea hábitos, los hábitos estructuran el carácter y el carácter marca el destino.",
-                    quoteEn = "Thought shapes action, action determines behavior, repetitive behavior creates habits, habits structure character, and character defines destiny."
-                ),
-                Phrase(
-                    quoteEs = "La persistencia es la medida de la creencia en sí mismo.",
-                    quoteEn = "Persistence is the measure of self-belief."
-                ),
-                Phrase(
-                    quoteEs = "La paciencia es calma, es relajación, haz lo mejor que puedes y luego relájate.",
-                    quoteEn = "Patience is calmness, it’s relaxation; do your best and then relax."
-                ),
-                Phrase(
-                    quoteEs = "Darse a los demás ayuda a que te vaya mejor en múltiples áreas.",
-                    quoteEn = "Giving to others helps you thrive in multiple areas."
-                ),
-                Phrase(
-                    quoteEs = "Transforma la adversidad.",
-                    quoteEn = "Transform adversity."
-                ),
-                Phrase(
-                    quoteEs = "La mejor forma de acabar algo es no reaccionar, no alimentarlo; la energía fluye donde está la atención, dale indiferencia.",
-                    quoteEn = "The best way to end something is not to react, not to feed it; energy flows where attention goes, give it indifference."
-                ),
-                Phrase(
-                    quoteEs = "Toda opinión es una visión cargada de historia personal, todo juicio es una confesión; los ataques y críticas dicen más de quien lo dice que de ti.",
-                    quoteEn = "Every opinion is a view loaded with personal history, every judgment is a confession; attacks and criticism say more about the speaker than about you."
-                ),
-                Phrase(
-                    quoteEs = "Hazlo (solo/con miedo/triste/motivado/a tu ritmo), pero hazlo.",
-                    quoteEn = "Do it (alone/afraid/sad/motivated/at your own pace), but do it."
-                ),
-                Phrase(
-                    quoteEs = "Repite creencias positivas cada día.",
-                    quoteEn = "Repeat positive beliefs every day."
-                ),
+        Phrase(
+            quoteEs = "Si tienes ira, reconócela, pero no actúes en base a ella.",
+            quoteEn = "If you feel anger, acknowledge it, but don’t act on it."
+        ),
+        Phrase(
+            quoteEs = "El pensamiento condiciona la acción, la acción determina el comportamiento, el comportamiento repetitivo crea hábitos, los hábitos estructuran el carácter y el carácter marca el destino.",
+            quoteEn = "Thought shapes action, action determines behavior, repetitive behavior creates habits, habits structure character, and character defines destiny."
+        ),
+        Phrase(
+            quoteEs = "La persistencia es la medida de la creencia en sí mismo.",
+            quoteEn = "Persistence is the measure of self-belief."
+        ),
+        Phrase(
+            quoteEs = "La paciencia es calma, es relajación, haz lo mejor que puedes y luego relájate.",
+            quoteEn = "Patience is calmness, it’s relaxation; do your best and then relax."
+        ),
+        Phrase(
+            quoteEs = "Darse a los demás ayuda a que te vaya mejor en múltiples áreas.",
+            quoteEn = "Giving to others helps you thrive in multiple areas."
+        ),
+        Phrase(
+            quoteEs = "Transforma la adversidad.",
+            quoteEn = "Transform adversity."
+        ),
+        Phrase(
+            quoteEs = "La mejor forma de acabar algo es no reaccionar, no alimentarlo; la energía fluye donde está la atención, dale indiferencia.",
+            quoteEn = "The best way to end something is not to react, not to feed it; energy flows where attention goes, give it indifference."
+        ),
+        Phrase(
+            quoteEs = "Toda opinión es una visión cargada de historia personal, todo juicio es una confesión; los ataques y críticas dicen más de quien lo dice que de ti.",
+            quoteEn = "Every opinion is a view loaded with personal history, every judgment is a confession; attacks and criticism say more about the speaker than about you."
+        ),
+        Phrase(
+            quoteEs = "Hazlo (solo/con miedo/triste/motivado/a tu ritmo), pero hazlo.",
+            quoteEn = "Do it (alone/afraid/sad/motivated/at your own pace), but do it."
+        ),
+        Phrase(
+            quoteEs = "Repite creencias positivas cada día.",
+            quoteEn = "Repeat positive beliefs every day."
+        ),
 
-                Phrase(
-                    quoteEs = "La disciplina es lo que te va a separar de todos.",
-                    quoteEn = "Discipline is what will set you apart from everyone else."
-                ),
-                Phrase(
-                    quoteEs = "Si la idea es buena, ¡oblígate a hacerla!",
-                    quoteEn = "If the idea is good, force yourself to do it!"
-                ),
-                Phrase(
-                    quoteEs = "No le des a nadie poder sobre tu estado de ánimo.",
-                    quoteEn = "Don't give anyone power over your mood."
-                ),
-                Phrase(
-                    quoteEs = "La doctrina es enemiga de la reflexión.",
-                    quoteEn = "Doctrine is the enemy of reflection."
-                ),
-                Phrase(
-                    quoteEs = "El optimismo es la fe que conduce al logro; nada puede hacerse sin esperanza y confianza.",
-                    quoteEn = "Optimism is the faith that leads to achievement; nothing can be done without hope and confidence."
-                ),
-                Phrase(
-                    quoteEs = "Cuando sabes lo que quieres (tienes metas), tienes un plan para conseguirlo y haces el trabajo con constancia, nada te detendrá.",
-                    quoteEn = "When you know what you want (have goals), have a plan to achieve it, and work with consistency, nothing will stop you."
-                ),
-                Phrase(
-                    quoteEs = "Trata a los demás como te gustaría que te traten.",
-                    quoteEn = "Treat others as you would like to be treated."
-                ),
-                Phrase(
-                    quoteEs = "Solo fracasas cuando te das por vencido.",
-                    quoteEn = "You only fail when you give up."
-                )
-        */
+        Phrase(
+            quoteEs = "La disciplina es lo que te va a separar de todos.",
+            quoteEn = "Discipline is what will set you apart from everyone else."
+        ),
+        Phrase(
+            quoteEs = "Si la idea es buena, ¡oblígate a hacerla!",
+            quoteEn = "If the idea is good, force yourself to do it!"
+        ),
+        Phrase(
+            quoteEs = "No le des a nadie poder sobre tu estado de ánimo.",
+            quoteEn = "Don't give anyone power over your mood."
+        ),
+        Phrase(
+            quoteEs = "La doctrina es enemiga de la reflexión.",
+            quoteEn = "Doctrine is the enemy of reflection."
+        ),
+        Phrase(
+            quoteEs = "El optimismo es la fe que conduce al logro; nada puede hacerse sin esperanza y confianza.",
+            quoteEn = "Optimism is the faith that leads to achievement; nothing can be done without hope and confidence."
+        ),
+        Phrase(
+            quoteEs = "Cuando sabes lo que quieres (tienes metas), tienes un plan para conseguirlo y haces el trabajo con constancia, nada te detendrá.",
+            quoteEn = "When you know what you want (have goals), have a plan to achieve it, and work with consistency, nothing will stop you."
+        ),
+        Phrase(
+            quoteEs = "Trata a los demás como te gustaría que te traten.",
+            quoteEn = "Treat others as you would like to be treated."
+        ),
+        Phrase(
+            quoteEs = "Solo fracasas cuando te das por vencido.",
+            quoteEn = "You only fail when you give up."
+        )*/
     )
     return quotes[Random.nextInt(quotes.size)]
 }
